@@ -414,40 +414,6 @@ appointment communication and management reporting.
 """
     )
 
-    st.header("Project Lifecycle")
-
-    st.markdown(
-        """
-**Discover**  
-Business Problem → Stakeholders → Current-State Analysis
-
-↓
-
-**Define**  
-Requirements → Prioritisation → Evaluation Criteria
-
-↓
-
-**Select**  
-CRM Comparison → Weighted Evaluation → Recommendation
-
-↓
-
-**Design & Implement**  
-To-Be Process → User Stories → Migration → Configuration
-
-↓
-
-**Validate**  
-Testing → UAT → Training → Go-Live
-
-↓
-
-**Measure**  
-Adoption → Benefits → Post-Implementation Review
-"""
-    )
-
     st.header("Key Deliverables")
 
     col1, col2, col3 = st.columns(3)
