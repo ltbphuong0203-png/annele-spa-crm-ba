@@ -13,11 +13,7 @@ st.set_page_config(
 )
 
 # =========================================================
-# CUSTOM CSS
-# =========================================================
-
-# =========================================================
-# CUSTOM CSS / THEME
+# GLOBAL THEME / CSS
 # =========================================================
 
 st.markdown(
@@ -30,6 +26,7 @@ st.markdown(
         --background: #ffffff;
         --soft-background: #f4f7f6;
         --text-color: #1f2937;
+        --muted-text: #66736f;
         --border-color: #dfe7e4;
     }
 
@@ -79,15 +76,6 @@ st.markdown(
         line-height: 1.7;
     }
 
-    /* Cards */
-    .card {
-        padding: 1.3rem;
-        border: 1px solid var(--border-color);
-        border-radius: 14px;
-        height: 100%;
-        background-color: #ffffff;
-    }
-
     /* Small labels */
     .small-label {
         font-size: 0.8rem;
@@ -96,6 +84,15 @@ st.markdown(
         text-transform: uppercase;
         letter-spacing: 0.08em;
         margin-bottom: 0.5rem;
+    }
+
+    /* Cards */
+    .card {
+        padding: 1.3rem;
+        border: 1px solid var(--border-color);
+        border-radius: 14px;
+        background-color: #ffffff;
+        height: 100%;
     }
 
     /* Highlight */
@@ -153,12 +150,7 @@ st.markdown(
         color: var(--primary-color) !important;
     }
 
-    [data-testid="stSidebar"] [aria-checked="true"] + div {
-        color: var(--primary-color);
-        font-weight: 700;
-    }
-
-    /* Info / success / warning boxes */
+    /* Alerts */
     [data-testid="stAlert"] {
         border-radius: 10px;
     }
@@ -176,14 +168,13 @@ st.markdown(
         padding-top: 1.5rem;
         border-top: 1px solid var(--border-color);
         font-size: 0.9rem;
-        color: #66736f;
+        color: var(--muted-text);
     }
 
     </style>
     """,
     unsafe_allow_html=True,
 )
-
 
 # =========================================================
 # SIDEBAR NAVIGATION
@@ -228,7 +219,6 @@ st.sidebar.markdown(
 - Benefits Realisation
 """
 )
-
 
 # =========================================================
 # SHARED DATA
@@ -304,7 +294,6 @@ requirements = pd.DataFrame(
     columns=["ID", "Type", "Requirement", "Priority"],
 )
 
-
 traceability = pd.DataFrame(
     [
         ["P01", "BR-01", "FR-01 / FR-02 / FR-03", "US-01", "UAT-01"],
@@ -321,7 +310,6 @@ traceability = pd.DataFrame(
         "UAT",
     ],
 )
-
 
 # =========================================================
 # HELPER COMPONENTS
@@ -344,7 +332,6 @@ def footer():
         unsafe_allow_html=True,
     )
 
-
 # =========================================================
 # 01 PROJECT OVERVIEW
 # =========================================================
@@ -355,9 +342,7 @@ if page == "01 · Project Overview":
         """
         <div class="hero">
             <div class="small-label">Business Analyst Portfolio Project</div>
-
             <h1>Spa CRM Selection & Implementation</h1>
-
             <p style="font-size:1.2rem;">
                 Analysing customer-management challenges, defining CRM requirements,
                 evaluating suitable solutions and planning implementation for a
@@ -402,9 +387,7 @@ if page == "01 · Project Overview":
 
             <p>
                 Over the past two years,
-                <strong>
-                    missed bookings, late reminders, and inconsistent communication
-                </strong>
+                <strong>missed bookings, late reminders, and inconsistent communication</strong>
                 have contributed to increasing customer complaints,
                 lower satisfaction, and declining customer retention.
             </p>
@@ -425,8 +408,8 @@ if page == "01 · Project Overview":
 
     st.info(
         """
-        Identify the business needs, evaluate suitable CRM solutions and define
-        an implementation approach that improves customer information management,
+        Identify the business needs, evaluate suitable CRM solutions and define an
+        implementation approach that improves customer information management,
         appointment communication and management reporting.
         """
     )
@@ -593,7 +576,6 @@ and Personalisation         to No-Shows               Decision Support
 
     footer()
 
-
 # =========================================================
 # 03 CURRENT STATE
 # =========================================================
@@ -664,7 +646,11 @@ CUSTOMER               RECEPTIONIST / STAFF              CURRENT SYSTEMS
         columns=["Process Step", "Problem", "Observation"],
     )
 
-    st.dataframe(painpoints, hide_index=True, use_container_width=True)
+    st.dataframe(
+        painpoints,
+        hide_index=True,
+        use_container_width=True,
+    )
 
     st.subheader("Current-State Findings")
 
@@ -677,7 +663,6 @@ CUSTOMER               RECEPTIONIST / STAFF              CURRENT SYSTEMS
     )
 
     footer()
-
 
 # =========================================================
 # 04 REQUIREMENTS
@@ -703,7 +688,10 @@ elif page == "04 · Requirements Gathering":
         ("Customer", "Easy booking, confirmation, reminders, privacy"),
     ]
 
-    for col, card in zip([c1, c2, c3, c4, c5], stakeholder_cards):
+    for col, card in zip(
+        [c1, c2, c3, c4, c5],
+        stakeholder_cards,
+    ):
         with col:
             st.markdown(f"### {card[0]}")
             st.write(card[1])
@@ -714,15 +702,21 @@ elif page == "04 · Requirements Gathering":
 
     with e1:
         st.markdown("### Interviews")
-        st.write("Understand stakeholder goals, frustrations, information needs and expectations.")
+        st.write(
+            "Understand stakeholder goals, frustrations, information needs and expectations."
+        )
 
     with e2:
         st.markdown("### Process Walkthrough")
-        st.write("Observe the current customer enquiry and appointment-booking workflow.")
+        st.write(
+            "Observe the current customer enquiry and appointment-booking workflow."
+        )
 
     with e3:
         st.markdown("### Data Review")
-        st.write("Review customer records, booking information, reporting and communication data.")
+        st.write(
+            "Review customer records, booking information, reporting and communication data."
+        )
 
     st.subheader("From Insight to Requirement")
 
@@ -771,7 +765,11 @@ elif page == "04 · Requirements Gathering":
         & requirements["Priority"].isin(priority_filter)
     ]
 
-    st.dataframe(filtered, hide_index=True, use_container_width=True)
+    st.dataframe(
+        filtered,
+        hide_index=True,
+        use_container_width=True,
+    )
 
     st.download_button(
         "Download Requirements CSV",
@@ -829,7 +827,6 @@ elif page == "04 · Requirements Gathering":
         )
 
     footer()
-
 
 # =========================================================
 # 05 CRM EVALUATION
@@ -983,7 +980,11 @@ elif page == "05 · CRM Evaluation":
 
     matrix_df = pd.DataFrame(matrix_rows)
 
-    st.dataframe(matrix_df, hide_index=True, use_container_width=True)
+    st.dataframe(
+        matrix_df,
+        hide_index=True,
+        use_container_width=True,
+    )
 
     results = {}
 
@@ -1001,24 +1002,40 @@ elif page == "05 · CRM Evaluation":
     result_df = pd.DataFrame(
         {
             "CRM": results.keys(),
-            "Weighted Score / 5": [round(x, 2) for x in results.values()],
+            "Weighted Score / 5": [
+                round(x, 2)
+                for x in results.values()
+            ],
         }
-    ).sort_values("Weighted Score / 5", ascending=False)
+    ).sort_values(
+        "Weighted Score / 5",
+        ascending=False,
+    )
 
     st.subheader("Evaluation Result")
-    st.dataframe(result_df, hide_index=True, use_container_width=True)
+
+    st.dataframe(
+        result_df,
+        hide_index=True,
+        use_container_width=True,
+    )
 
     winner = result_df.iloc[0]["CRM"]
     score = result_df.iloc[0]["Weighted Score / 5"]
 
-    st.success(f"Current recommended solution: {winner} — {score}/5")
+    st.success(
+        f"Current recommended solution: {winner} — {score}/5"
+    )
 
     st.caption(
-        "Scores are illustrative for the portfolio project. In a real selection exercise, each score would be supported by vendor research, demonstrations and stakeholder validation."
+        """
+        Scores are illustrative for the portfolio project.
+        In a real selection exercise, each score would be supported by
+        vendor research, demonstrations and stakeholder validation.
+        """
     )
 
     footer()
-
 
 # =========================================================
 # 06 CRM SELECTION
@@ -1034,13 +1051,16 @@ elif page == "06 · CRM Selection":
 
     st.subheader("Recommended Solution")
 
-    st.success("CRM B — Spa-Specific Management Platform")
+    st.success(
+        "CRM B — Spa-Specific Management Platform"
+    )
 
     st.write(
         """
-        CRM B was selected because it provides the strongest alignment with the
-        spa's operational requirements, particularly appointment scheduling,
-        therapist availability, customer records, automated communication and ease of use.
+        CRM B was selected because it provides the strongest alignment with
+        the spa's operational requirements, particularly appointment scheduling,
+        therapist availability, customer records, automated communication and
+        ease of use.
 
         Although general-purpose CRM platforms may provide stronger traditional
         CRM and reporting capabilities, they require additional configuration or
@@ -1052,37 +1072,112 @@ elif page == "06 · CRM Selection":
 
     decision = pd.DataFrame(
         [
-            ["Appointment Management", "Strong native capability", "Critical"],
-            ["Customer Records", "Meets central-profile requirements", "Critical"],
-            ["Automated Communication", "Supports confirmations and reminders", "Critical"],
-            ["Usability", "Suitable for operational staff", "High"],
-            ["Implementation Effort", "Lower than heavily configurable CRM options", "High"],
-            ["Reporting", "Meets core requirements with some configuration", "Medium"],
+            [
+                "Appointment Management",
+                "Strong native capability",
+                "Critical",
+            ],
+            [
+                "Customer Records",
+                "Meets central-profile requirements",
+                "Critical",
+            ],
+            [
+                "Automated Communication",
+                "Supports confirmations and reminders",
+                "Critical",
+            ],
+            [
+                "Usability",
+                "Suitable for operational staff",
+                "High",
+            ],
+            [
+                "Implementation Effort",
+                "Lower than heavily configurable CRM options",
+                "High",
+            ],
+            [
+                "Reporting",
+                "Meets core requirements with some configuration",
+                "Medium",
+            ],
         ],
-        columns=["Factor", "Finding", "Importance"],
+        columns=[
+            "Factor",
+            "Finding",
+            "Importance",
+        ],
     )
 
-    st.dataframe(decision, hide_index=True, use_container_width=True)
+    st.dataframe(
+        decision,
+        hide_index=True,
+        use_container_width=True,
+    )
 
     st.subheader("Fit-Gap Analysis")
 
     gap = pd.DataFrame(
         [
-            ["Customer Profile", "Supported", "None", "Standard configuration"],
-            ["Appointment Scheduling", "Supported", "None", "Standard configuration"],
-            ["Reminder Automation", "Supported", "Minor", "Configure reminder rules"],
-            ["Retention Reporting", "Partial", "Moderate", "Configure/customise reports"],
-            ["Existing Customer Data", "Not migrated", "Major", "Data cleansing and migration"],
-            ["Staff Knowledge", "New system", "Major", "Training and SOP"],
-            ["Operating Process", "Current manual steps", "Moderate", "Process redesign and adoption"],
+            [
+                "Customer Profile",
+                "Supported",
+                "None",
+                "Standard configuration",
+            ],
+            [
+                "Appointment Scheduling",
+                "Supported",
+                "None",
+                "Standard configuration",
+            ],
+            [
+                "Reminder Automation",
+                "Supported",
+                "Minor",
+                "Configure reminder rules",
+            ],
+            [
+                "Retention Reporting",
+                "Partial",
+                "Moderate",
+                "Configure/customise reports",
+            ],
+            [
+                "Existing Customer Data",
+                "Not migrated",
+                "Major",
+                "Data cleansing and migration",
+            ],
+            [
+                "Staff Knowledge",
+                "New system",
+                "Major",
+                "Training and SOP",
+            ],
+            [
+                "Operating Process",
+                "Current manual steps",
+                "Moderate",
+                "Process redesign and adoption",
+            ],
         ],
-        columns=["Requirement Area", "Capability", "Gap", "Response"],
+        columns=[
+            "Requirement Area",
+            "Capability",
+            "Gap",
+            "Response",
+        ],
     )
 
-    st.dataframe(gap, hide_index=True, use_container_width=True)
+    st.dataframe(
+        gap,
+        hide_index=True,
+        use_container_width=True,
+    )
 
     footer()
-
 
 # =========================================================
 # 07 FUTURE STATE
@@ -1121,7 +1216,7 @@ CUSTOMER                RECEPTIONIST                    CRM SYSTEM
    |                          | Open central customer profile |
    |                          |----------------------------->|
    |                          |<-----------------------------|
-   |                          | Customer + history displayed  |
+   |                          | Customer + history displayed |
    |                          |                              |
    | Discuss required service |                              |
    |------------------------->|                              |
@@ -1157,20 +1252,51 @@ CUSTOMER                RECEPTIONIST                    CRM SYSTEM
 
     comparison = pd.DataFrame(
         [
-            ["Customer Search", "Search multiple sources", "Search central CRM profile"],
-            ["Customer History", "Fragmented", "Single customer view"],
-            ["Appointment Availability", "Manual checking", "CRM availability view"],
-            ["Booking", "Manual record", "CRM-linked appointment"],
-            ["Confirmation", "Dependent on staff", "Automatically generated"],
-            ["Reporting", "Manual consolidation", "Central reporting"],
+            [
+                "Customer Search",
+                "Search multiple sources",
+                "Search central CRM profile",
+            ],
+            [
+                "Customer History",
+                "Fragmented",
+                "Single customer view",
+            ],
+            [
+                "Appointment Availability",
+                "Manual checking",
+                "CRM availability view",
+            ],
+            [
+                "Booking",
+                "Manual record",
+                "CRM-linked appointment",
+            ],
+            [
+                "Confirmation",
+                "Dependent on staff",
+                "Automatically generated",
+            ],
+            [
+                "Reporting",
+                "Manual consolidation",
+                "Central reporting",
+            ],
         ],
-        columns=["Area", "As-Is", "To-Be"],
+        columns=[
+            "Area",
+            "As-Is",
+            "To-Be",
+        ],
     )
 
-    st.dataframe(comparison, hide_index=True, use_container_width=True)
+    st.dataframe(
+        comparison,
+        hide_index=True,
+        use_container_width=True,
+    )
 
     footer()
-
 
 # =========================================================
 # 08 IMPLEMENTATION
@@ -1188,19 +1314,59 @@ elif page == "08 · Implementation":
 
     phases = pd.DataFrame(
         [
-            ["1", "Preparation", "Confirm scope, roles, risks and implementation schedule"],
-            ["2", "Configuration", "Configure customer fields, booking rules, reminders and permissions"],
-            ["3", "Data Migration", "Clean, map, import and validate customer data"],
-            ["4", "Testing", "System testing and defect resolution"],
-            ["5", "UAT", "Business-user validation of critical workflows"],
-            ["6", "Training", "Train reception, therapists, manager and marketing users"],
-            ["7", "Go-Live", "Deploy CRM and provide hypercare"],
-            ["8", "Review", "Measure adoption, KPIs and improvement opportunities"],
+            [
+                "1",
+                "Preparation",
+                "Confirm scope, roles, risks and implementation schedule",
+            ],
+            [
+                "2",
+                "Configuration",
+                "Configure customer fields, booking rules, reminders and permissions",
+            ],
+            [
+                "3",
+                "Data Migration",
+                "Clean, map, import and validate customer data",
+            ],
+            [
+                "4",
+                "Testing",
+                "System testing and defect resolution",
+            ],
+            [
+                "5",
+                "UAT",
+                "Business-user validation of critical workflows",
+            ],
+            [
+                "6",
+                "Training",
+                "Train reception, therapists, manager and marketing users",
+            ],
+            [
+                "7",
+                "Go-Live",
+                "Deploy CRM and provide hypercare",
+            ],
+            [
+                "8",
+                "Review",
+                "Measure adoption, KPIs and improvement opportunities",
+            ],
         ],
-        columns=["Phase", "Activity", "Outcome"],
+        columns=[
+            "Phase",
+            "Activity",
+            "Outcome",
+        ],
     )
 
-    st.dataframe(phases, hide_index=True, use_container_width=True)
+    st.dataframe(
+        phases,
+        hide_index=True,
+        use_container_width=True,
+    )
 
     st.subheader("Epics")
 
@@ -1213,10 +1379,17 @@ elif page == "08 · Implementation":
             ["EP-05", "Data Migration"],
             ["EP-06", "Security & Access"],
         ],
-        columns=["Epic", "Name"],
+        columns=[
+            "Epic",
+            "Name",
+        ],
     )
 
-    st.dataframe(epics, hide_index=True, use_container_width=True)
+    st.dataframe(
+        epics,
+        hide_index=True,
+        use_container_width=True,
+    )
 
     st.subheader("Sample User Stories")
 
@@ -1297,22 +1470,55 @@ Post-Migration Reconciliation
 
     risks = pd.DataFrame(
         [
-            ["R01", "Poor data quality", "High", "Clean and validate data before migration"],
-            ["R02", "Staff resistance to new process", "Medium", "Early engagement, training and feedback"],
-            ["R03", "Incorrect configuration", "Medium", "Configuration review and UAT"],
-            ["R04", "Migration data loss", "High", "Backup, test migration and reconciliation"],
-            ["R05", "Low user adoption", "High", "Usage monitoring and post-go-live support"],
+            [
+                "R01",
+                "Poor data quality",
+                "High",
+                "Clean and validate data before migration",
+            ],
+            [
+                "R02",
+                "Staff resistance to new process",
+                "Medium",
+                "Early engagement, training and feedback",
+            ],
+            [
+                "R03",
+                "Incorrect configuration",
+                "Medium",
+                "Configuration review and UAT",
+            ],
+            [
+                "R04",
+                "Migration data loss",
+                "High",
+                "Backup, test migration and reconciliation",
+            ],
+            [
+                "R05",
+                "Low user adoption",
+                "High",
+                "Usage monitoring and post-go-live support",
+            ],
         ],
-        columns=["Risk", "Description", "Impact", "Mitigation"],
+        columns=[
+            "Risk",
+            "Description",
+            "Impact",
+            "Mitigation",
+        ],
     )
 
-    st.dataframe(risks, hide_index=True, use_container_width=True)
+    st.dataframe(
+        risks,
+        hide_index=True,
+        use_container_width=True,
+    )
 
     footer()
 
-
 # =========================================================
-# 09 UAT
+# 09 TESTING & UAT
 # =========================================================
 
 elif page == "09 · Testing & UAT":
@@ -1379,7 +1585,11 @@ elif page == "09 · Testing & UAT":
         ],
     )
 
-    st.dataframe(uat, hide_index=True, use_container_width=True)
+    st.dataframe(
+        uat,
+        hide_index=True,
+        use_container_width=True,
+    )
 
     st.subheader("Sample UAT Scenario")
 
@@ -1439,9 +1649,8 @@ Receptionist is logged into the CRM and a valid customer profile exists.
 
     footer()
 
-
 # =========================================================
-# 10 GO LIVE
+# 10 GO-LIVE & ADOPTION
 # =========================================================
 
 elif page == "10 · Go-Live & Adoption":
@@ -1456,15 +1665,39 @@ elif page == "10 · Go-Live & Adoption":
 
     training = pd.DataFrame(
         [
-            ["Receptionist", "Customer search, booking, cancellation, reminders", "Workshop + Quick Guide"],
-            ["Therapist", "Customer history, treatment notes", "Short Workshop + SOP"],
-            ["Manager", "Dashboard, reporting, user oversight", "Manager Training"],
-            ["Marketing", "Segments, customer lists and campaign workflows", "Workshop"],
+            [
+                "Receptionist",
+                "Customer search, booking, cancellation, reminders",
+                "Workshop + Quick Guide",
+            ],
+            [
+                "Therapist",
+                "Customer history, treatment notes",
+                "Short Workshop + SOP",
+            ],
+            [
+                "Manager",
+                "Dashboard, reporting, user oversight",
+                "Manager Training",
+            ],
+            [
+                "Marketing",
+                "Segments, customer lists and campaign workflows",
+                "Workshop",
+            ],
         ],
-        columns=["Audience", "Training Content", "Method"],
+        columns=[
+            "Audience",
+            "Training Content",
+            "Method",
+        ],
     )
 
-    st.dataframe(training, hide_index=True, use_container_width=True)
+    st.dataframe(
+        training,
+        hide_index=True,
+        use_container_width=True,
+    )
 
     st.subheader("Go-Live Plan")
 
@@ -1494,22 +1727,43 @@ elif page == "10 · Go-Live & Adoption":
 
     adoption = pd.DataFrame(
         [
-            ["Active User Rate", "% of expected staff regularly accessing CRM"],
-            ["CRM Booking Rate", "% of appointments recorded through new process"],
-            ["Customer Profile Completeness", "% of required customer fields completed"],
-            ["Reminder Automation Rate", "% of eligible appointments receiving reminders"],
-            ["User Feedback", "Staff satisfaction and reported usability issues"],
+            [
+                "Active User Rate",
+                "% of expected staff regularly accessing CRM",
+            ],
+            [
+                "CRM Booking Rate",
+                "% of appointments recorded through new process",
+            ],
+            [
+                "Customer Profile Completeness",
+                "% of required customer fields completed",
+            ],
+            [
+                "Reminder Automation Rate",
+                "% of eligible appointments receiving reminders",
+            ],
+            [
+                "User Feedback",
+                "Staff satisfaction and reported usability issues",
+            ],
         ],
-        columns=["Measure", "Purpose"],
+        columns=[
+            "Measure",
+            "Purpose",
+        ],
     )
 
-    st.dataframe(adoption, hide_index=True, use_container_width=True)
+    st.dataframe(
+        adoption,
+        hide_index=True,
+        use_container_width=True,
+    )
 
     footer()
 
-
 # =========================================================
-# 11 BENEFITS
+# 11 BENEFITS & REVIEW
 # =========================================================
 
 elif page == "11 · Benefits & Review":
@@ -1550,28 +1804,67 @@ elif page == "11 · Benefits & Review":
                 "Improved management visibility",
             ],
         ],
-        columns=["Original Problem", "CRM Response", "Expected Benefit"],
+        columns=[
+            "Original Problem",
+            "CRM Response",
+            "Expected Benefit",
+        ],
     )
 
-    st.dataframe(benefit_map, hide_index=True, use_container_width=True)
+    st.dataframe(
+        benefit_map,
+        hide_index=True,
+        use_container_width=True,
+    )
 
     st.subheader("Benefits Realisation Targets")
 
     targets = pd.DataFrame(
         [
-            ["Customer profile lookup time", "3 minutes", "< 30 seconds"],
-            ["Follow-up completion", "40%", "> 90%"],
-            ["Appointment no-show rate", "12%", "< 7%"],
-            ["Repeat booking rate", "45%", "60%"],
-            ["Manual report preparation", "3 hours", "< 30 minutes"],
+            [
+                "Customer profile lookup time",
+                "3 minutes",
+                "< 30 seconds",
+            ],
+            [
+                "Follow-up completion",
+                "40%",
+                "> 90%",
+            ],
+            [
+                "Appointment no-show rate",
+                "12%",
+                "< 7%",
+            ],
+            [
+                "Repeat booking rate",
+                "45%",
+                "60%",
+            ],
+            [
+                "Manual report preparation",
+                "3 hours",
+                "< 30 minutes",
+            ],
         ],
-        columns=["KPI", "Illustrative Baseline", "Target"],
+        columns=[
+            "KPI",
+            "Illustrative Baseline",
+            "Target",
+        ],
     )
 
-    st.dataframe(targets, hide_index=True, use_container_width=True)
+    st.dataframe(
+        targets,
+        hide_index=True,
+        use_container_width=True,
+    )
 
     st.caption(
-        "These figures are illustrative project targets for the simulated case study and should not be presented as actual measured business results."
+        """
+        These figures are illustrative project targets for the simulated case study
+        and should not be presented as actual measured business results.
+        """
     )
 
     st.subheader("Post-Implementation Review")
@@ -1604,7 +1897,6 @@ elif page == "11 · Benefits & Review":
 
     footer()
 
-
 # =========================================================
 # 12 TRACEABILITY
 # =========================================================
@@ -1625,7 +1917,11 @@ elif page == "12 · Traceability":
         """
     )
 
-    st.dataframe(traceability, hide_index=True, use_container_width=True)
+    st.dataframe(
+        traceability,
+        hide_index=True,
+        use_container_width=True,
+    )
 
     st.download_button(
         "Download Traceability Matrix",
