@@ -75,6 +75,43 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+st.markdown(
+    """
+    <style>
+    :root {
+        --primary-color: #194339;
+        --contrast-color: #ffffff;
+    }
+
+    h1, h2, h3 {
+        color: #194339;
+    }
+
+    div.stButton > button {
+        background-color: #194339;
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+    }
+
+    div.stButton > button:hover {
+        background-color: #12352d;
+        color: #ffffff;
+    }
+
+    [data-testid="stSidebar"] {
+        border-right: 1px solid #e4e8e6;
+    }
+
+    [data-testid="stSidebar"] [aria-selected="true"] {
+        color: #194339;
+        font-weight: 600;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 
 # =========================================================
 # SIDEBAR NAVIGATION
@@ -270,22 +307,61 @@ if page == "01 · Project Overview":
         st.markdown("#### Industry")
         st.write("Spa & Wellness Services")
 
-    with c4:
-        st.markdown("#### Delivery")
-        st.write("End-to-End BA Case Study")
-
     st.divider()
 
-    st.header("The Challenge")
+    st.markdown(
+    """
+    <style>
+    .project-overview h2 {
+        color: #194339;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
 
-    st.write(
-        """
-        The spa currently manages customer interactions, appointments and customer
-        information across several channels. Staff cannot easily access a complete
-        customer history, appointment communication is inconsistent and management
-        has limited visibility into customer retention and service performance.
-        """
-    )
+    .project-overview p {
+        font-size: 1.15rem;
+        line-height: 1.8;
+        color: #1f2937;
+        margin-bottom: 1.4rem;
+    }
+
+    .project-overview strong {
+        color: #194339;
+        font-weight: 700;
+    }
+    </style>
+
+    <div class="project-overview">
+
+        <h2>Project Overview | Background</h2>
+
+        <p>
+            Wellness Perth Spa is a medium-sized wellness business with
+            <strong>three locations across WA</strong>.
+            Customer information, appointments, and interactions are currently managed through
+            <strong>Excel and disconnected communication channels</strong>,
+            making it difficult for staff to access complete customer histories
+            and for management to track performance.
+        </p>
+
+        <p>
+            Over the past two years,
+            <strong>missed bookings, late reminders, and inconsistent communication</strong>
+            have contributed to increasing customer complaints, lower satisfaction,
+            and declining customer retention.
+        </p>
+
+        <p>
+            This project aims to
+            <strong>identify and implement the best-fit CRM solution</strong>
+            to improve customer management, operational efficiency,
+            and customer experience.
+        </p>
+
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
     st.header("Project Objective")
 
