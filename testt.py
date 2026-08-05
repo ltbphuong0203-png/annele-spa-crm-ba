@@ -462,56 +462,227 @@ elif page == "02 · Business Problem":
     page_header(
         "02",
         "Business Problem",
-        "Understanding why change is required before evaluating a technology solution.",
+        "Understanding the operational challenges affecting customer management, appointment handling and business performance.",
     )
 
-    st.subheader("Problem Statement")
+    # =====================================================
+    # PROBLEM STATEMENT
+    # =====================================================
 
     st.markdown(
         """
-        > The spa currently manages customer information and interactions across
-        > multiple channels, resulting in fragmented customer records and limited
-        > visibility of customer history.
-        >
-        > Booking confirmations and follow-ups are handled inconsistently, which may
-        > contribute to missed appointments and lost revenue. Management also has
-        > limited access to customer-retention and service-performance reporting,
-        > making it difficult to identify trends and support data-driven decisions.
+<div class="business-problem-section">
+
+<h2>Problem Statement</h2>
+
+<p>
+Wellness Perth Spa relies on
+<strong>Excel spreadsheets and disconnected communication channels</strong>
+to manage customer information and appointments. This results in
+<strong>fragmented customer records, inconsistent appointment reminders, and limited visibility into customer activity and retention.</strong>
+These issues have contributed to increasing customer complaints,
+lower customer satisfaction, and declining return customer rates,
+highlighting the need for a more
+<strong>centralised and reliable customer management solution.</strong>
+</p>
+
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+
+    # =====================================================
+    # CURRENT PAIN POINTS
+    # =====================================================
+
+    st.markdown(
+        """
+<style>
+
+/* Business Problem Statement */
+
+.business-problem-section {
+    margin-bottom: 2.5rem;
+}
+
+.business-problem-section h2 {
+    color: #194339 !important;
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+}
+
+.business-problem-section p {
+    color: #1f2937;
+    font-size: 1.15rem;
+    line-height: 1.85;
+    margin: 0;
+}
+
+.business-problem-section strong {
+    color: #194339;
+    font-weight: 700;
+}
+
+
+/* Pain Point Card */
+
+.pain-points-card {
+    background-color: #ffffff;
+    border: 1px solid #dfe7e4;
+    border-radius: 18px;
+    padding: 2rem 2.2rem;
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 4px 14px rgba(25, 67, 57, 0.08);
+}
+
+.pain-points-title {
+    color: #194339;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+.pain-point-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+    margin-bottom: 1.25rem;
+}
+
+.pain-point-row:last-child {
+    margin-bottom: 0;
+}
+
+.pain-point-icon {
+    color: #d64545;
+    font-size: 1.55rem;
+    font-weight: 300;
+    line-height: 1.35;
+    flex-shrink: 0;
+}
+
+.pain-point-text {
+    color: #374151;
+    font-size: 1.08rem;
+    line-height: 1.65;
+}
+
+.pain-point-text strong {
+    color: #194339;
+    font-weight: 700;
+}
+
+</style>
+
+<div class="pain-points-card">
+
+<div class="pain-points-title">
+CURRENT PAIN POINTS
+</div>
+
+<div class="pain-point-row">
+    <div class="pain-point-icon">×</div>
+    <div class="pain-point-text">
+        <strong>Fragmented customer data</strong> — customer information is stored across multiple Excel spreadsheets
+    </div>
+</div>
+
+<div class="pain-point-row">
+    <div class="pain-point-icon">×</div>
+    <div class="pain-point-text">
+        <strong>No complete customer view</strong> — staff cannot easily access customer history across locations
+    </div>
+</div>
+
+<div class="pain-point-row">
+    <div class="pain-point-icon">×</div>
+    <div class="pain-point-text">
+        <strong>Manual booking management</strong> — appointment tracking relies heavily on manual processes
+    </div>
+</div>
+
+<div class="pain-point-row">
+    <div class="pain-point-icon">×</div>
+    <div class="pain-point-text">
+        <strong>Inconsistent reminders</strong> — customers receive late or missed appointment reminders
+    </div>
+</div>
+
+<div class="pain-point-row">
+    <div class="pain-point-icon">×</div>
+    <div class="pain-point-text">
+        <strong>Limited reporting</strong> — management lacks visibility into customer retention and service performance
+    </div>
+</div>
+
+<div class="pain-point-row">
+    <div class="pain-point-icon">×</div>
+    <div class="pain-point-text">
+        <strong>Declining customer experience</strong> — increasing complaints and fewer returning customers
+    </div>
+</div>
+
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+
+    # =====================================================
+    # ROOT CAUSE ANALYSIS
+    # =====================================================
+
+    st.subheader("Root Cause Analysis")
+
+    st.write(
+        """
+        The current pain points were analysed to identify the underlying
+        process and system issues contributing to the business problems.
+        Three primary root-cause themes were identified.
         """
     )
-
-    st.subheader("Observed Business Problems")
-
-    st.dataframe(
-        business_problems,
-        use_container_width=True,
-        hide_index=True,
-    )
-
-    st.subheader("Root Cause Themes")
 
     c1, c2, c3 = st.columns(3)
 
     with c1:
         st.markdown("### RC01")
-        st.markdown("**Fragmented customer data**")
+        st.markdown("**Fragmented Customer Data**")
         st.write(
-            "Customer information is stored across multiple channels and is not connected into one customer view."
+            """
+            Customer information is maintained across separate spreadsheets
+            and communication channels, resulting in duplicated, incomplete
+            and inconsistent customer records.
+            """
         )
 
     with c2:
         st.markdown("### RC02")
-        st.markdown("**Manual communication processes**")
+        st.markdown("**Manual Processes**")
         st.write(
-            "Booking confirmations, reminders and follow-ups depend heavily on staff actions."
+            """
+            Appointment management, confirmations and reminders rely heavily
+            on staff completing manual activities, increasing the risk of
+            missed or inconsistent communication.
+            """
         )
 
     with c3:
         st.markdown("### RC03")
-        st.markdown("**Limited reporting capability**")
+        st.markdown("**Limited Reporting Capability**")
         st.write(
-            "Customer, appointment and service information is difficult to consolidate for management reporting."
+            """
+            Customer and appointment information is not stored within a
+            central system, making it difficult for management to consolidate
+            data and monitor customer retention and service performance.
+            """
         )
+
+    # =====================================================
+    # ROOT CAUSE RELATIONSHIP
+    # =====================================================
 
     st.subheader("Root Cause Relationship")
 
@@ -534,8 +705,14 @@ Incomplete Customer         Inconsistent              Limited
 History                     Follow-Ups                Reporting
        |                           |                          |
        v                           v                          v
-Lower Staff Efficiency      Possible Contribution     Limited Management
-and Personalisation         to No-Shows               Decision Support
+Lower Staff Efficiency      Missed / Late             Limited Management
+and Personalisation         Reminders                 Decision Support
+       |                           |                          |
+       +---------------------------+--------------------------+
+                                   |
+                                   v
+                         CUSTOMER EXPERIENCE
+                              DECLINES
         """,
         language=None,
     )
