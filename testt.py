@@ -335,21 +335,22 @@ def footer():
 # =========================================================
 # 01 PROJECT OVERVIEW
 # =========================================================
-
 if page == "01 · Project Overview":
 
     st.markdown(
         """
-        <div class="hero">
-            <div class="small-label">Business Analyst Portfolio Project</div>
-            <h1>Spa CRM Selection & Implementation</h1>
-            <p style="font-size:1.2rem;">
-                Analysing customer-management challenges, defining CRM requirements,
-                evaluating suitable solutions and planning implementation for a
-                spa services business.
-            </p>
-        </div>
-        """,
+<div class="hero">
+<div class="small-label">Business Analyst Portfolio Project</div>
+
+<h1>Spa CRM Selection & Implementation</h1>
+
+<p style="font-size:1.2rem;">
+Analysing customer-management challenges, defining CRM requirements,
+evaluating suitable solutions and planning implementation for a
+spa services business.
+</p>
+</div>
+""",
         unsafe_allow_html=True,
     )
 
@@ -371,36 +372,35 @@ if page == "01 · Project Overview":
 
     st.markdown(
         """
-        <div class="project-overview">
+<div class="project-overview">
 
-            <h2>Project Overview | Background</h2>
+<h2>Project Overview | Background</h2>
 
-            <p>
-                Wellness Perth Spa is a medium-sized wellness business with
-                <strong>three locations across WA</strong>.
-                Customer information, appointments, and interactions are currently
-                managed through
-                <strong>Excel and disconnected communication channels</strong>,
-                making it difficult for staff to access complete customer histories
-                and for management to track performance.
-            </p>
+<p>
+Wellness Perth Spa is a medium-sized wellness business with
+<strong>three locations across WA</strong>.
+Customer information, appointments, and interactions are currently managed through
+<strong>Excel and disconnected communication channels</strong>,
+making it difficult for staff to access complete customer histories
+and for management to track performance.
+</p>
 
-            <p>
-                Over the past two years,
-                <strong>missed bookings, late reminders, and inconsistent communication</strong>
-                have contributed to increasing customer complaints,
-                lower satisfaction, and declining customer retention.
-            </p>
+<p>
+Over the past two years,
+<strong>missed bookings, late reminders, and inconsistent communication</strong>
+have contributed to increasing customer complaints,
+lower satisfaction, and declining customer retention.
+</p>
 
-            <p>
-                This project aims to
-                <strong>identify and implement the best-fit CRM solution</strong>
-                to improve customer management, operational efficiency,
-                and customer experience.
-            </p>
+<p>
+This project aims to
+<strong>identify and implement the best-fit CRM solution</strong>
+to improve customer management, operational efficiency,
+and customer experience.
+</p>
 
-        </div>
-        """,
+</div>
+""",
         unsafe_allow_html=True,
     )
 
@@ -408,44 +408,44 @@ if page == "01 · Project Overview":
 
     st.info(
         """
-        Identify the business needs, evaluate suitable CRM solutions and define an
-        implementation approach that improves customer information management,
-        appointment communication and management reporting.
-        """
+Identify the business needs, evaluate suitable CRM solutions and define an
+implementation approach that improves customer information management,
+appointment communication and management reporting.
+"""
     )
 
     st.header("Project Lifecycle")
 
     st.markdown(
         """
-        **Discover**  
-        Business Problem → Stakeholders → Current-State Analysis
+**Discover**  
+Business Problem → Stakeholders → Current-State Analysis
 
-        ↓
+↓
 
-        **Define**  
-        Requirements → Prioritisation → Evaluation Criteria
+**Define**  
+Requirements → Prioritisation → Evaluation Criteria
 
-        ↓
+↓
 
-        **Select**  
-        CRM Comparison → Weighted Evaluation → Recommendation
+**Select**  
+CRM Comparison → Weighted Evaluation → Recommendation
 
-        ↓
+↓
 
-        **Design & Implement**  
-        To-Be Process → User Stories → Migration → Configuration
+**Design & Implement**  
+To-Be Process → User Stories → Migration → Configuration
 
-        ↓
+↓
 
-        **Validate**  
-        Testing → UAT → Training → Go-Live
+**Validate**  
+Testing → UAT → Training → Go-Live
 
-        ↓
+↓
 
-        **Measure**  
-        Adoption → Benefits → Post-Implementation Review
-        """
+**Measure**  
+Adoption → Benefits → Post-Implementation Review
+"""
     )
 
     st.header("Key Deliverables")
@@ -456,33 +456,33 @@ if page == "01 · Project Overview":
         st.markdown("### Discovery")
         st.markdown(
             """
-            - Problem statement
-            - Stakeholder analysis
-            - Root cause analysis
-            - As-Is process
-            """
+- Problem statement
+- Stakeholder analysis
+- Root cause analysis
+- As-Is process
+"""
         )
 
     with col2:
         st.markdown("### Solution")
         st.markdown(
             """
-            - Requirements catalogue
-            - CRM evaluation matrix
-            - Fit-gap analysis
-            - To-Be process
-            """
+- Requirements catalogue
+- CRM evaluation matrix
+- Fit-gap analysis
+- To-Be process
+"""
         )
 
     with col3:
         st.markdown("### Delivery")
         st.markdown(
             """
-            - User stories
-            - UAT scenarios
-            - Training plan
-            - Benefits framework
-            """
+- User stories
+- UAT scenarios
+- Training plan
+- Benefits framework
+"""
         )
 
     footer()
