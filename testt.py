@@ -16,100 +16,172 @@ st.set_page_config(
 # CUSTOM CSS
 # =========================================================
 
+# =========================================================
+# CUSTOM CSS / THEME
+# =========================================================
+
 st.markdown(
     """
     <style>
 
+    :root {
+        --primary-color: #194339;
+        --primary-dark: #12352d;
+        --background: #ffffff;
+        --soft-background: #f4f7f6;
+        --text-color: #1f2937;
+        --border-color: #dfe7e4;
+    }
+
+    /* Main page */
     .block-container {
         max-width: 1250px;
         padding-top: 2rem;
         padding-bottom: 4rem;
     }
 
+    body {
+        color: var(--text-color);
+    }
+
+    /* Headings */
     h1 {
+        color: var(--primary-color) !important;
         font-size: 3rem !important;
         font-weight: 750 !important;
+    }
+
+    h2,
+    h3,
+    h4 {
+        color: var(--primary-color) !important;
     }
 
     h2 {
         margin-top: 2rem !important;
     }
 
+    /* Hero */
     .hero {
         padding: 2.5rem;
-        border: 1px solid #e5e7eb;
+        background-color: var(--soft-background);
+        border: 1px solid var(--border-color);
         border-radius: 18px;
         margin-bottom: 2rem;
     }
 
+    .hero h1 {
+        margin-bottom: 0.8rem;
+    }
+
+    .hero p {
+        color: var(--text-color);
+        line-height: 1.7;
+    }
+
+    /* Cards */
     .card {
         padding: 1.3rem;
-        border: 1px solid #e5e7eb;
+        border: 1px solid var(--border-color);
         border-radius: 14px;
         height: 100%;
+        background-color: #ffffff;
     }
 
+    /* Small labels */
     .small-label {
         font-size: 0.8rem;
-        opacity: 0.65;
+        color: var(--primary-color);
+        font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.08em;
+        margin-bottom: 0.5rem;
     }
 
+    /* Highlight */
     .highlight {
         padding: 1rem 1.2rem;
-        border-left: 4px solid #999;
+        border-left: 4px solid var(--primary-color);
+        background-color: var(--soft-background);
         margin: 1rem 0;
     }
 
+    /* Project overview */
+    .project-overview h2 {
+        color: var(--primary-color) !important;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+
+    .project-overview p {
+        font-size: 1.15rem;
+        line-height: 1.8;
+        color: var(--text-color);
+        margin-bottom: 1.4rem;
+    }
+
+    .project-overview strong {
+        color: var(--primary-color);
+        font-weight: 700;
+    }
+
+    /* Buttons */
+    div.stButton > button,
+    div.stDownloadButton > button {
+        background-color: var(--primary-color);
+        color: #ffffff;
+        border: 1px solid var(--primary-color);
+        border-radius: 8px;
+    }
+
+    div.stButton > button:hover,
+    div.stDownloadButton > button:hover {
+        background-color: var(--primary-dark);
+        color: #ffffff;
+        border-color: var(--primary-dark);
+    }
+
+    /* Sidebar */
+    [data-testid="stSidebar"] {
+        background-color: var(--soft-background);
+        border-right: 1px solid var(--border-color);
+    }
+
+    [data-testid="stSidebar"] h1,
+    [data-testid="stSidebar"] h2,
+    [data-testid="stSidebar"] h3 {
+        color: var(--primary-color) !important;
+    }
+
+    [data-testid="stSidebar"] [aria-checked="true"] + div {
+        color: var(--primary-color);
+        font-weight: 700;
+    }
+
+    /* Info / success / warning boxes */
+    [data-testid="stAlert"] {
+        border-radius: 10px;
+    }
+
+    /* Dataframes */
+    [data-testid="stDataFrame"] {
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    /* Footer */
     .footer {
         margin-top: 4rem;
         padding-top: 1.5rem;
-        border-top: 1px solid #e5e7eb;
+        border-top: 1px solid var(--border-color);
         font-size: 0.9rem;
-        opacity: 0.65;
+        color: #66736f;
     }
 
     </style>
     """,
     unsafe_allow_html=True,
-)
-
-st.markdown(
-    """
-    <style>
-    :root {
-        --primary-color: #194339;
-        --contrast-color: #ffffff;
-    }
-
-    h1, h2, h3 {
-        color: #194339;
-    }
-
-    div.stButton > button {
-        background-color: #194339;
-        color: #ffffff;
-        border: none;
-        border-radius: 8px;
-    }
-
-    div.stButton > button:hover {
-        background-color: #12352d;
-        color: #ffffff;
-    }
-
-    [data-testid="stSidebar"] {
-        border-right: 1px solid #e4e8e6;
-    }
-
-    [data-testid="stSidebar"] [aria-selected="true"] {
-        color: #194339;
-        font-weight: 600;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
 )
 
 
@@ -283,17 +355,20 @@ if page == "01 · Project Overview":
         """
         <div class="hero">
             <div class="small-label">Business Analyst Portfolio Project</div>
+
             <h1>Spa CRM Selection & Implementation</h1>
+
             <p style="font-size:1.2rem;">
-            Analysing customer-management challenges, defining CRM requirements,
-            evaluating suitable solutions and planning implementation for a spa services business.
+                Analysing customer-management challenges, defining CRM requirements,
+                evaluating suitable solutions and planning implementation for a
+                spa services business.
             </p>
         </div>
         """,
         unsafe_allow_html=True,
     )
 
-    c1, c2, c3, c4 = st.columns(4)
+    c1, c2, c3 = st.columns(3)
 
     with c1:
         st.markdown("#### Role")
@@ -310,65 +385,48 @@ if page == "01 · Project Overview":
     st.divider()
 
     st.markdown(
-    """
-    <style>
-    .project-overview h2 {
-        color: #194339;
-        font-weight: 700;
-        margin-bottom: 1rem;
-    }
+        """
+        <div class="project-overview">
 
-    .project-overview p {
-        font-size: 1.15rem;
-        line-height: 1.8;
-        color: #1f2937;
-        margin-bottom: 1.4rem;
-    }
+            <h2>Project Overview | Background</h2>
 
-    .project-overview strong {
-        color: #194339;
-        font-weight: 700;
-    }
-    </style>
+            <p>
+                Wellness Perth Spa is a medium-sized wellness business with
+                <strong>three locations across WA</strong>.
+                Customer information, appointments, and interactions are currently
+                managed through
+                <strong>Excel and disconnected communication channels</strong>,
+                making it difficult for staff to access complete customer histories
+                and for management to track performance.
+            </p>
 
-    <div class="project-overview">
+            <p>
+                Over the past two years,
+                <strong>
+                    missed bookings, late reminders, and inconsistent communication
+                </strong>
+                have contributed to increasing customer complaints,
+                lower satisfaction, and declining customer retention.
+            </p>
 
-        <h2>Project Overview | Background</h2>
+            <p>
+                This project aims to
+                <strong>identify and implement the best-fit CRM solution</strong>
+                to improve customer management, operational efficiency,
+                and customer experience.
+            </p>
 
-        <p>
-            Wellness Perth Spa is a medium-sized wellness business with
-            <strong>three locations across WA</strong>.
-            Customer information, appointments, and interactions are currently managed through
-            <strong>Excel and disconnected communication channels</strong>,
-            making it difficult for staff to access complete customer histories
-            and for management to track performance.
-        </p>
-
-        <p>
-            Over the past two years,
-            <strong>missed bookings, late reminders, and inconsistent communication</strong>
-            have contributed to increasing customer complaints, lower satisfaction,
-            and declining customer retention.
-        </p>
-
-        <p>
-            This project aims to
-            <strong>identify and implement the best-fit CRM solution</strong>
-            to improve customer management, operational efficiency,
-            and customer experience.
-        </p>
-
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
     st.header("Project Objective")
 
     st.info(
         """
-        Identify the business needs, evaluate suitable CRM solutions and define an
-        implementation approach that improves customer information management,
+        Identify the business needs, evaluate suitable CRM solutions and define
+        an implementation approach that improves customer information management,
         appointment communication and management reporting.
         """
     )
@@ -413,7 +471,7 @@ if page == "01 · Project Overview":
 
     with col1:
         st.markdown("### Discovery")
-        st.write(
+        st.markdown(
             """
             - Problem statement
             - Stakeholder analysis
@@ -424,7 +482,7 @@ if page == "01 · Project Overview":
 
     with col2:
         st.markdown("### Solution")
-        st.write(
+        st.markdown(
             """
             - Requirements catalogue
             - CRM evaluation matrix
@@ -435,7 +493,7 @@ if page == "01 · Project Overview":
 
     with col3:
         st.markdown("### Delivery")
-        st.write(
+        st.markdown(
             """
             - User stories
             - UAT scenarios
@@ -445,7 +503,6 @@ if page == "01 · Project Overview":
         )
 
     footer()
-
 
 # =========================================================
 # 02 BUSINESS PROBLEM
