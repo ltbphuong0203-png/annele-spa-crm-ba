@@ -499,8 +499,6 @@ highlighting the need for a more
         """
 <style>
 
-/* Business Problem Statement */
-
 .business-problem-section {
     margin-bottom: 2.5rem;
 }
@@ -523,9 +521,6 @@ highlighting the need for a more
     color: #194339;
     font-weight: 700;
 }
-
-
-/* Pain Point Card */
 
 .pain-points-card {
     background-color: #ffffff;
@@ -580,50 +575,48 @@ highlighting the need for a more
 
 <div class="pain-points-card">
 
-<div class="pain-points-title">
-CURRENT PAIN POINTS
+<div class="pain-points-title">CURRENT PAIN POINTS</div>
+
+<div class="pain-point-row">
+<div class="pain-point-icon">×</div>
+<div class="pain-point-text">
+<strong>Fragmented customer data</strong> — customer information is stored across multiple Excel spreadsheets
+</div>
 </div>
 
 <div class="pain-point-row">
-    <div class="pain-point-icon">×</div>
-    <div class="pain-point-text">
-        <strong>Fragmented customer data</strong> — customer information is stored across multiple Excel spreadsheets
-    </div>
+<div class="pain-point-icon">×</div>
+<div class="pain-point-text">
+<strong>No complete customer view</strong> — staff cannot easily access customer history across locations
+</div>
 </div>
 
 <div class="pain-point-row">
-    <div class="pain-point-icon">×</div>
-    <div class="pain-point-text">
-        <strong>No complete customer view</strong> — staff cannot easily access customer history across locations
-    </div>
+<div class="pain-point-icon">×</div>
+<div class="pain-point-text">
+<strong>Manual booking management</strong> — appointment tracking relies heavily on manual processes
+</div>
 </div>
 
 <div class="pain-point-row">
-    <div class="pain-point-icon">×</div>
-    <div class="pain-point-text">
-        <strong>Manual booking management</strong> — appointment tracking relies heavily on manual processes
-    </div>
+<div class="pain-point-icon">×</div>
+<div class="pain-point-text">
+<strong>Inconsistent reminders</strong> — customers receive late or missed appointment reminders
+</div>
 </div>
 
 <div class="pain-point-row">
-    <div class="pain-point-icon">×</div>
-    <div class="pain-point-text">
-        <strong>Inconsistent reminders</strong> — customers receive late or missed appointment reminders
-    </div>
+<div class="pain-point-icon">×</div>
+<div class="pain-point-text">
+<strong>Limited reporting</strong> — management lacks visibility into customer retention and service performance
+</div>
 </div>
 
 <div class="pain-point-row">
-    <div class="pain-point-icon">×</div>
-    <div class="pain-point-text">
-        <strong>Limited reporting</strong> — management lacks visibility into customer retention and service performance
-    </div>
+<div class="pain-point-icon">×</div>
+<div class="pain-point-text">
+<strong>Declining customer experience</strong> — increasing complaints and fewer returning customers
 </div>
-
-<div class="pain-point-row">
-    <div class="pain-point-icon">×</div>
-    <div class="pain-point-text">
-        <strong>Declining customer experience</strong> — increasing complaints and fewer returning customers
-    </div>
 </div>
 
 </div>
@@ -632,16 +625,12 @@ CURRENT PAIN POINTS
     )
 
     # =====================================================
-# ROOT CAUSE ANALYSIS
-# =====================================================
+    # ROOT CAUSE ANALYSIS
+    # =====================================================
 
-st.markdown(
-    """
+    st.markdown(
+        """
 <style>
-
-/* -----------------------------------------------------
-   ROOT CAUSE SECTION
------------------------------------------------------ */
 
 .root-cause-section {
     margin-top: 3.5rem;
@@ -668,11 +657,6 @@ st.markdown(
     font-weight: 700;
 }
 
-
-/* -----------------------------------------------------
-   FISHBONE CONTAINER
------------------------------------------------------ */
-
 .fishbone-card {
     position: relative;
     background: #ffffff;
@@ -685,11 +669,6 @@ st.markdown(
     overflow: hidden;
 }
 
-
-/* -----------------------------------------------------
-   FISHBONE GRID
------------------------------------------------------ */
-
 .fishbone-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -698,11 +677,6 @@ st.markdown(
     position: relative;
     z-index: 2;
 }
-
-
-/* -----------------------------------------------------
-   CATEGORY BLOCK
------------------------------------------------------ */
 
 .fishbone-category {
     position: relative;
@@ -740,11 +714,6 @@ st.markdown(
     line-height: 1.55;
     font-size: 0.95rem;
 }
-
-
-/* -----------------------------------------------------
-   CENTRAL SPINE
------------------------------------------------------ */
 
 .fishbone-spine {
     position: relative;
@@ -788,22 +757,12 @@ st.markdown(
     line-height: 1.4;
 }
 
-
-/* -----------------------------------------------------
-   BOTTOM ROW
------------------------------------------------------ */
-
 .fishbone-bottom {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 2rem;
     margin-top: 0.5rem;
 }
-
-
-/* -----------------------------------------------------
-   CONVERGENCE NOTE INSIDE FISHBONE
------------------------------------------------------ */
 
 .fishbone-convergence {
     margin-top: 2rem;
@@ -821,11 +780,6 @@ st.markdown(
 .fishbone-convergence strong {
     color: #5b4308;
 }
-
-
-/* -----------------------------------------------------
-   FIVE WHYS + CONVERGENCE CARDS
------------------------------------------------------ */
 
 .root-analysis-grid {
     display: grid;
@@ -889,11 +843,6 @@ st.markdown(
     font-weight: 700;
 }
 
-
-/* -----------------------------------------------------
-   RESPONSIVE
------------------------------------------------------ */
-
 @media (max-width: 900px) {
 
     .fishbone-grid,
@@ -944,10 +893,7 @@ They largely stem from the business continuing to rely on
 as it has expanded across multiple locations.
 </div>
 
-
 <div class="fishbone-card">
-
-<!-- TOP ROW -->
 
 <div class="fishbone-grid">
 
@@ -962,7 +908,6 @@ as it has expanded across multiple locations.
 </ul>
 </div>
 
-
 <div class="fishbone-category">
 <div class="fishbone-label data">DATA</div>
 <ul>
@@ -973,7 +918,6 @@ as it has expanded across multiple locations.
 <li>No single source of truth for customer data</li>
 </ul>
 </div>
-
 
 <div class="fishbone-category">
 <div class="fishbone-label">MEASUREMENT</div>
@@ -988,13 +932,8 @@ as it has expanded across multiple locations.
 
 </div>
 
-
-<!-- CENTRAL SPINE -->
-
 <div class="fishbone-spine">
-
 <div class="fishbone-spine-line"></div>
-
 <div class="fishbone-arrow"></div>
 
 <div class="fishbone-effect">
@@ -1002,11 +941,7 @@ Increasing customer complaints,<br>
 missed bookings and<br>
 declining customer retention
 </div>
-
 </div>
-
-
-<!-- BOTTOM ROW -->
 
 <div class="fishbone-bottom">
 
@@ -1021,7 +956,6 @@ declining customer retention
 </ul>
 </div>
 
-
 <div class="fishbone-category">
 <div class="fishbone-label system">SYSTEM</div>
 <ul>
@@ -1032,7 +966,6 @@ declining customer retention
 <li>Limited real-time reporting and dashboards</li>
 </ul>
 </div>
-
 
 <div class="fishbone-category">
 <div class="fishbone-label">BUSINESS GROWTH</div>
@@ -1046,7 +979,6 @@ declining customer retention
 
 </div>
 
-
 <div class="fishbone-convergence">
 <strong>Initial finding:</strong>
 the causes point toward a broader capability gap rather than a single employee,
@@ -1058,18 +990,16 @@ with the business.
 
 </div>
 """,
-    unsafe_allow_html=True,
-)
+        unsafe_allow_html=True,
+    )
 
+    # =====================================================
+    # FIVE WHYS + CONVERGENCE INSIGHT
+    # =====================================================
 
-# =====================================================
-# FIVE WHYS + CONVERGENCE INSIGHT
-# =====================================================
-
-st.markdown(
-    """
+    st.markdown(
+        """
 <div class="root-analysis-grid">
-
 
 <div class="analysis-card">
 
@@ -1105,7 +1035,6 @@ st.markdown(
 
 </div>
 
-
 <div class="convergence-card">
 
 <h3>The convergence insight</h3>
@@ -1133,11 +1062,10 @@ The deeper issue is that the
 
 </div>
 
-
 </div>
 """,
-    unsafe_allow_html=True,
-)
+        unsafe_allow_html=True,
+    )
 
     footer()
 
