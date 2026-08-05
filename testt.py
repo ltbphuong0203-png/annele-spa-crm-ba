@@ -632,90 +632,512 @@ CURRENT PAIN POINTS
     )
 
     # =====================================================
-    # ROOT CAUSE ANALYSIS
-    # =====================================================
+# ROOT CAUSE ANALYSIS
+# =====================================================
 
-    st.subheader("Root Cause Analysis")
+st.markdown(
+    """
+<style>
 
-    st.write(
-        """
-        The current pain points were analysed to identify the underlying
-        process and system issues contributing to the business problems.
-        Three primary root-cause themes were identified.
-        """
-    )
+/* -----------------------------------------------------
+   ROOT CAUSE SECTION
+----------------------------------------------------- */
 
-    c1, c2, c3 = st.columns(3)
+.root-cause-section {
+    margin-top: 3.5rem;
+    margin-bottom: 2rem;
+}
 
-    with c1:
-        st.markdown("### RC01")
-        st.markdown("**Fragmented Customer Data**")
-        st.write(
-            """
-            Customer information is maintained across separate spreadsheets
-            and communication channels, resulting in duplicated, incomplete
-            and inconsistent customer records.
-            """
-        )
+.root-cause-section h2 {
+    color: #194339 !important;
+    font-size: 2rem;
+    font-weight: 750;
+    margin-bottom: 0.8rem;
+}
 
-    with c2:
-        st.markdown("### RC02")
-        st.markdown("**Manual Processes**")
-        st.write(
-            """
-            Appointment management, confirmations and reminders rely heavily
-            on staff completing manual activities, increasing the risk of
-            missed or inconsistent communication.
-            """
-        )
+.root-cause-intro {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: #374151;
+    max-width: 1050px;
+    margin-bottom: 2rem;
+}
 
-    with c3:
-        st.markdown("### RC03")
-        st.markdown("**Limited Reporting Capability**")
-        st.write(
-            """
-            Customer and appointment information is not stored within a
-            central system, making it difficult for management to consolidate
-            data and monitor customer retention and service performance.
-            """
-        )
+.root-cause-intro strong {
+    color: #194339;
+    font-weight: 700;
+}
 
-    # =====================================================
-    # ROOT CAUSE RELATIONSHIP
-    # =====================================================
 
-    st.subheader("Root Cause Relationship")
+/* -----------------------------------------------------
+   FISHBONE CONTAINER
+----------------------------------------------------- */
 
-    st.code(
-        """
-CURRENT ENVIRONMENT
-       |
-       +---------------------------+--------------------------+
-       |                           |                          |
-       v                           v                          v
-Fragmented Systems          Manual Processes          Limited Data /
-and Channels                and Workflows             KPI Structure
-       |                           |                          |
-       v                           v                          v
-No Central Customer         No Standardised           Difficult to
-Record                      Reminder Process          Consolidate Data
-       |                           |                          |
-       v                           v                          v
-Incomplete Customer         Inconsistent              Limited
-History                     Follow-Ups                Reporting
-       |                           |                          |
-       v                           v                          v
-Lower Staff Efficiency      Missed / Late             Limited Management
-and Personalisation         Reminders                 Decision Support
-       |                           |                          |
-       +---------------------------+--------------------------+
-                                   |
-                                   v
-                         CUSTOMER EXPERIENCE
-                              DECLINES
-        """,
-        language=None,
-    )
+.fishbone-card {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #dfe7e4;
+    border-radius: 18px;
+    padding: 2.5rem 2rem 2.8rem 2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 16px rgba(25, 67, 57, 0.07);
+    overflow: hidden;
+}
+
+
+/* -----------------------------------------------------
+   FISHBONE GRID
+----------------------------------------------------- */
+
+.fishbone-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 2rem;
+    row-gap: 2.3rem;
+    position: relative;
+    z-index: 2;
+}
+
+
+/* -----------------------------------------------------
+   CATEGORY BLOCK
+----------------------------------------------------- */
+
+.fishbone-category {
+    position: relative;
+    padding: 0.3rem 0.5rem;
+}
+
+.fishbone-label {
+    display: inline-block;
+    background: #194339;
+    color: #ffffff;
+    padding: 0.65rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    margin-bottom: 1rem;
+}
+
+.fishbone-label.data {
+    background: #b98000;
+}
+
+.fishbone-label.system {
+    background: #7a8581;
+}
+
+.fishbone-category ul {
+    margin: 0;
+    padding-left: 1.2rem;
+}
+
+.fishbone-category li {
+    color: #374151;
+    margin-bottom: 0.45rem;
+    line-height: 1.55;
+    font-size: 0.95rem;
+}
+
+
+/* -----------------------------------------------------
+   CENTRAL SPINE
+----------------------------------------------------- */
+
+.fishbone-spine {
+    position: relative;
+    height: 90px;
+    margin: 0.5rem 2rem 0.2rem 2rem;
+}
+
+.fishbone-spine-line {
+    position: absolute;
+    left: 2%;
+    right: 15%;
+    top: 48%;
+    height: 4px;
+    background: #194339;
+    border-radius: 4px;
+}
+
+.fishbone-arrow {
+    position: absolute;
+    right: 13%;
+    top: calc(48% - 11px);
+    width: 0;
+    height: 0;
+    border-top: 13px solid transparent;
+    border-bottom: 13px solid transparent;
+    border-left: 22px solid #194339;
+}
+
+.fishbone-effect {
+    position: absolute;
+    right: 0;
+    top: 5px;
+    width: 190px;
+    background: #194339;
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 1rem 0.8rem;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+
+/* -----------------------------------------------------
+   BOTTOM ROW
+----------------------------------------------------- */
+
+.fishbone-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 2rem;
+    margin-top: 0.5rem;
+}
+
+
+/* -----------------------------------------------------
+   CONVERGENCE NOTE INSIDE FISHBONE
+----------------------------------------------------- */
+
+.fishbone-convergence {
+    margin-top: 2rem;
+    margin-left: auto;
+    max-width: 390px;
+    border: 1px solid #c89b2b;
+    background: #fff9eb;
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    color: #6f5412;
+    line-height: 1.55;
+    font-size: 0.92rem;
+}
+
+.fishbone-convergence strong {
+    color: #5b4308;
+}
+
+
+/* -----------------------------------------------------
+   FIVE WHYS + CONVERGENCE CARDS
+----------------------------------------------------- */
+
+.root-analysis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 1.8rem;
+    margin-bottom: 2.5rem;
+}
+
+.analysis-card {
+    background: #ffffff;
+    border: 1px solid #dfe7e4;
+    border-radius: 16px;
+    padding: 1.6rem 1.8rem;
+    box-shadow: 0 3px 12px rgba(25, 67, 57, 0.06);
+}
+
+.analysis-card h3 {
+    color: #194339 !important;
+    font-size: 1.05rem;
+    margin-top: 0 !important;
+    margin-bottom: 1rem;
+}
+
+.analysis-card ul {
+    padding-left: 1.25rem;
+    margin-bottom: 0;
+}
+
+.analysis-card li {
+    color: #374151;
+    line-height: 1.65;
+    margin-bottom: 0.7rem;
+}
+
+.analysis-card strong {
+    color: #194339;
+}
+
+.convergence-card {
+    background: #fff9eb;
+    border: 1px solid #e0c274;
+    border-radius: 16px;
+    padding: 1.6rem 1.8rem;
+}
+
+.convergence-card h3 {
+    color: #7b5900 !important;
+    font-size: 1.05rem;
+    margin-top: 0 !important;
+    margin-bottom: 1rem;
+}
+
+.convergence-card p {
+    color: #745b1e;
+    line-height: 1.7;
+}
+
+.convergence-card strong {
+    color: #5f4500;
+    font-weight: 700;
+}
+
+
+/* -----------------------------------------------------
+   RESPONSIVE
+----------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+    .fishbone-grid,
+    .fishbone-bottom,
+    .root-analysis-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .fishbone-spine {
+        height: 140px;
+        margin: 1rem 0;
+    }
+
+    .fishbone-spine-line {
+        left: 0;
+        right: 0;
+        top: 30%;
+    }
+
+    .fishbone-arrow {
+        right: 0;
+        top: calc(30% - 11px);
+    }
+
+    .fishbone-effect {
+        position: relative;
+        width: auto;
+        margin-top: 65px;
+        right: auto;
+        top: auto;
+    }
+}
+
+</style>
+
+<div class="root-cause-section">
+
+<h2>Why are customer complaints increasing and retention declining?</h2>
+
+<div class="root-cause-intro">
+A <strong>Fishbone (Ishikawa) analysis</strong> with Five-Whys drill-downs
+identifies the underlying causes behind
+<strong>missed bookings, late reminders, fragmented customer information,
+and poor management visibility</strong>.
+The analysis suggests that these are not isolated staff or booking issues.
+They largely stem from the business continuing to rely on
+<strong>manual and disconnected customer-management processes</strong>
+as it has expanded across multiple locations.
+</div>
+
+
+<div class="fishbone-card">
+
+<!-- TOP ROW -->
+
+<div class="fishbone-grid">
+
+<div class="fishbone-category">
+<div class="fishbone-label">METHOD / PROCESS</div>
+<ul>
+<li>Booking and follow-up processes vary between locations</li>
+<li>Appointment reminders depend on manual staff actions</li>
+<li>No standard process for updating customer records</li>
+<li>No consistent customer follow-up process</li>
+<li>Customer complaints are handled reactively rather than systematically</li>
+</ul>
+</div>
+
+
+<div class="fishbone-category">
+<div class="fishbone-label data">DATA</div>
+<ul>
+<li>Customer information is distributed across multiple Excel files</li>
+<li>Duplicate or inconsistent customer records can occur</li>
+<li>Appointment and interaction history is not centrally maintained</li>
+<li>Customer information may not be updated in real time</li>
+<li>No single source of truth for customer data</li>
+</ul>
+</div>
+
+
+<div class="fishbone-category">
+<div class="fishbone-label">MEASUREMENT</div>
+<ul>
+<li>Customer retention is difficult to measure consistently</li>
+<li>No central reporting of missed or cancelled appointments</li>
+<li>Complaint trends are not systematically tracked</li>
+<li>Limited visibility into reminder effectiveness</li>
+<li>Management cannot easily compare performance across locations</li>
+</ul>
+</div>
+
+</div>
+
+
+<!-- CENTRAL SPINE -->
+
+<div class="fishbone-spine">
+
+<div class="fishbone-spine-line"></div>
+
+<div class="fishbone-arrow"></div>
+
+<div class="fishbone-effect">
+Increasing customer complaints,<br>
+missed bookings and<br>
+declining customer retention
+</div>
+
+</div>
+
+
+<!-- BOTTOM ROW -->
+
+<div class="fishbone-bottom">
+
+<div class="fishbone-category">
+<div class="fishbone-label">PEOPLE / OWNERSHIP</div>
+<ul>
+<li>Staff manually maintain customer information</li>
+<li>Record accuracy depends heavily on individual staff practices</li>
+<li>No clear ownership of customer-data quality</li>
+<li>Staff across locations have limited visibility of each other's interactions</li>
+<li>Manual administrative work reduces time available for customer service</li>
+</ul>
+</div>
+
+
+<div class="fishbone-category">
+<div class="fishbone-label system">SYSTEM</div>
+<ul>
+<li>Excel is used as the primary customer-management tool</li>
+<li>No centralised CRM across the three locations</li>
+<li>Limited automation for reminders and follow-ups</li>
+<li>Customer, appointment and communication data are disconnected</li>
+<li>Limited real-time reporting and dashboards</li>
+</ul>
+</div>
+
+
+<div class="fishbone-category">
+<div class="fishbone-label">BUSINESS GROWTH</div>
+<ul>
+<li>Customer-management processes have not scaled with business growth</li>
+<li>Three locations increase the need for shared customer information</li>
+<li>More customer interactions increase manual administration</li>
+<li>Existing tools provide limited cross-location coordination</li>
+</ul>
+</div>
+
+</div>
+
+
+<div class="fishbone-convergence">
+<strong>Initial finding:</strong>
+the causes point toward a broader capability gap rather than a single employee,
+booking or reminder issue. The current customer-management approach has not scaled
+with the business.
+</div>
+
+</div>
+
+</div>
+""",
+    unsafe_allow_html=True,
+)
+
+
+# =====================================================
+# FIVE WHYS + CONVERGENCE INSIGHT
+# =====================================================
+
+st.markdown(
+    """
+<div class="root-analysis-grid">
+
+
+<div class="analysis-card">
+
+<h3>Five-Whys — where each cause bottoms out</h3>
+
+<ul>
+
+<li>
+<strong>Missed / late reminders</strong>
+→ reminders depend on staff manually checking appointments
+→ processes differ between locations
+→ no automated reminder workflow
+→ <strong>current tools do not support a standardised, automated customer communication process.</strong>
+</li>
+
+<li>
+<strong>Fragmented customer history</strong>
+→ information is stored across spreadsheets and communication channels
+→ staff update records independently
+→ there is no shared customer record
+→ <strong>no centralised customer-management capability exists.</strong>
+</li>
+
+<li>
+<strong>Limited management visibility</strong>
+→ retention and service data must be manually compiled
+→ information is stored in different locations
+→ reporting is inconsistent
+→ <strong>customer data is not structured within a single reporting platform.</strong>
+</li>
+
+</ul>
+
+</div>
+
+
+<div class="convergence-card">
+
+<h3>The convergence insight</h3>
+
+<p>
+All three drill-downs converge on the same underlying issue:
+<strong>the business has outgrown its spreadsheet-based customer-management approach.</strong>
+</p>
+
+<p>
+As Wellness Perth Spa expanded across multiple locations, its customer-management
+processes and technology did not scale with the business.
+The lack of a
+<strong>centralised system, standardised processes and automation</strong>
+has resulted in fragmented customer data, inconsistent communication
+and limited performance visibility.
+</p>
+
+<p>
+The root cause is therefore not simply that
+<strong>“the spa does not have a CRM.”</strong>
+The deeper issue is that the
+<strong>current customer-management capability no longer supports the operational needs of the growing business.</strong>
+</p>
+
+</div>
+
+
+</div>
+""",
+    unsafe_allow_html=True,
+)
 
     footer()
 
