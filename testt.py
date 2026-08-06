@@ -774,59 +774,104 @@ as it has expanded across multiple locations.
             "Make sure fishbone.png is in the same GitHub folder as testt.py."
         )
 
-       # =====================================================
-    # FIVE WHYS
+    # =====================================================
+    # FIVE WHYS — PARALLEL ANALYSIS
     # =====================================================
 
     st.markdown(
         """
 <style>
 
+/* =====================================================
+   FIVE WHYS
+===================================================== */
+
 .five-whys-section {
-    margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
+    margin-top: 2.8rem;
+    margin-bottom: 3rem;
 }
 
 .five-whys-section h2 {
     color: #194339 !important;
     font-size: 1.8rem;
     font-weight: 750;
-    margin-bottom: 1.8rem;
+    margin-bottom: 0.5rem;
 }
 
-.whys-group {
-    margin-bottom: 2.5rem;
+.five-whys-subtitle {
+    color: #6b7280;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
 }
 
-.whys-title {
-    font-size: 1.15rem;
-    font-weight: 700;
+
+/* THREE PARALLEL CHAINS */
+
+.whys-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.4rem;
+    align-items: stretch;
+}
+
+
+/* EACH ANALYSIS COLUMN */
+
+.whys-column {
+    background: #ffffff;
+    border: 1px solid #dfe7e4;
+    border-radius: 16px;
+    padding: 1.4rem;
+    box-shadow: 0 3px 12px rgba(25, 67, 57, 0.06);
+}
+
+
+/* COLUMN TITLE */
+
+.whys-column-title {
     color: #194339;
-    margin-bottom: 0.9rem;
+    font-size: 1.05rem;
+    font-weight: 750;
+    line-height: 1.4;
+    min-height: 48px;
+    margin-bottom: 1.2rem;
 }
+
+
+/* FLOW */
 
 .why-flow {
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    max-width: 1000px;
 }
+
+
+/* NORMAL BOX */
 
 .why-box {
     background: #ffffff;
     border: 1px solid #dfe7e4;
-    border-radius: 12px;
-    padding: 0.9rem 1.2rem;
+    border-radius: 10px;
+    padding: 0.85rem 0.9rem;
     color: #374151;
-    font-size: 1rem;
-    line-height: 1.55;
-    box-shadow: 0 2px 8px rgba(25, 67, 57, 0.05);
+    font-size: 0.92rem;
+    line-height: 1.5;
+    text-align: center;
 }
+
+
+/* EVIDENCE / STARTING PROBLEM */
 
 .why-box.evidence {
     background: #f4f7f6;
-    border-left: 4px solid #194339;
+    border: 1px solid #b8ccc6;
+    color: #194339;
+    font-weight: 650;
 }
+
+
+/* ROOT CAUSE */
 
 .why-box.root {
     background: #194339;
@@ -835,13 +880,22 @@ as it has expanded across multiple locations.
     font-weight: 700;
 }
 
+
+/* ARROWS */
+
 .why-arrow {
     text-align: center;
     color: #194339;
-    font-size: 1.35rem;
-    line-height: 1;
-    padding: 0.4rem 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+    height: 32px;
+    line-height: 32px;
 }
+
+
+/* =====================================================
+   CONVERGENCE
+===================================================== */
 
 .convergence-section {
     margin-top: 3rem;
@@ -861,16 +915,37 @@ as it has expanded across multiple locations.
     color: #374151;
 }
 
-.convergence-highlight {
-    background: #f4f7f6;
-    border-left: 5px solid #194339;
-    border-radius: 8px;
-    padding: 1.1rem 1.3rem;
-    margin: 1.3rem 0 1.5rem 0;
+
+/* CONVERGENCE ARROWS */
+
+.convergence-arrows {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
     color: #194339;
-    font-size: 1.18rem;
-    font-weight: 700;
+    font-size: 1.8rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.4rem;
 }
+
+
+/* MAIN CONVERGENCE RESULT */
+
+.convergence-highlight {
+    background: #194339;
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin: 0 auto 1.7rem auto;
+    text-align: center;
+    font-size: 1.15rem;
+    font-weight: 700;
+    max-width: 900px;
+    line-height: 1.55;
+}
+
+
+/* CASE STUDY NOTE */
 
 .simulated-note {
     margin-top: 1.5rem;
@@ -883,20 +958,50 @@ as it has expanded across multiple locations.
     line-height: 1.6;
 }
 
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .whys-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .whys-column-title {
+        min-height: auto;
+    }
+
+    .convergence-arrows {
+        display: none;
+    }
+
+}
+
 </style>
+
 
 <div class="five-whys-section">
 
 <h2>Five-Whys — where each cause bottoms out</h2>
 
+<div class="five-whys-subtitle">
+Three key business symptoms were investigated to identify the underlying
+process, data and reporting issues.
+</div>
 
-<!-- ===================================================
-     1. LATE / MISSED REMINDERS
-=================================================== -->
 
-<div class="whys-group">
+<div class="whys-grid">
 
-<div class="whys-title">
+
+<!-- =================================================
+     CHAIN 1
+================================================= -->
+
+<div class="whys-column">
+
+<div class="whys-column-title">
 Late / missed reminders
 </div>
 
@@ -909,19 +1014,19 @@ Late / missed reminders
 <div class="why-arrow">↓</div>
 
 <div class="why-box">
-Reminders depend on staff manually reviewing upcoming appointments
+Reminders depend on staff manually reviewing appointments
 </div>
 
 <div class="why-arrow">↓</div>
 
 <div class="why-box">
-Staff workload and booking processes differ across locations
+Workload and processes differ across locations
 </div>
 
 <div class="why-arrow">↓</div>
 
 <div class="why-box">
-There is no automated reminder workflow
+No automated reminder workflow
 </div>
 
 <div class="why-arrow">↓</div>
@@ -934,26 +1039,26 @@ Customer communication relies on manual processes that no longer scale
 </div>
 
 
-<!-- ===================================================
-     2. BOOKING / CUSTOMER DATA ERRORS
-=================================================== -->
+<!-- =================================================
+     CHAIN 2
+================================================= -->
 
-<div class="whys-group">
+<div class="whys-column">
 
-<div class="whys-title">
+<div class="whys-column-title">
 Booking / customer-data errors
 </div>
 
 <div class="why-flow">
 
 <div class="why-box evidence">
-~18% of customer records are duplicate or incomplete
+~18% of records are duplicate or incomplete
 </div>
 
 <div class="why-arrow">↓</div>
 
 <div class="why-box">
-Customer information is maintained across different spreadsheets
+Information is maintained across different spreadsheets
 </div>
 
 <div class="why-arrow">↓</div>
@@ -965,33 +1070,33 @@ Staff update customer information independently
 <div class="why-arrow">↓</div>
 
 <div class="why-box">
-There is no shared customer record across locations
+No shared customer record across locations
 </div>
 
 <div class="why-arrow">↓</div>
 
 <div class="why-box root">
-No central source of truth exists for customer information
+No central source of truth for customer information
 </div>
 
 </div>
 </div>
 
 
-<!-- ===================================================
-     3. DECLINING RETENTION VISIBILITY
-=================================================== -->
+<!-- =================================================
+     CHAIN 3
+================================================= -->
 
-<div class="whys-group">
+<div class="whys-column">
 
-<div class="whys-title">
+<div class="whys-column-title">
 Declining retention visibility
 </div>
 
 <div class="why-flow">
 
 <div class="why-box evidence">
-Customer return rate fell from 61% to 47% before the trend was clearly identified
+Return rate fell from 61% to 47% before the trend was clearly identified
 </div>
 
 <div class="why-arrow">↓</div>
@@ -1003,13 +1108,13 @@ Management reporting is manually prepared
 <div class="why-arrow">↓</div>
 
 <div class="why-box">
-Customer and service data must be consolidated across spreadsheets
+Data must be consolidated across spreadsheets
 </div>
 
 <div class="why-arrow">↓</div>
 
 <div class="why-box">
-There is no central reporting capability
+No central reporting capability
 </div>
 
 <div class="why-arrow">↓</div>
@@ -1021,6 +1126,8 @@ Management lacks timely customer-performance information
 </div>
 </div>
 
+
+</div>
 </div>
 
 
@@ -1036,9 +1143,18 @@ Management lacks timely customer-performance information
 All three drill-downs converge on one underlying issue:
 </p>
 
+
+<div class="convergence-arrows">
+<div>↘</div>
+<div>↓</div>
+<div>↙</div>
+</div>
+
+
 <div class="convergence-highlight">
 Customer-management capability has not scaled with business growth.
 </div>
+
 
 <p>
 Wellness Perth Spa expanded to three locations while continuing to rely on
@@ -1047,6 +1163,7 @@ This has created fragmented customer data, inconsistent processes and limited
 management visibility — contributing to booking errors, missed reminders and
 declining customer retention.
 </p>
+
 
 <div class="simulated-note">
 <strong>Case-study note:</strong>
