@@ -1340,7 +1340,7 @@ create operational inefficiencies.
     from pathlib import Path
 
     BASE_DIR = Path(__file__).resolve().parent
-    as_is_path = BASE_DIR / "as_is_process.png"
+    as_is_path = BASE_DIR / "AS-IS process.png"
 
     if as_is_path.exists():
 
@@ -1353,7 +1353,7 @@ create operational inefficiencies.
 
         st.error(
             "As-Is process image could not be found. "
-            "Make sure 'as_is_process.png' is in the same GitHub folder as testt.py."
+            "Make sure 'AS-IS process.png' is in the same GitHub folder as testt.py."
         )
 
     # =====================================================
