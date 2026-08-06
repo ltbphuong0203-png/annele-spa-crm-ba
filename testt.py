@@ -1179,7 +1179,7 @@ measurable project baseline.
     footer()
 
 # =========================================================
-# 03 CURRENT STATE
+# 03 CURRENT-STATE ANALYSIS
 # =========================================================
 
 elif page == "03 · Current-State Analysis":
@@ -1187,246 +1187,302 @@ elif page == "03 · Current-State Analysis":
     page_header(
         "03",
         "Current-State Analysis",
-        "Understanding how customer enquiries and appointment booking currently operate.",
+        "Understanding how customer information and appointment booking are currently managed before defining the future-state solution.",
     )
 
-    st.subheader("As-Is Process")
-
-    st.code(
-        """
-CUSTOMER               RECEPTIONIST / STAFF              CURRENT SYSTEMS
-   |                           |                                |
-   | Contact spa               |                                |
-   |-------------------------->|                                |
-   | Phone / Social / Walk-in  |                                |
-   |                           |                                |
-   |                           | Search customer information    |
-   |                           |------------------------------->|
-   |                           |                                |
-   |                           | Search spreadsheet / booking   |
-   |                           | records / message history      |
-   |                           |<-------------------------------|
-   |                           |                                |
-   |                           | Is customer found?             |
-   |                           |       /       \\               |
-   |                           |      Yes       No              |
-   |                           |       |         |              |
-   |                           |       |       Create customer   |
-   |                           |       |       record manually   |
-   |                           |       |         |              |
-   |                           |       +---------+              |
-   |                           |            |                   |
-   |                           | Check availability             |
-   |                           |------------------------------->|
-   |                           |<-------------------------------|
-   |                           |                                |
-   |<--------------------------| Offer available times          |
-   |                           |                                |
-   | Select appointment        |                                |
-   |-------------------------->|                                |
-   |                           |                                |
-   |                           | Create booking manually        |
-   |                           |------------------------------->|
-   |                           |                                |
-   |<--------------------------| Confirm appointment            |
-   |                           |                                |
-  END
-        """,
-        language=None,
-    )
-
-    st.subheader("Pain Points Within the Process")
-
-    painpoints = pd.DataFrame(
-        [
-            ["Search customer", "P01", "Staff search several channels and records."],
-            ["Review customer history", "P02", "No single source of customer history."],
-            ["Create booking", "P03", "Communication and confirmation rely on manual action."],
-            ["Appointment follow-up", "P04", "No-show risks are difficult to proactively manage."],
-            ["Management reporting", "P05", "Data must be manually consolidated."],
-        ],
-        columns=["Process Step", "Problem", "Observation"],
-    )
-
-    st.dataframe(
-        painpoints,
-        hide_index=True,
-        use_container_width=True,
-    )
-
-    st.subheader("Current-State Findings")
-
-    st.warning(
-        """
-        The analysis indicates that the main issue is not a single booking step.
-        The broader problem is fragmentation between customer information,
-        appointment management, communications and reporting.
-        """
-    )
-
-    footer()
-
-# =========================================================
-# 04 REQUIREMENTS
-# =========================================================
-
-elif page == "04 · Requirements Gathering":
-
-    page_header(
-        "04",
-        "Requirements Gathering",
-        "Translating stakeholder needs and process findings into structured CRM requirements.",
-    )
-
-    st.subheader("Stakeholders")
-
-    c1, c2, c3, c4, c5 = st.columns(5)
-
-    stakeholder_cards = [
-        ("Spa Manager", "Reporting, retention, operational visibility"),
-        ("Receptionist", "Customer lookup, booking, less manual work"),
-        ("Therapist", "Customer history, treatment notes, preferences"),
-        ("Marketing", "Segmentation, retention, targeted campaigns"),
-        ("Customer", "Easy booking, confirmation, reminders, privacy"),
-    ]
-
-    for col, card in zip(
-        [c1, c2, c3, c4, c5],
-        stakeholder_cards,
-    ):
-        with col:
-            st.markdown(f"### {card[0]}")
-            st.write(card[1])
-
-    st.subheader("Elicitation Methods")
-
-    e1, e2, e3 = st.columns(3)
-
-    with e1:
-        st.markdown("### Interviews")
-        st.write(
-            "Understand stakeholder goals, frustrations, information needs and expectations."
-        )
-
-    with e2:
-        st.markdown("### Process Walkthrough")
-        st.write(
-            "Observe the current customer enquiry and appointment-booking workflow."
-        )
-
-    with e3:
-        st.markdown("### Data Review")
-        st.write(
-            "Review customer records, booking information, reporting and communication data."
-        )
-
-    st.subheader("From Insight to Requirement")
+    # =====================================================
+    # SECTION STYLING
+    # =====================================================
 
     st.markdown(
         """
-        **Stakeholder insight**
+<style>
 
-        > “I have to search several places to find a customer's information.”
+.current-state-intro {
+    margin-bottom: 2rem;
+}
 
-        ↓
+.current-state-intro h2 {
+    color: #194339 !important;
+    font-size: 1.8rem;
+    font-weight: 750;
+    margin-bottom: 0.8rem;
+}
 
-        **Business need**
+.current-state-intro p {
+    color: #374151;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    max-width: 1050px;
+}
 
-        Staff need one reliable view of customer information.
+.current-state-intro strong {
+    color: #194339;
+    font-weight: 700;
+}
 
-        ↓
 
-        **BR-01**
+/* ============================================
+   FINDINGS
+============================================ */
 
-        Centralise customer information to provide staff with a consistent customer view.
+.current-findings {
+    margin-top: 2.5rem;
+    margin-bottom: 2rem;
+}
 
-        ↓
+.current-findings h2 {
+    color: #194339 !important;
+    font-size: 1.8rem;
+    font-weight: 750;
+    margin-bottom: 1.3rem;
+}
 
-        **FR-02 / FR-03 / FR-04**
+.findings-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+}
 
-        Search customers quickly, display a central profile and provide appointment history.
+.finding-card {
+    background: #ffffff;
+    border: 1px solid #dfe7e4;
+    border-radius: 14px;
+    padding: 1.3rem 1.4rem;
+    box-shadow: 0 3px 10px rgba(25, 67, 57, 0.05);
+}
+
+.finding-number {
+    color: #194339;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.5rem;
+}
+
+.finding-title {
+    color: #194339;
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+}
+
+.finding-text {
+    color: #4b5563;
+    font-size: 0.96rem;
+    line-height: 1.6;
+}
+
+
+/* ============================================
+   ANALYSIS INSIGHT
+============================================ */
+
+.current-state-insight {
+    background: #f4f7f6;
+    border-left: 5px solid #194339;
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.current-state-insight strong {
+    color: #194339;
+}
+
+
+/* ============================================
+   MOBILE
+============================================ */
+
+@media (max-width: 800px) {
+
+    .findings-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+""",
+        unsafe_allow_html=True,
+    )
+
+    # =====================================================
+    # AS-IS PROCESS
+    # =====================================================
+
+    st.markdown(
         """
+<div class="current-state-intro">
+
+<h2>As-Is Process</h2>
+
+<p>
+The current-state process was mapped to understand how a customer enquiry
+moves from initial contact through to appointment confirmation.
+The analysis highlights where
+<strong>manual activities, disconnected information sources and inconsistent processes</strong>
+create operational inefficiencies.
+</p>
+
+</div>
+""",
+        unsafe_allow_html=True,
     )
 
-    st.subheader("Requirements Catalogue")
+    # =====================================================
+    # AS-IS PROCESS IMAGE
+    # Image is in same directory as testt.py
+    # =====================================================
 
-    type_filter = st.multiselect(
-        "Requirement Type",
-        options=requirements["Type"].unique(),
-        default=list(requirements["Type"].unique()),
-    )
+    from pathlib import Path
 
-    priority_filter = st.multiselect(
-        "Priority",
-        options=["Must", "Should", "Could", "Won't"],
-        default=["Must", "Should"],
-    )
+    BASE_DIR = Path(__file__).resolve().parent
+    as_is_path = BASE_DIR / "as_is_process.png"
 
-    filtered = requirements[
-        requirements["Type"].isin(type_filter)
-        & requirements["Priority"].isin(priority_filter)
-    ]
+    if as_is_path.exists():
 
-    st.dataframe(
-        filtered,
-        hide_index=True,
-        use_container_width=True,
-    )
-
-    st.download_button(
-        "Download Requirements CSV",
-        requirements.to_csv(index=False),
-        file_name="spa_crm_requirements.csv",
-        mime="text/csv",
-    )
-
-    st.subheader("MoSCoW Prioritisation")
-
-    m1, m2, m3, m4 = st.columns(4)
-
-    with m1:
-        st.markdown("### Must")
-        st.write(
-            """
-            Customer profile  
-            Customer search  
-            Appointment booking  
-            Therapist availability  
-            Confirmation  
-            Reminders
-            """
+        st.image(
+            str(as_is_path),
+            use_container_width=True,
         )
 
-    with m2:
-        st.markdown("### Should")
-        st.write(
-            """
-            Retention reporting  
-            Customer segmentation  
-            Communication status  
-            Duplicate detection
-            """
+    else:
+
+        st.error(
+            "As-Is process image could not be found. "
+            "Make sure 'as_is_process.png' is in the same GitHub folder as testt.py."
         )
 
-    with m3:
-        st.markdown("### Could")
-        st.write(
-            """
-            Birthday campaigns  
-            Advanced promotions  
-            Loyalty automation
-            """
-        )
+    # =====================================================
+    # KEY CURRENT-STATE FINDINGS
+    # =====================================================
 
-    with m4:
-        st.markdown("### Won't — Phase 1")
-        st.write(
-            """
-            AI recommendations  
-            Customer mobile app  
-            Advanced predictive analytics
-            """
-        )
+    st.markdown(
+        """
+<div class="current-findings">
+
+<h2>Key Current-State Findings</h2>
+
+<div class="findings-grid">
+
+
+<div class="finding-card">
+
+<div class="finding-number">01</div>
+
+<div class="finding-title">
+Multiple information sources
+</div>
+
+<div class="finding-text">
+Staff may need to search spreadsheets, booking information and
+communication channels to identify an existing customer and understand
+their previous interactions.
+</div>
+
+</div>
+
+
+<div class="finding-card">
+
+<div class="finding-number">02</div>
+
+<div class="finding-title">
+No complete customer view
+</div>
+
+<div class="finding-text">
+Customer information and appointment history are not maintained in a
+single shared record, limiting visibility across the three locations.
+</div>
+
+</div>
+
+
+<div class="finding-card">
+
+<div class="finding-number">03</div>
+
+<div class="finding-title">
+Manual appointment activities
+</div>
+
+<div class="finding-text">
+Several booking, confirmation and follow-up activities depend on staff
+remembering to complete manual steps.
+</div>
+
+</div>
+
+
+<div class="finding-card">
+
+<div class="finding-number">04</div>
+
+<div class="finding-title">
+Inconsistent processes
+</div>
+
+<div class="finding-text">
+Customer information and booking activities may be handled differently
+between staff members and locations because there is no centralised
+workflow.
+</div>
+
+</div>
+
+
+<div class="finding-card">
+
+<div class="finding-number">05</div>
+
+<div class="finding-title">
+Limited process visibility
+</div>
+
+<div class="finding-text">
+Management cannot easily monitor customer activity, missed appointments
+or follow-up performance without manually consolidating information.
+</div>
+
+</div>
+
+
+<div class="finding-card">
+
+<div class="finding-number">06</div>
+
+<div class="finding-title">
+Process does not scale efficiently
+</div>
+
+<div class="finding-text">
+The current spreadsheet-based approach becomes increasingly difficult
+to coordinate as customer volume and cross-location activity increase.
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<div class="current-state-insight">
+
+<strong>Current-state insight:</strong>
+The process analysis confirms that customer-data fragmentation,
+manual booking activities and inconsistent workflows are embedded
+throughout the customer journey rather than occurring at a single step.
+
+</div>
+""",
+        unsafe_allow_html=True,
+    )
 
     footer()
 
