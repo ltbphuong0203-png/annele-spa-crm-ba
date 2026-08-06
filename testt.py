@@ -1487,6 +1487,494 @@ throughout the customer journey rather than occurring at a single step.
     footer()
 
 # =========================================================
+# 04 REQUIREMENTS GATHERING
+# =========================================================
+
+elif page == "04 · Requirements Gathering":
+
+    page_header(
+        "04",
+        "Requirements Gathering",
+        "Translating stakeholder needs, current-state findings and business objectives into structured CRM requirements.",
+    )
+
+    # =====================================================
+    # STYLING
+    # =====================================================
+
+    st.markdown(
+        """
+<style>
+
+.requirements-intro {
+    margin-bottom: 2.5rem;
+}
+
+.requirements-intro h2 {
+    color: #194339 !important;
+    font-size: 1.8rem;
+    font-weight: 750;
+    margin-bottom: 0.8rem;
+}
+
+.requirements-intro p {
+    color: #374151;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    max-width: 1050px;
+}
+
+.requirements-intro strong {
+    color: #194339;
+    font-weight: 700;
+}
+
+
+/* STAKEHOLDERS */
+
+.stakeholder-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.stakeholder-card {
+    background: #ffffff;
+    border: 1px solid #dfe7e4;
+    border-radius: 14px;
+    padding: 1.2rem;
+    box-shadow: 0 3px 10px rgba(25, 67, 57, 0.05);
+}
+
+.stakeholder-card h3 {
+    color: #194339 !important;
+    font-size: 1rem;
+    margin-top: 0 !important;
+    margin-bottom: 0.7rem;
+}
+
+.stakeholder-card p {
+    font-size: 0.92rem;
+    color: #4b5563;
+    line-height: 1.55;
+}
+
+
+/* ELICITATION */
+
+.elicitation-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    margin-top: 1.3rem;
+    margin-bottom: 3rem;
+}
+
+.elicitation-card {
+    background: #f4f7f6;
+    border: 1px solid #dfe7e4;
+    border-radius: 14px;
+    padding: 1.3rem;
+}
+
+.elicitation-number {
+    color: #194339;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.elicitation-title {
+    color: #194339;
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+}
+
+.elicitation-text {
+    color: #4b5563;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+
+/* INSIGHT TO REQUIREMENT */
+
+.requirement-flow {
+    margin-top: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.requirement-flow-box {
+    background: #ffffff;
+    border: 1px solid #dfe7e4;
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    text-align: center;
+    color: #374151;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.requirement-flow-box strong {
+    color: #194339;
+}
+
+.requirement-flow-box.final {
+    background: #194339;
+    color: #ffffff;
+    border-color: #194339;
+}
+
+.requirement-flow-box.final strong {
+    color: #ffffff;
+}
+
+.requirement-arrow {
+    text-align: center;
+    color: #194339;
+    font-size: 1.5rem;
+    margin: 0.4rem 0;
+}
+
+
+/* MOSCOW */
+
+.moscow-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.moscow-card {
+    border: 1px solid #dfe7e4;
+    border-radius: 14px;
+    padding: 1.2rem;
+    background: #ffffff;
+}
+
+.moscow-card h3 {
+    color: #194339 !important;
+    margin-top: 0 !important;
+    font-size: 1rem;
+}
+
+.moscow-card p {
+    color: #4b5563;
+    line-height: 1.7;
+    font-size: 0.92rem;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 1000px) {
+
+    .stakeholder-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .moscow-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .stakeholder-grid,
+    .elicitation-grid,
+    .moscow-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+""",
+        unsafe_allow_html=True,
+    )
+
+    # =====================================================
+    # INTRODUCTION
+    # =====================================================
+
+    st.markdown(
+        """
+<div class="requirements-intro">
+
+<h2>Requirements Gathering Approach</h2>
+
+<p>
+Requirements were gathered by combining
+<strong>stakeholder needs, current-state process findings and business objectives</strong>.
+The purpose was to define what the future customer-management capability
+must support before evaluating potential CRM solutions.
+</p>
+
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+
+    # =====================================================
+    # STAKEHOLDERS
+    # =====================================================
+
+    st.subheader("Stakeholders")
+
+    st.markdown(
+        """
+<div class="stakeholder-grid">
+
+<div class="stakeholder-card">
+<h3>Spa Manager</h3>
+<p>
+Needs visibility into customer retention, service performance,
+operational activity and business reporting.
+</p>
+</div>
+
+<div class="stakeholder-card">
+<h3>Receptionist</h3>
+<p>
+Needs fast customer lookup, simple booking,
+appointment management and reduced manual administration.
+</p>
+</div>
+
+<div class="stakeholder-card">
+<h3>Therapist</h3>
+<p>
+Needs access to relevant customer history,
+previous services, notes and customer preferences.
+</p>
+</div>
+
+<div class="stakeholder-card">
+<h3>Marketing</h3>
+<p>
+Needs customer segmentation, retention information
+and reliable data for targeted campaigns.
+</p>
+</div>
+
+<div class="stakeholder-card">
+<h3>Customer</h3>
+<p>
+Needs an easy booking experience, accurate confirmations,
+timely reminders and appropriate handling of personal information.
+</p>
+</div>
+
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+
+    # =====================================================
+    # ELICITATION METHODS
+    # =====================================================
+
+    st.subheader("Elicitation Methods")
+
+    st.markdown(
+        """
+<div class="elicitation-grid">
+
+<div class="elicitation-card">
+<div class="elicitation-number">01</div>
+<div class="elicitation-title">Stakeholder Interviews</div>
+<div class="elicitation-text">
+Understand business objectives, user needs,
+pain points and reporting expectations.
+</div>
+</div>
+
+<div class="elicitation-card">
+<div class="elicitation-number">02</div>
+<div class="elicitation-title">Process Walkthrough</div>
+<div class="elicitation-text">
+Review the As-Is customer and appointment process
+to identify information needs, hand-offs and inefficiencies.
+</div>
+</div>
+
+<div class="elicitation-card">
+<div class="elicitation-number">03</div>
+<div class="elicitation-title">Data & Document Review</div>
+<div class="elicitation-text">
+Review customer spreadsheets, booking records,
+communication practices and existing reporting.
+</div>
+</div>
+
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+
+    # =====================================================
+    # FROM INSIGHT TO REQUIREMENT
+    # =====================================================
+
+    st.subheader("From Stakeholder Need to Requirement")
+
+    st.markdown(
+        """
+<div class="requirement-flow">
+
+<div class="requirement-flow-box">
+<strong>Stakeholder Insight</strong><br>
+“I have to search several places to find a customer's information.”
+</div>
+
+<div class="requirement-arrow">↓</div>
+
+<div class="requirement-flow-box">
+<strong>Business Need</strong><br>
+Staff need one reliable and accessible view of customer information.
+</div>
+
+<div class="requirement-arrow">↓</div>
+
+<div class="requirement-flow-box">
+<strong>BR-01</strong><br>
+Centralise customer information to provide staff with a consistent customer view.
+</div>
+
+<div class="requirement-arrow">↓</div>
+
+<div class="requirement-flow-box final">
+<strong>FR-02 / FR-03 / FR-04</strong><br>
+Search customers quickly, display a central customer profile
+and provide access to appointment history.
+</div>
+
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+
+    # =====================================================
+    # REQUIREMENTS CATALOGUE
+    # =====================================================
+
+    st.subheader("Requirements Catalogue")
+
+    st.write(
+        """
+        Requirements were grouped into business, functional and
+        non-functional requirements, then prioritised using MoSCoW.
+        """
+    )
+
+    type_filter = st.multiselect(
+        "Requirement Type",
+        options=list(requirements["Type"].unique()),
+        default=list(requirements["Type"].unique()),
+        key="requirements_type_filter",
+    )
+
+    priority_filter = st.multiselect(
+        "Priority",
+        options=["Must", "Should", "Could", "Won't"],
+        default=["Must", "Should"],
+        key="requirements_priority_filter",
+    )
+
+    filtered_requirements = requirements[
+        requirements["Type"].isin(type_filter)
+        & requirements["Priority"].isin(priority_filter)
+    ]
+
+    st.dataframe(
+        filtered_requirements,
+        hide_index=True,
+        use_container_width=True,
+    )
+
+    st.download_button(
+        label="Download Requirements Catalogue",
+        data=requirements.to_csv(index=False),
+        file_name="spa_crm_requirements.csv",
+        mime="text/csv",
+        key="requirements_download",
+    )
+
+    # =====================================================
+    # MOSCOW PRIORITISATION
+    # =====================================================
+
+    st.subheader("MoSCoW Prioritisation")
+
+    st.markdown(
+        """
+<div class="moscow-grid">
+
+<div class="moscow-card">
+<h3>Must Have</h3>
+<p>
+Customer profile<br>
+Customer search<br>
+Customer history<br>
+Appointment booking<br>
+Therapist availability<br>
+Appointment confirmation<br>
+Automated reminders
+</p>
+</div>
+
+<div class="moscow-card">
+<h3>Should Have</h3>
+<p>
+Retention reporting<br>
+No-show reporting<br>
+Communication status<br>
+Duplicate detection<br>
+Service-performance reporting
+</p>
+</div>
+
+<div class="moscow-card">
+<h3>Could Have</h3>
+<p>
+Birthday campaigns<br>
+Advanced customer segmentation<br>
+Loyalty automation<br>
+Additional marketing workflows
+</p>
+</div>
+
+<div class="moscow-card">
+<h3>Won't Have — Phase 1</h3>
+<p>
+AI recommendations<br>
+Customer mobile app<br>
+Predictive analytics<br>
+Advanced personalisation
+</p>
+</div>
+
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+
+    st.info(
+        """
+        The prioritised requirements become the evaluation criteria used in the
+        next phase to compare and select the most suitable CRM solution.
+        """
+    )
+
+    footer()
+
+# =========================================================
 # 05 CRM EVALUATION
 # =========================================================
 
