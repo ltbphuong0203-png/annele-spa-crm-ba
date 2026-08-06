@@ -624,8 +624,40 @@ highlighting the need for a more
         unsafe_allow_html=True,
     )
 
-    # =====================================================
+       # =====================================================
     # ROOT CAUSE ANALYSIS
+    # =====================================================
+
+    st.markdown(
+        """
+<div class="root-cause-section">
+
+<h2>Why are customer complaints increasing and retention declining?</h2>
+
+<p class="root-cause-intro">
+A <strong>Fishbone (Ishikawa) analysis</strong> with Five-Whys drill-downs
+identifies the underlying causes behind
+<strong>missed bookings, late reminders, fragmented customer information,
+and poor management visibility</strong>.
+The analysis suggests that these are not isolated staff or booking issues.
+They largely stem from the business continuing to rely on
+<strong>manual and disconnected customer-management processes</strong>
+as it has expanded across multiple locations.
+</p>
+
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+
+    # Fishbone image
+    st.image(
+        "assets/fishbone.png",
+        use_container_width=True,
+    )
+
+    # =====================================================
+    # FIVE WHYS + CONVERGENCE INSIGHT
     # =====================================================
 
     st.markdown(
@@ -634,7 +666,7 @@ highlighting the need for a more
 
 .root-cause-section {
     margin-top: 3.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .root-cause-section h2 {
@@ -649,7 +681,6 @@ highlighting the need for a more
     line-height: 1.75;
     color: #374151;
     max-width: 1050px;
-    margin-bottom: 2rem;
 }
 
 .root-cause-intro strong {
@@ -657,135 +688,11 @@ highlighting the need for a more
     font-weight: 700;
 }
 
-.fishbone-card {
-    position: relative;
-    background: #ffffff;
-    border: 1px solid #dfe7e4;
-    border-radius: 18px;
-    padding: 2.5rem 2rem 2.8rem 2rem;
-    margin-top: 1.5rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 4px 16px rgba(25, 67, 57, 0.07);
-    overflow: hidden;
-}
-
-.fishbone-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    column-gap: 2rem;
-    row-gap: 2.3rem;
-    position: relative;
-    z-index: 2;
-}
-
-.fishbone-category {
-    position: relative;
-    padding: 0.3rem 0.5rem;
-}
-
-.fishbone-label {
-    display: inline-block;
-    background: #194339;
-    color: #ffffff;
-    padding: 0.65rem 1rem;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    margin-bottom: 1rem;
-}
-
-.fishbone-label.data {
-    background: #b98000;
-}
-
-.fishbone-label.system {
-    background: #7a8581;
-}
-
-.fishbone-category ul {
-    margin: 0;
-    padding-left: 1.2rem;
-}
-
-.fishbone-category li {
-    color: #374151;
-    margin-bottom: 0.45rem;
-    line-height: 1.55;
-    font-size: 0.95rem;
-}
-
-.fishbone-spine {
-    position: relative;
-    height: 90px;
-    margin: 0.5rem 2rem 0.2rem 2rem;
-}
-
-.fishbone-spine-line {
-    position: absolute;
-    left: 2%;
-    right: 15%;
-    top: 48%;
-    height: 4px;
-    background: #194339;
-    border-radius: 4px;
-}
-
-.fishbone-arrow {
-    position: absolute;
-    right: 13%;
-    top: calc(48% - 11px);
-    width: 0;
-    height: 0;
-    border-top: 13px solid transparent;
-    border-bottom: 13px solid transparent;
-    border-left: 22px solid #194339;
-}
-
-.fishbone-effect {
-    position: absolute;
-    right: 0;
-    top: 5px;
-    width: 190px;
-    background: #194339;
-    color: #ffffff;
-    border-radius: 10px;
-    padding: 1rem 0.8rem;
-    text-align: center;
-    font-weight: 700;
-    font-size: 0.9rem;
-    line-height: 1.4;
-}
-
-.fishbone-bottom {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    column-gap: 2rem;
-    margin-top: 0.5rem;
-}
-
-.fishbone-convergence {
-    margin-top: 2rem;
-    margin-left: auto;
-    max-width: 390px;
-    border: 1px solid #c89b2b;
-    background: #fff9eb;
-    border-radius: 10px;
-    padding: 1rem 1.2rem;
-    color: #6f5412;
-    line-height: 1.55;
-    font-size: 0.92rem;
-}
-
-.fishbone-convergence strong {
-    color: #5b4308;
-}
-
 .root-analysis-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
-    margin-top: 1.8rem;
+    margin-top: 2rem;
     margin-bottom: 2.5rem;
 }
 
@@ -812,7 +719,7 @@ highlighting the need for a more
 .analysis-card li {
     color: #374151;
     line-height: 1.65;
-    margin-bottom: 0.7rem;
+    margin-bottom: 0.9rem;
 }
 
 .analysis-card strong {
@@ -844,161 +751,13 @@ highlighting the need for a more
 }
 
 @media (max-width: 900px) {
-
-    .fishbone-grid,
-    .fishbone-bottom,
     .root-analysis-grid {
         grid-template-columns: 1fr;
-    }
-
-    .fishbone-spine {
-        height: 140px;
-        margin: 1rem 0;
-    }
-
-    .fishbone-spine-line {
-        left: 0;
-        right: 0;
-        top: 30%;
-    }
-
-    .fishbone-arrow {
-        right: 0;
-        top: calc(30% - 11px);
-    }
-
-    .fishbone-effect {
-        position: relative;
-        width: auto;
-        margin-top: 65px;
-        right: auto;
-        top: auto;
     }
 }
 
 </style>
 
-<div class="root-cause-section">
-
-<h2>Why are customer complaints increasing and retention declining?</h2>
-
-<div class="root-cause-intro">
-A <strong>Fishbone (Ishikawa) analysis</strong> with Five-Whys drill-downs
-identifies the underlying causes behind
-<strong>missed bookings, late reminders, fragmented customer information,
-and poor management visibility</strong>.
-The analysis suggests that these are not isolated staff or booking issues.
-They largely stem from the business continuing to rely on
-<strong>manual and disconnected customer-management processes</strong>
-as it has expanded across multiple locations.
-</div>
-
-<div class="fishbone-card">
-
-<div class="fishbone-grid">
-
-<div class="fishbone-category">
-<div class="fishbone-label">METHOD / PROCESS</div>
-<ul>
-<li>Booking and follow-up processes vary between locations</li>
-<li>Appointment reminders depend on manual staff actions</li>
-<li>No standard process for updating customer records</li>
-<li>No consistent customer follow-up process</li>
-<li>Customer complaints are handled reactively rather than systematically</li>
-</ul>
-</div>
-
-<div class="fishbone-category">
-<div class="fishbone-label data">DATA</div>
-<ul>
-<li>Customer information is distributed across multiple Excel files</li>
-<li>Duplicate or inconsistent customer records can occur</li>
-<li>Appointment and interaction history is not centrally maintained</li>
-<li>Customer information may not be updated in real time</li>
-<li>No single source of truth for customer data</li>
-</ul>
-</div>
-
-<div class="fishbone-category">
-<div class="fishbone-label">MEASUREMENT</div>
-<ul>
-<li>Customer retention is difficult to measure consistently</li>
-<li>No central reporting of missed or cancelled appointments</li>
-<li>Complaint trends are not systematically tracked</li>
-<li>Limited visibility into reminder effectiveness</li>
-<li>Management cannot easily compare performance across locations</li>
-</ul>
-</div>
-
-</div>
-
-<div class="fishbone-spine">
-<div class="fishbone-spine-line"></div>
-<div class="fishbone-arrow"></div>
-
-<div class="fishbone-effect">
-Increasing customer complaints,<br>
-missed bookings and<br>
-declining customer retention
-</div>
-</div>
-
-<div class="fishbone-bottom">
-
-<div class="fishbone-category">
-<div class="fishbone-label">PEOPLE / OWNERSHIP</div>
-<ul>
-<li>Staff manually maintain customer information</li>
-<li>Record accuracy depends heavily on individual staff practices</li>
-<li>No clear ownership of customer-data quality</li>
-<li>Staff across locations have limited visibility of each other's interactions</li>
-<li>Manual administrative work reduces time available for customer service</li>
-</ul>
-</div>
-
-<div class="fishbone-category">
-<div class="fishbone-label system">SYSTEM</div>
-<ul>
-<li>Excel is used as the primary customer-management tool</li>
-<li>No centralised CRM across the three locations</li>
-<li>Limited automation for reminders and follow-ups</li>
-<li>Customer, appointment and communication data are disconnected</li>
-<li>Limited real-time reporting and dashboards</li>
-</ul>
-</div>
-
-<div class="fishbone-category">
-<div class="fishbone-label">BUSINESS GROWTH</div>
-<ul>
-<li>Customer-management processes have not scaled with business growth</li>
-<li>Three locations increase the need for shared customer information</li>
-<li>More customer interactions increase manual administration</li>
-<li>Existing tools provide limited cross-location coordination</li>
-</ul>
-</div>
-
-</div>
-
-<div class="fishbone-convergence">
-<strong>Initial finding:</strong>
-the causes point toward a broader capability gap rather than a single employee,
-booking or reminder issue. The current customer-management approach has not scaled
-with the business.
-</div>
-
-</div>
-
-</div>
-""",
-        unsafe_allow_html=True,
-    )
-
-    # =====================================================
-    # FIVE WHYS + CONVERGENCE INSIGHT
-    # =====================================================
-
-    st.markdown(
-        """
 <div class="root-analysis-grid">
 
 <div class="analysis-card">
