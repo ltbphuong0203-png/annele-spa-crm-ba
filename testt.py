@@ -774,75 +774,284 @@ as it has expanded across multiple locations.
             "Make sure fishbone.png is in the same GitHub folder as testt.py."
         )
 
-    # =====================================================
-    # FIVE WHYS + CONVERGENCE INSIGHT
+       # =====================================================
+    # FIVE WHYS
     # =====================================================
 
     st.markdown(
         """
-<div class="root-analysis-grid">
+<style>
 
-<div class="analysis-card">
+.five-whys-section {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+}
 
-<h3>Five-Whys — where each cause bottoms out</h3>
+.five-whys-section h2 {
+    color: #194339 !important;
+    font-size: 1.8rem;
+    font-weight: 750;
+    margin-bottom: 1.8rem;
+}
 
-<ul>
+.whys-group {
+    margin-bottom: 2.5rem;
+}
 
-<li>
-<strong>Missed / late reminders</strong>
-→ reminders depend on staff manually checking appointments
-→ processes differ between locations
-→ no automated reminder workflow
-→ <strong>current tools do not support a standardised, automated customer communication process.</strong>
-</li>
+.whys-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #194339;
+    margin-bottom: 0.9rem;
+}
 
-<li>
-<strong>Fragmented customer history</strong>
-→ information is stored across spreadsheets and communication channels
-→ staff update records independently
-→ there is no shared customer record
-→ <strong>no centralised customer-management capability exists.</strong>
-</li>
+.why-flow {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 1000px;
+}
 
-<li>
-<strong>Limited management visibility</strong>
-→ retention and service data must be manually compiled
-→ information is stored in different locations
-→ reporting is inconsistent
-→ <strong>customer data is not structured within a single reporting platform.</strong>
-</li>
+.why-box {
+    background: #ffffff;
+    border: 1px solid #dfe7e4;
+    border-radius: 12px;
+    padding: 0.9rem 1.2rem;
+    color: #374151;
+    font-size: 1rem;
+    line-height: 1.55;
+    box-shadow: 0 2px 8px rgba(25, 67, 57, 0.05);
+}
 
-</ul>
+.why-box.evidence {
+    background: #f4f7f6;
+    border-left: 4px solid #194339;
+}
+
+.why-box.root {
+    background: #194339;
+    border-color: #194339;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.why-arrow {
+    text-align: center;
+    color: #194339;
+    font-size: 1.35rem;
+    line-height: 1;
+    padding: 0.4rem 0;
+}
+
+.convergence-section {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+.convergence-section h2 {
+    color: #194339 !important;
+    font-size: 1.8rem;
+    font-weight: 750;
+    margin-bottom: 1rem;
+}
+
+.convergence-section p {
+    font-size: 1.08rem;
+    line-height: 1.8;
+    color: #374151;
+}
+
+.convergence-highlight {
+    background: #f4f7f6;
+    border-left: 5px solid #194339;
+    border-radius: 8px;
+    padding: 1.1rem 1.3rem;
+    margin: 1.3rem 0 1.5rem 0;
+    color: #194339;
+    font-size: 1.18rem;
+    font-weight: 700;
+}
+
+.simulated-note {
+    margin-top: 1.5rem;
+    padding: 0.9rem 1rem;
+    background: #fff9eb;
+    border: 1px solid #e0c274;
+    border-radius: 10px;
+    color: #745b1e;
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+</style>
+
+<div class="five-whys-section">
+
+<h2>Five-Whys — where each cause bottoms out</h2>
+
+
+<!-- ===================================================
+     1. LATE / MISSED REMINDERS
+=================================================== -->
+
+<div class="whys-group">
+
+<div class="whys-title">
+Late / missed reminders
+</div>
+
+<div class="why-flow">
+
+<div class="why-box evidence">
+~14% of appointment reminders are not sent on time
+</div>
+
+<div class="why-arrow">↓</div>
+
+<div class="why-box">
+Reminders depend on staff manually reviewing upcoming appointments
+</div>
+
+<div class="why-arrow">↓</div>
+
+<div class="why-box">
+Staff workload and booking processes differ across locations
+</div>
+
+<div class="why-arrow">↓</div>
+
+<div class="why-box">
+There is no automated reminder workflow
+</div>
+
+<div class="why-arrow">↓</div>
+
+<div class="why-box root">
+Customer communication relies on manual processes that no longer scale
+</div>
+
+</div>
+</div>
+
+
+<!-- ===================================================
+     2. BOOKING / CUSTOMER DATA ERRORS
+=================================================== -->
+
+<div class="whys-group">
+
+<div class="whys-title">
+Booking / customer-data errors
+</div>
+
+<div class="why-flow">
+
+<div class="why-box evidence">
+~18% of customer records are duplicate or incomplete
+</div>
+
+<div class="why-arrow">↓</div>
+
+<div class="why-box">
+Customer information is maintained across different spreadsheets
+</div>
+
+<div class="why-arrow">↓</div>
+
+<div class="why-box">
+Staff update customer information independently
+</div>
+
+<div class="why-arrow">↓</div>
+
+<div class="why-box">
+There is no shared customer record across locations
+</div>
+
+<div class="why-arrow">↓</div>
+
+<div class="why-box root">
+No central source of truth exists for customer information
+</div>
+
+</div>
+</div>
+
+
+<!-- ===================================================
+     3. DECLINING RETENTION VISIBILITY
+=================================================== -->
+
+<div class="whys-group">
+
+<div class="whys-title">
+Declining retention visibility
+</div>
+
+<div class="why-flow">
+
+<div class="why-box evidence">
+Customer return rate fell from 61% to 47% before the trend was clearly identified
+</div>
+
+<div class="why-arrow">↓</div>
+
+<div class="why-box">
+Management reporting is manually prepared
+</div>
+
+<div class="why-arrow">↓</div>
+
+<div class="why-box">
+Customer and service data must be consolidated across spreadsheets
+</div>
+
+<div class="why-arrow">↓</div>
+
+<div class="why-box">
+There is no central reporting capability
+</div>
+
+<div class="why-arrow">↓</div>
+
+<div class="why-box root">
+Management lacks timely customer-performance information
+</div>
+
+</div>
+</div>
 
 </div>
 
 
-<div class="convergence-card">
+<!-- =====================================================
+     CONVERGENCE INSIGHT
+===================================================== -->
 
-<h3>The convergence insight</h3>
+<div class="convergence-section">
 
-<p>
-All three drill-downs converge on the same underlying issue:
-<strong>the business has outgrown its spreadsheet-based customer-management approach.</strong>
-</p>
-
-<p>
-As Wellness Perth Spa expanded across multiple locations, its
-customer-management processes and technology did not scale with the business.
-The lack of a
-<strong>centralised system, standardised processes and automation</strong>
-has resulted in fragmented customer data, inconsistent communication
-and limited performance visibility.
-</p>
+<h2>Convergence insight</h2>
 
 <p>
-The root cause is therefore not simply that
-<strong>“the spa does not have a CRM.”</strong>
-The deeper issue is that the
-<strong>current customer-management capability no longer supports the
-operational needs of the growing business.</strong>
+All three drill-downs converge on one underlying issue:
 </p>
 
+<div class="convergence-highlight">
+Customer-management capability has not scaled with business growth.
+</div>
+
+<p>
+Wellness Perth Spa expanded to three locations while continuing to rely on
+<strong>Excel, manual workflows and disconnected communication channels</strong>.
+This has created fragmented customer data, inconsistent processes and limited
+management visibility — contributing to booking errors, missed reminders and
+declining customer retention.
+</p>
+
+<div class="simulated-note">
+<strong>Case-study note:</strong>
+Figures shown are simulated for this case study and are used to establish a
+measurable project baseline.
 </div>
 
 </div>
