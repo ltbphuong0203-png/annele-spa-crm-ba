@@ -2337,62 +2337,51 @@ elif page == "07 · Future-State Design":
         "Redesigning the customer and booking process around the selected CRM solution.",
     )
 
-    st.subheader("To-Be Process")
+    # =====================================================
+    # TO-BE PROCESS
+    # =====================================================
 
-    st.code(
+    st.markdown(
         """
-CUSTOMER                RECEPTIONIST                    CRM SYSTEM
-   |                          |                              |
-   | Contact spa              |                              |
-   |------------------------->|                              |
-   |                          |                              |
-   |                          | Search customer              |
-   |                          |----------------------------->|
-   |                          |                              |
-   |                          |<-----------------------------|
-   |                          | Customer found?              |
-   |                          |     /       \\               |
-   |                          |   Yes        No              |
-   |                          |    |          |              |
-   |                          |    |       Create profile     |
-   |                          |    |------------------------->|
-   |                          |    |                          |
-   |                          |<---+--------------------------|
-   |                          |                              |
-   |                          | Open central customer profile |
-   |                          |----------------------------->|
-   |                          |<-----------------------------|
-   |                          | Customer + history displayed |
-   |                          |                              |
-   | Discuss required service |                              |
-   |------------------------->|                              |
-   |                          |                              |
-   |                          | Select service               |
-   |                          |----------------------------->|
-   |                          |                              |
-   |                          | CRM checks availability      |
-   |                          |<-----------------------------|
-   |                          |                              |
-   |<-------------------------| Offer available times        |
-   |                          |                              |
-   | Select appointment       |                              |
-   |------------------------->|                              |
-   |                          |                              |
-   |                          | Create appointment           |
-   |                          |----------------------------->|
-   |                          |                              |
-   |                          | CRM validates conflict       |
-   |                          | CRM creates booking          |
-   |                          | CRM links customer record    |
-   |                          |                              |
-   |<-------------------------------------------------------|
-   | Automatic confirmation                                  |
-   |                                                         |
-   |                 APPOINTMENT CONFIRMED                    |
-  END
-        """,
-        language=None,
+<div class="current-state-intro">
+
+<h2>To-Be Process</h2>
+
+<p>
+The future-state process was designed to address the key weaknesses identified
+in the current-state analysis. The proposed process introduces a
+<strong>centralised customer record, integrated appointment management,
+automated communication and improved information visibility</strong>
+across all spa locations.
+</p>
+
+</div>
+""",
+        unsafe_allow_html=True,
     )
+
+    from pathlib import Path
+
+    BASE_DIR = Path(__file__).resolve().parent
+    to_be_path = BASE_DIR / "TO-BE Process.png"
+
+    if to_be_path.exists():
+
+        st.image(
+            str(to_be_path),
+            use_container_width=True,
+        )
+
+    else:
+
+        st.error(
+            "To-Be process image could not be found. "
+            "Make sure 'TO-BE Process.png' is in the same GitHub folder as testt.py."
+        )
+
+    # =====================================================
+    # AS-IS VS TO-BE
+    # =====================================================
 
     st.subheader("As-Is vs To-Be")
 
@@ -2405,7 +2394,7 @@ CUSTOMER                RECEPTIONIST                    CRM SYSTEM
             ],
             [
                 "Customer History",
-                "Fragmented",
+                "Fragmented across files/channels",
                 "Single customer view",
             ],
             [
@@ -2424,9 +2413,14 @@ CUSTOMER                RECEPTIONIST                    CRM SYSTEM
                 "Automatically generated",
             ],
             [
+                "Reminders",
+                "Manual and inconsistent",
+                "Automated reminder workflow",
+            ],
+            [
                 "Reporting",
                 "Manual consolidation",
-                "Central reporting",
+                "Centralised reporting",
             ],
         ],
         columns=[
@@ -2440,6 +2434,14 @@ CUSTOMER                RECEPTIONIST                    CRM SYSTEM
         comparison,
         hide_index=True,
         use_container_width=True,
+    )
+
+    st.info(
+        """
+        The future-state process reduces manual hand-offs, creates a single source
+        of customer information and introduces automation for critical appointment
+        communications.
+        """
     )
 
     footer()
