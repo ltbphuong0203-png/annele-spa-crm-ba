@@ -2849,26 +2849,421 @@ elif page == "10 · Go-Live & Adoption":
 
     st.subheader("Go-Live Plan")
 
+        # =====================================================
+    # IMPLEMENTATION / GO-LIVE TIMELINE
+    # =====================================================
+
     st.markdown(
         """
-        **T-7 Days**  
-        Final data migration rehearsal and user communication
+<style>
 
-        **T-3 Days**  
-        Complete staff training and confirm support contacts
+.timeline-section {
+    margin-top: 2.5rem;
+    margin-bottom: 3rem;
+}
 
-        **T-1 Day**  
-        Final backup and production migration preparation
+.timeline-section h2 {
+    color: #194339 !important;
+    font-size: 1.8rem;
+    font-weight: 750;
+    margin-bottom: 0.4rem;
+}
 
-        **Go-Live Day**  
-        CRM available for operational use
+.timeline-subtitle {
+    color: #6b7280;
+    font-size: 1rem;
+    margin-bottom: 1.8rem;
+}
 
-        **Week 1**  
-        Hypercare, issue tracking and daily user feedback
+.timeline-card {
+    background: #ffffff;
+    border: 1px solid #dfe7e4;
+    border-radius: 18px;
+    padding: 2rem;
+    box-shadow: 0 4px 14px rgba(25, 67, 57, 0.06);
+    overflow-x: auto;
+}
 
-        **Weeks 2–4**  
-        Adoption monitoring and configuration improvements
-        """
+.timeline-grid {
+    display: grid;
+    grid-template-columns: 230px repeat(12, minmax(55px, 1fr));
+    min-width: 1050px;
+    align-items: center;
+}
+
+
+/* WEEK HEADERS */
+
+.week-header {
+    text-align: center;
+    color: #7b8b86;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding-bottom: 1rem;
+}
+
+
+/* TASK LABEL */
+
+.task-label {
+    color: #374151;
+    font-size: 0.95rem;
+    padding: 0.8rem 1rem 0.8rem 0;
+    text-align: right;
+}
+
+
+/* CELLS */
+
+.timeline-cell {
+    min-height: 46px;
+    border-left: 1px solid #edf1ef;
+    position: relative;
+}
+
+
+/* BARS */
+
+.timeline-bar {
+    height: 34px;
+    border-radius: 7px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.bar-primary {
+    background: #194339;
+}
+
+.bar-secondary {
+    background: #37695d;
+}
+
+.bar-light {
+    background: #78a399;
+}
+
+.bar-soft {
+    background: #b7cec8;
+}
+
+
+/* MILESTONES */
+
+.milestone-row {
+    border-top: 1px solid #dfe7e4;
+    margin-top: 0.8rem;
+}
+
+.milestone-label {
+    color: #194339;
+    font-weight: 700;
+    text-align: right;
+    padding-right: 1rem;
+}
+
+.milestone-cell {
+    position: relative;
+    height: 50px;
+}
+
+.milestone {
+    width: 14px;
+    height: 14px;
+    background: #194339;
+    transform: rotate(45deg);
+    position: absolute;
+    left: 50%;
+    top: 15px;
+    margin-left: -7px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+    .timeline-card {
+        padding: 1.2rem;
+    }
+
+}
+
+</style>
+
+<div class="timeline-section">
+
+<h2>Implementation & Go-Live Timeline</h2>
+
+<div class="timeline-subtitle">
+12-week CRM implementation with parallel workstreams and key milestone gates.
+</div>
+
+<div class="timeline-card">
+
+<div class="timeline-grid">
+
+<!-- HEADER -->
+<div></div>
+
+<div class="week-header">W1</div>
+<div class="week-header">W2</div>
+<div class="week-header">W3</div>
+<div class="week-header">W4</div>
+<div class="week-header">W5</div>
+<div class="week-header">W6</div>
+<div class="week-header">W7</div>
+<div class="week-header">W8</div>
+<div class="week-header">W9</div>
+<div class="week-header">W10</div>
+<div class="week-header">W11</div>
+<div class="week-header">W12</div>
+
+
+<!-- =========================================
+     REQUIREMENTS & PLANNING
+========================================= -->
+
+<div class="task-label">Requirements & Planning</div>
+
+<div class="timeline-cell"><div class="timeline-bar bar-primary"></div></div>
+<div class="timeline-cell"><div class="timeline-bar bar-primary"></div></div>
+<div class="timeline-cell"><div class="timeline-bar bar-primary"></div></div>
+
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+
+
+<!-- =========================================
+     CRM CONFIGURATION
+========================================= -->
+
+<div class="task-label">CRM Configuration</div>
+
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+
+<div class="timeline-cell"><div class="timeline-bar bar-secondary"></div></div>
+<div class="timeline-cell"><div class="timeline-bar bar-secondary"></div></div>
+<div class="timeline-cell"><div class="timeline-bar bar-secondary"></div></div>
+<div class="timeline-cell"><div class="timeline-bar bar-secondary"></div></div>
+
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+
+
+<!-- =========================================
+     DATA CLEANSING & MIGRATION
+========================================= -->
+
+<div class="task-label">Data Cleansing & Migration</div>
+
+<div class="timeline-cell"></div>
+
+<div class="timeline-cell"><div class="timeline-bar bar-light"></div></div>
+<div class="timeline-cell"><div class="timeline-bar bar-light"></div></div>
+<div class="timeline-cell"><div class="timeline-bar bar-light"></div></div>
+<div class="timeline-cell"><div class="timeline-bar bar-light"></div></div>
+<div class="timeline-cell"><div class="timeline-bar bar-light"></div></div>
+
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+
+
+<!-- =========================================
+     AUTOMATION & REPORTING
+========================================= -->
+
+<div class="task-label">Automation & Reporting</div>
+
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+
+<div class="timeline-cell"><div class="timeline-bar bar-secondary"></div></div>
+<div class="timeline-cell"><div class="timeline-bar bar-secondary"></div></div>
+<div class="timeline-cell"><div class="timeline-bar bar-secondary"></div></div>
+<div class="timeline-cell"><div class="timeline-bar bar-secondary"></div></div>
+
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+
+
+<!-- =========================================
+     SYSTEM TESTING
+========================================= -->
+
+<div class="task-label">System Testing</div>
+
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+
+<div class="timeline-cell"><div class="timeline-bar bar-light"></div></div>
+<div class="timeline-cell"><div class="timeline-bar bar-light"></div></div>
+
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+
+
+<!-- =========================================
+     UAT
+========================================= -->
+
+<div class="task-label">User Acceptance Testing</div>
+
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+
+<div class="timeline-cell"><div class="timeline-bar bar-primary"></div></div>
+<div class="timeline-cell"><div class="timeline-bar bar-primary"></div></div>
+
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+
+
+<!-- =========================================
+     TRAINING
+========================================= -->
+
+<div class="task-label">Staff Training</div>
+
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+
+<div class="timeline-cell"><div class="timeline-bar bar-secondary"></div></div>
+<div class="timeline-cell"><div class="timeline-bar bar-secondary"></div></div>
+
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+
+
+<!-- =========================================
+     GO LIVE
+========================================= -->
+
+<div class="task-label">Go-Live</div>
+
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+
+<div class="timeline-cell"><div class="timeline-bar bar-primary"></div></div>
+
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+
+
+<!-- =========================================
+     HYPERCARE
+========================================= -->
+
+<div class="task-label">Hypercare & Adoption Support</div>
+
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+<div class="timeline-cell"></div>
+
+<div class="timeline-cell"></div>
+
+<div class="timeline-cell"><div class="timeline-bar bar-soft"></div></div>
+<div class="timeline-cell"><div class="timeline-bar bar-soft"></div></div>
+
+
+<!-- =========================================
+     MILESTONES
+========================================= -->
+
+<div class="milestone-label">Milestones</div>
+
+<div class="milestone-cell"></div>
+
+<div class="milestone-cell"></div>
+
+<div class="milestone-cell">
+<div class="milestone"></div>
+</div>
+
+<div class="milestone-cell"></div>
+
+<div class="milestone-cell"></div>
+
+<div class="milestone-cell">
+<div class="milestone"></div>
+</div>
+
+<div class="milestone-cell"></div>
+
+<div class="milestone-cell"></div>
+
+<div class="milestone-cell">
+<div class="milestone"></div>
+</div>
+
+<div class="milestone-cell">
+<div class="milestone"></div>
+</div>
+
+<div class="milestone-cell"></div>
+
+<div class="milestone-cell">
+<div class="milestone"></div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+""",
+        unsafe_allow_html=True,
     )
 
     st.subheader("Adoption Measures")
