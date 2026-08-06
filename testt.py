@@ -624,40 +624,8 @@ highlighting the need for a more
         unsafe_allow_html=True,
     )
 
-       # =====================================================
+     # =====================================================
     # ROOT CAUSE ANALYSIS
-    # =====================================================
-
-    st.markdown(
-        """
-<div class="root-cause-section">
-
-<h2>Why are customer complaints increasing and retention declining?</h2>
-
-<p class="root-cause-intro">
-A <strong>Fishbone (Ishikawa) analysis</strong> with Five-Whys drill-downs
-identifies the underlying causes behind
-<strong>missed bookings, late reminders, fragmented customer information,
-and poor management visibility</strong>.
-The analysis suggests that these are not isolated staff or booking issues.
-They largely stem from the business continuing to rely on
-<strong>manual and disconnected customer-management processes</strong>
-as it has expanded across multiple locations.
-</p>
-
-</div>
-""",
-        unsafe_allow_html=True,
-    )
-
-    # Fishbone image
-    st.image(
-        "assets/fishbone.png",
-        use_container_width=True,
-    )
-
-    # =====================================================
-    # FIVE WHYS + CONVERGENCE INSIGHT
     # =====================================================
 
     st.markdown(
@@ -666,7 +634,7 @@ as it has expanded across multiple locations.
 
 .root-cause-section {
     margin-top: 3.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .root-cause-section h2 {
@@ -681,6 +649,7 @@ as it has expanded across multiple locations.
     line-height: 1.75;
     color: #374151;
     max-width: 1050px;
+    margin-bottom: 1rem;
 }
 
 .root-cause-intro strong {
@@ -724,6 +693,7 @@ as it has expanded across multiple locations.
 
 .analysis-card strong {
     color: #194339;
+    font-weight: 700;
 }
 
 .convergence-card {
@@ -751,13 +721,65 @@ as it has expanded across multiple locations.
 }
 
 @media (max-width: 900px) {
+
     .root-analysis-grid {
         grid-template-columns: 1fr;
     }
+
 }
 
 </style>
 
+<div class="root-cause-section">
+
+<h2>Why are customer complaints increasing and retention declining?</h2>
+
+<div class="root-cause-intro">
+A <strong>Fishbone (Ishikawa) analysis</strong> with Five-Whys drill-downs
+identifies the underlying causes behind
+<strong>missed bookings, late reminders, fragmented customer information,
+and poor management visibility</strong>.
+The analysis suggests that these are not isolated staff or booking issues.
+They largely stem from the business continuing to rely on
+<strong>manual and disconnected customer-management processes</strong>
+as it has expanded across multiple locations.
+</div>
+
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+
+    # =====================================================
+    # FISHBONE IMAGE
+    # fishbone.png is in the same folder as testt.py
+    # =====================================================
+
+    from pathlib import Path
+
+    BASE_DIR = Path(__file__).resolve().parent
+    fishbone_path = BASE_DIR / "fishbone.png"
+
+    if fishbone_path.exists():
+
+        st.image(
+            str(fishbone_path),
+            use_container_width=True,
+        )
+
+    else:
+
+        st.error(
+            "Fishbone image could not be found. "
+            "Make sure fishbone.png is in the same GitHub folder as testt.py."
+        )
+
+    # =====================================================
+    # FIVE WHYS + CONVERGENCE INSIGHT
+    # =====================================================
+
+    st.markdown(
+        """
 <div class="root-analysis-grid">
 
 <div class="analysis-card">
@@ -794,6 +816,7 @@ as it has expanded across multiple locations.
 
 </div>
 
+
 <div class="convergence-card">
 
 <h3>The convergence insight</h3>
@@ -804,8 +827,8 @@ All three drill-downs converge on the same underlying issue:
 </p>
 
 <p>
-As Wellness Perth Spa expanded across multiple locations, its customer-management
-processes and technology did not scale with the business.
+As Wellness Perth Spa expanded across multiple locations, its
+customer-management processes and technology did not scale with the business.
 The lack of a
 <strong>centralised system, standardised processes and automation</strong>
 has resulted in fragmented customer data, inconsistent communication
@@ -816,7 +839,8 @@ and limited performance visibility.
 The root cause is therefore not simply that
 <strong>“the spa does not have a CRM.”</strong>
 The deeper issue is that the
-<strong>current customer-management capability no longer supports the operational needs of the growing business.</strong>
+<strong>current customer-management capability no longer supports the
+operational needs of the growing business.</strong>
 </p>
 
 </div>
