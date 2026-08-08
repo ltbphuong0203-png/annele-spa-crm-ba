@@ -327,7 +327,7 @@ def footer():
     st.markdown(
         """
         <div class="footer">
-        Spa CRM Selection & Implementation — Business Analyst Portfolio Case Study
+        Spa CRM Selection & Implementation — Business Analyst Project
         </div>
         """,
         unsafe_allow_html=True,
@@ -341,7 +341,7 @@ if page == "01 · Project Overview":
     st.markdown(
         """
 <div class="hero">
-<div class="small-label">Business Analyst Portfolio Project</div>
+<div class="small-label">Business Analyst Project</div>
 
 <h1>Spa CRM Selection & Implementation</h1>
 
