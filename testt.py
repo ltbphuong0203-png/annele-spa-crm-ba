@@ -3009,27 +3009,260 @@ elif page == "06 · CRM Selection":
     page_header(
         "06",
         "CRM Selection",
-        "Documenting the preferred solution, rationale and remaining implementation gaps.",
+        "Documenting the preferred CRM solution, decision rationale, key trade-offs and implementation gaps.",
     )
 
-    st.subheader("Recommended Solution")
+    # =====================================================
+    # PAGE STYLING
+    # =====================================================
 
-    st.success(
-        "CRM B — Spa-Specific Management Platform"
-    )
-
-    st.write(
+    st.markdown(
         """
-        CRM B was selected because it provides the strongest alignment with
-        the spa's operational requirements, particularly appointment scheduling,
-        therapist availability, customer records, automated communication and
-        ease of use.
+<style>
 
-        Although general-purpose CRM platforms may provide stronger traditional
-        CRM and reporting capabilities, they require additional configuration or
-        integration to support spa-specific appointment workflows.
-        """
+/* =====================================================
+   SELECTION SUMMARY
+===================================================== */
+
+.selection-hero {
+    background: #f4f7f6;
+    border: 1px solid #dfe7e4;
+    border-radius: 18px;
+    padding: 1.8rem 2rem;
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.selection-label {
+    color: #6b7280;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+}
+
+.selection-name {
+    color: #194339;
+    font-size: 2rem;
+    font-weight: 750;
+    margin-bottom: 0.3rem;
+}
+
+.selection-type {
+    color: #374151;
+    font-size: 1rem;
+    font-weight: 650;
+    margin-bottom: 1rem;
+}
+
+.selection-summary {
+    color: #4b5563;
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 900px;
+}
+
+.selection-summary strong {
+    color: #194339;
+}
+
+
+/* =====================================================
+   REASON CARDS
+===================================================== */
+
+.selection-reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1.3rem;
+    margin-bottom: 2.8rem;
+}
+
+.selection-reason-card {
+    background: #ffffff;
+    border: 1px solid #dfe7e4;
+    border-radius: 14px;
+    padding: 1.2rem 1.3rem;
+    box-shadow: 0 3px 10px rgba(25, 67, 57, 0.05);
+}
+
+.selection-reason-number {
+    color: #194339;
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin-bottom: 0.45rem;
+}
+
+.selection-reason-title {
+    color: #194339;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.selection-reason-text {
+    color: #4b5563;
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   TRADE-OFF
+===================================================== */
+
+.selection-tradeoff {
+    background: #fff9eb;
+    border: 1px solid #e0c274;
+    border-radius: 12px;
+    padding: 1.1rem 1.3rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2.5rem;
+    color: #745b1e;
+    line-height: 1.7;
+}
+
+.selection-tradeoff strong {
+    color: #5f4500;
+}
+
+
+/* =====================================================
+   DECISION PRINCIPLE
+===================================================== */
+
+.selection-insight {
+    background: #194339;
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 1.2rem 1.4rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+}
+
+.selection-insight strong {
+    color: #ffffff;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .selection-reasons-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+""",
+        unsafe_allow_html=True,
     )
+
+    # =====================================================
+    # SELECTED SOLUTION
+    # =====================================================
+
+    st.markdown(
+        """
+<div class="selection-hero">
+
+<div class="selection-label">
+Selected CRM Solution
+</div>
+
+<div class="selection-name">
+KiotViet Salon
+</div>
+
+<div class="selection-type">
+Spa-Specific Management Platform
+</div>
+
+<div class="selection-summary">
+KiotViet Salon was selected as the preferred solution because it provides the
+<strong>strongest overall fit against the spa's highest-priority requirements</strong>,
+particularly appointment management, customer records, service history,
+staff scheduling and automated reminders.
+</div>
+
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+
+    # =====================================================
+    # WHY KIOTVIET
+    # =====================================================
+
+    st.subheader("Why KiotViet Salon?")
+
+    st.markdown(
+        """
+<div class="selection-reasons-grid">
+
+<div class="selection-reason-card">
+<div class="selection-reason-number">01</div>
+<div class="selection-reason-title">Spa-Specific Fit</div>
+<div class="selection-reason-text">
+Native salon and spa workflows reduce the need for extensive customisation.
+</div>
+</div>
+
+<div class="selection-reason-card">
+<div class="selection-reason-number">02</div>
+<div class="selection-reason-title">Appointment Management</div>
+<div class="selection-reason-text">
+Strong support for appointment scheduling, therapist availability and service workflows.
+</div>
+</div>
+
+<div class="selection-reason-card">
+<div class="selection-reason-number">03</div>
+<div class="selection-reason-title">Customer Visibility</div>
+<div class="selection-reason-text">
+Customer profiles and service history provide staff with a more complete customer view.
+</div>
+</div>
+
+<div class="selection-reason-card">
+<div class="selection-reason-number">04</div>
+<div class="selection-reason-title">Reminder Automation</div>
+<div class="selection-reason-text">
+Automated appointment communication directly addresses late and missed reminders.
+</div>
+</div>
+
+<div class="selection-reason-card">
+<div class="selection-reason-number">05</div>
+<div class="selection-reason-title">Ease of Adoption</div>
+<div class="selection-reason-text">
+Operational fit reduces implementation complexity and supports faster staff adoption.
+</div>
+</div>
+
+<div class="selection-reason-card">
+<div class="selection-reason-number">06</div>
+<div class="selection-reason-title">Implementation Effort</div>
+<div class="selection-reason-text">
+Less configuration is expected compared with a general-purpose CRM requiring spa-specific workflows.
+</div>
+</div>
+
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+
+    # =====================================================
+    # DECISION RATIONALE
+    # =====================================================
 
     st.subheader("Decision Rationale")
 
@@ -3037,39 +3270,64 @@ elif page == "06 · CRM Selection":
         [
             [
                 "Appointment Management",
-                "Strong native capability",
-                "Critical",
+                "25%",
+                "5 / 5",
+                "Native spa appointment capability",
             ],
             [
-                "Customer Records",
-                "Meets central-profile requirements",
-                "Critical",
+                "Customer Management",
+                "15%",
+                "4 / 5",
+                "Central customer profiles and history",
             ],
             [
-                "Automated Communication",
-                "Supports confirmations and reminders",
-                "Critical",
+                "Automation & Reminders",
+                "15%",
+                "5 / 5",
+                "Strong alignment with reminder requirements",
             ],
             [
                 "Usability",
-                "Suitable for operational staff",
-                "High",
+                "10%",
+                "5 / 5",
+                "Designed for operational salon/spa users",
+            ],
+            [
+                "Reporting & Analytics",
+                "10%",
+                "4 / 5",
+                "Supports core operational reporting",
+            ],
+            [
+                "Cost",
+                "10%",
+                "4 / 5",
+                "Suitable for a medium-sized business case",
+            ],
+            [
+                "Integration",
+                "5%",
+                "3 / 5",
+                "Less flexible than broader enterprise CRM platforms",
+            ],
+            [
+                "Security & Privacy",
+                "5%",
+                "4 / 5",
+                "Meets expected core business requirements",
             ],
             [
                 "Implementation Effort",
-                "Lower than heavily configurable CRM options",
-                "High",
-            ],
-            [
-                "Reporting",
-                "Meets core requirements with some configuration",
-                "Medium",
+                "5%",
+                "5 / 5",
+                "Lower configuration effort due to industry fit",
             ],
         ],
         columns=[
-            "Factor",
-            "Finding",
-            "Importance",
+            "Criterion",
+            "Weight",
+            "KiotViet Score",
+            "Selection Rationale",
         ],
     )
 
@@ -3079,58 +3337,103 @@ elif page == "06 · CRM Selection":
         use_container_width=True,
     )
 
+    # =====================================================
+    # TRADE-OFFS
+    # =====================================================
+
+    st.subheader("Key Trade-Off")
+
+    st.markdown(
+        """
+<div class="selection-tradeoff">
+
+<strong>Trade-off accepted:</strong>
+Getfly CRM and MISA AMIS CRM provide stronger general CRM,
+enterprise reporting and integration capability in some areas.
+
+However, these capabilities were given lower priority than
+<strong>appointment management, ease of use, reminder automation and spa-specific workflow fit</strong>
+for the current implementation.
+
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+
+    # =====================================================
+    # FIT-GAP ANALYSIS
+    # =====================================================
+
     st.subheader("Fit-Gap Analysis")
 
     gap = pd.DataFrame(
         [
             [
                 "Customer Profile",
-                "Supported",
+                "Strong Fit",
                 "None",
-                "Standard configuration",
+                "Configure required customer fields",
+            ],
+            [
+                "Customer / Service History",
+                "Strong Fit",
+                "Minor",
+                "Confirm history and notes structure",
             ],
             [
                 "Appointment Scheduling",
-                "Supported",
+                "Strong Fit",
                 "None",
-                "Standard configuration",
+                "Configure services, therapists and schedules",
             ],
             [
-                "Reminder Automation",
-                "Supported",
+                "Staff / Room Scheduling",
+                "Strong Fit",
                 "Minor",
-                "Configure reminder rules",
+                "Configure staff and resource availability",
             ],
             [
-                "Retention Reporting",
-                "Partial",
+                "Appointment Reminders",
+                "Strong Fit",
+                "Minor",
+                "Configure reminder timing and templates",
+            ],
+            [
+                "Customer Retention Reporting",
+                "Partial Fit",
                 "Moderate",
-                "Configure/customise reports",
+                "Configure reports and KPI definitions",
             ],
             [
-                "Existing Customer Data",
-                "Not migrated",
+                "Advanced Segmentation",
+                "Partial Fit",
+                "Moderate",
+                "Define customer segments or future enhancement",
+            ],
+            [
+                "Existing Excel Data",
+                "Implementation Gap",
                 "Major",
-                "Data cleansing and migration",
+                "Clean, map and migrate customer records",
             ],
             [
                 "Staff Knowledge",
-                "New system",
+                "Implementation Gap",
                 "Major",
-                "Training and SOP",
+                "Training, SOPs and post-go-live support",
             ],
             [
-                "Operating Process",
-                "Current manual steps",
+                "Current Manual Processes",
+                "Implementation Gap",
                 "Moderate",
-                "Process redesign and adoption",
+                "Standardise workflows across locations",
             ],
         ],
         columns=[
             "Requirement Area",
-            "Capability",
+            "Fit",
             "Gap",
-            "Response",
+            "Implementation Response",
         ],
     )
 
@@ -3138,6 +3441,83 @@ elif page == "06 · CRM Selection":
         gap,
         hide_index=True,
         use_container_width=True,
+    )
+
+    # =====================================================
+    # IMPLEMENTATION PRIORITIES
+    # =====================================================
+
+    st.subheader("Implementation Priorities")
+
+    priorities = pd.DataFrame(
+        [
+            [
+                "1",
+                "Customer Data",
+                "Clean and migrate existing Excel customer records",
+            ],
+            [
+                "2",
+                "Booking Configuration",
+                "Configure services, therapist schedules and appointment rules",
+            ],
+            [
+                "3",
+                "Communication",
+                "Configure confirmation and reminder workflows",
+            ],
+            [
+                "4",
+                "Reporting",
+                "Define retention, no-show and service-performance KPIs",
+            ],
+            [
+                "5",
+                "Training & Adoption",
+                "Train staff and standardise processes across all three locations",
+            ],
+        ],
+        columns=[
+            "Priority",
+            "Area",
+            "Action",
+        ],
+    )
+
+    st.dataframe(
+        priorities,
+        hide_index=True,
+        use_container_width=True,
+    )
+
+    # =====================================================
+    # SELECTION CONCLUSION
+    # =====================================================
+
+    st.markdown(
+        """
+<div class="selection-insight">
+
+<strong>Selection conclusion:</strong>
+KiotViet Salon provides the best balance between
+functional fit, implementation effort and operational usability
+for Wellness Perth Spa.
+
+The selection does not mean the platform satisfies every requirement
+without configuration. The remaining gaps become inputs into the
+future-state design and implementation plan.
+
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+
+    st.caption(
+        """
+        This recommendation is part of a simulated BA portfolio case study.
+        The selection is based on the requirements, prioritisation and scoring
+        assumptions established in the CRM Evaluation phase.
+        """
     )
 
     footer()
