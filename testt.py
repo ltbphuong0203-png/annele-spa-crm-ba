@@ -1986,18 +1986,6 @@ elif page == "05 · CRM Evaluation":
         "Comparing shortlisted solutions using requirements-driven evaluation criteria.",
     )
 
-# =========================================================
-# 05 CRM EVALUATION
-# =========================================================
-
-elif page == "05 · CRM Evaluation":
-
-    page_header(
-        "05",
-        "CRM Evaluation",
-        "Comparing shortlisted solutions using requirements-driven evaluation criteria.",
-    )
-
     # =====================================================
     # EVALUATION APPROACH
     # =====================================================
@@ -2025,16 +2013,24 @@ elif page == "05 · CRM Evaluation":
     margin-bottom: 1.8rem;
 }
 
+.evaluation-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+}
+
 .evaluation-flow {
     display: flex;
+    flex-direction: row;
     align-items: stretch;
-    gap: 0.45rem;
+    gap: 0.55rem;
     width: 100%;
+    min-width: 1050px;
 }
 
 .evaluation-card {
-    flex: 1;
-    min-width: 0;
+    flex: 1 1 0;
+    min-width: 145px;
     background: #ffffff;
     border: 1px solid #dfe7e4;
     border-radius: 14px;
@@ -2105,19 +2101,10 @@ elif page == "05 · CRM Evaluation":
     color: #dce9e5;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 700px) {
 
     .evaluation-flow {
-        flex-direction: column;
-    }
-
-    .evaluation-card {
-        min-height: auto;
-    }
-
-    .evaluation-arrow {
-        transform: rotate(90deg);
-        height: 24px;
+        min-width: 1000px;
     }
 }
 
@@ -2131,6 +2118,8 @@ elif page == "05 · CRM Evaluation":
 A structured evaluation process was used to move from defined business requirements
 to an evidence-based CRM recommendation.
 </div>
+
+<div class="evaluation-wrapper">
 
 <div class="evaluation-flow">
 
@@ -2193,6 +2182,9 @@ Recommend the best-fit CRM based on requirements coverage and overall value.
 </div>
 
 </div>
+
+</div>
+
 </div>
 """,
         unsafe_allow_html=True,
