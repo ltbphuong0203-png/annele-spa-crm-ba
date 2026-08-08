@@ -1986,8 +1986,8 @@ elif page == "05 · CRM Evaluation":
         "Comparing shortlisted solutions using requirements-driven evaluation criteria.",
     )
 
-    # =====================================================
-    # EVALUATION APPROACH
+        # =====================================================
+    # EVALUATION APPROACH — VERTICAL
     # =====================================================
 
     st.markdown(
@@ -2015,64 +2015,74 @@ elif page == "05 · CRM Evaluation":
 
 .evaluation-flow {
     display: flex;
-    align-items: stretch;
-    gap: 0.45rem;
-    width: 100%;
+    flex-direction: column;
+    gap: 0;
+    max-width: 850px;
 }
 
 .evaluation-card {
-    flex: 1;
-    min-width: 0;
     background: #ffffff;
     border: 1px solid #dfe7e4;
     border-radius: 14px;
-    padding: 1.1rem 0.9rem;
-    min-height: 150px;
+    padding: 1.2rem 1.4rem;
     box-shadow: 0 3px 10px rgba(25, 67, 57, 0.06);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    display: grid;
+    grid-template-columns: 45px 1fr;
+    column-gap: 1rem;
+    align-items: center;
 }
 
 .evaluation-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 7px 18px rgba(25, 67, 57, 0.10);
+    border-color: #194339;
+    box-shadow: 0 6px 16px rgba(25, 67, 57, 0.10);
 }
 
 .evaluation-step {
-    width: 30px;
-    height: 30px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
+
     background: #194339;
-    color: white;
+    color: #ffffff;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.78rem;
+
+    font-size: 0.8rem;
     font-weight: 700;
-    margin-bottom: 0.9rem;
+}
+
+.evaluation-content {
+    display: flex;
+    flex-direction: column;
 }
 
 .evaluation-title {
     color: #194339;
-    font-size: 0.96rem;
+    font-size: 1.02rem;
     font-weight: 700;
-    line-height: 1.35;
-    margin-bottom: 0.5rem;
+    line-height: 1.4;
+    margin-bottom: 0.2rem;
 }
 
 .evaluation-description {
     color: #6b7280;
-    font-size: 0.82rem;
-    line-height: 1.45;
+    font-size: 0.9rem;
+    line-height: 1.5;
 }
 
 .evaluation-arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     color: #194339;
     font-size: 1.35rem;
     font-weight: 700;
-    flex: 0 0 20px;
+
+    padding-left: 15px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
 }
 
 .evaluation-card.final {
@@ -2093,22 +2103,6 @@ elif page == "05 · CRM Evaluation":
     color: #dce9e5;
 }
 
-@media (max-width: 1000px) {
-
-    .evaluation-flow {
-        flex-direction: column;
-    }
-
-    .evaluation-card {
-        min-height: auto;
-    }
-
-    .evaluation-arrow {
-        transform: rotate(90deg);
-        height: 24px;
-    }
-}
-
 </style>
 
 <div class="evaluation-section">
@@ -2124,59 +2118,77 @@ to an evidence-based CRM recommendation.
 
 <div class="evaluation-card">
 <div class="evaluation-step">01</div>
+
+<div class="evaluation-content">
 <div class="evaluation-title">Requirements</div>
 <div class="evaluation-description">
 Define business, functional and non-functional requirements.
 </div>
 </div>
+</div>
 
-<div class="evaluation-arrow">→</div>
+<div class="evaluation-arrow">↓</div>
 
 <div class="evaluation-card">
 <div class="evaluation-step">02</div>
+
+<div class="evaluation-content">
 <div class="evaluation-title">Define Evaluation Criteria</div>
 <div class="evaluation-description">
-Translate requirements into measurable CRM selection criteria.
+Translate priority requirements into measurable CRM selection criteria.
+</div>
 </div>
 </div>
 
-<div class="evaluation-arrow">→</div>
+<div class="evaluation-arrow">↓</div>
 
 <div class="evaluation-card">
 <div class="evaluation-step">03</div>
+
+<div class="evaluation-content">
 <div class="evaluation-title">Shortlist Solutions</div>
 <div class="evaluation-description">
-Identify CRM options that could meet the spa's operational needs.
+Identify CRM solutions that could meet the spa's operational and business needs.
+</div>
 </div>
 </div>
 
-<div class="evaluation-arrow">→</div>
+<div class="evaluation-arrow">↓</div>
 
 <div class="evaluation-card">
 <div class="evaluation-step">04</div>
+
+<div class="evaluation-content">
 <div class="evaluation-title">Requirements Fit Analysis</div>
 <div class="evaluation-description">
-Assess how well each solution satisfies priority requirements.
+Assess how well each shortlisted solution satisfies the priority requirements.
+</div>
 </div>
 </div>
 
-<div class="evaluation-arrow">→</div>
+<div class="evaluation-arrow">↓</div>
 
 <div class="evaluation-card">
 <div class="evaluation-step">05</div>
+
+<div class="evaluation-content">
 <div class="evaluation-title">Weighted Decision Matrix</div>
 <div class="evaluation-description">
-Score solutions using weighted business and technical criteria.
+Apply weighted criteria and compare the overall suitability of each CRM.
+</div>
 </div>
 </div>
 
-<div class="evaluation-arrow">→</div>
+<div class="evaluation-arrow">↓</div>
 
 <div class="evaluation-card final">
 <div class="evaluation-step">06</div>
+
+<div class="evaluation-content">
 <div class="evaluation-title">Recommendation</div>
 <div class="evaluation-description">
-Recommend the best-fit CRM based on requirements coverage and overall value.
+Recommend the best-fit CRM based on requirements coverage, implementation effort and overall value.
+</div>
 </div>
 </div>
 
@@ -2185,194 +2197,6 @@ Recommend the best-fit CRM based on requirements coverage and overall value.
 """,
         unsafe_allow_html=True,
     )
-
-    # =====================================================
-    # SHORTLISTED SOLUTIONS
-    # =====================================================
-
-    st.subheader("Shortlisted Solution Types")
-
-    c1, c2, c3 = st.columns(3)
-
-    with c1:
-        st.markdown("### CRM A")
-        st.markdown("**General-Purpose CRM**")
-        st.write(
-            "Strong customer management, automation and reporting. May require appointment integration."
-        )
-
-    with c2:
-        st.markdown("### CRM B")
-        st.markdown("**Spa-Specific Platform**")
-        st.write(
-            "Strong appointment, therapist and service functionality with lower configuration effort."
-        )
-
-    with c3:
-        st.markdown("### CRM C")
-        st.markdown("**Configurable CRM**")
-        st.write(
-            "Flexible workflows and integration capability but requires more implementation effort."
-        )
-
-    # =====================================================
-    # WEIGHTED DECISION MATRIX
-    # =====================================================
-
-    st.subheader("Interactive Weighted Decision Matrix")
-
-    st.caption(
-        "Adjust the criterion weights to explore how different business priorities influence the recommendation."
-    )
-
-    criteria_defaults = {
-        "Customer Management": 20,
-        "Appointment Management": 20,
-        "Automation & Reminders": 15,
-        "Reporting & Analytics": 15,
-        "Usability": 10,
-        "Integration": 5,
-        "Security & Privacy": 5,
-        "Implementation Effort": 5,
-        "Cost": 5,
-    }
-
-    weights = {}
-
-    col_a, col_b = st.columns(2)
-
-    criteria_items = list(criteria_defaults.items())
-
-    for i, (criterion, default) in enumerate(criteria_items):
-        target_col = col_a if i % 2 == 0 else col_b
-
-        with target_col:
-            weights[criterion] = st.slider(
-                criterion,
-                min_value=0,
-                max_value=30,
-                value=default,
-                step=5,
-            )
-
-    total_weight = sum(weights.values())
-
-    if total_weight != 100:
-        st.warning(
-            f"Current total weighting is {total_weight}%. "
-            "For formal evaluation, weights should total 100%."
-        )
-    else:
-        st.success("Weights total 100%.")
-
-    crm_scores = {
-        "CRM A": {
-            "Customer Management": 5,
-            "Appointment Management": 2,
-            "Automation & Reminders": 5,
-            "Reporting & Analytics": 5,
-            "Usability": 3,
-            "Integration": 5,
-            "Security & Privacy": 5,
-            "Implementation Effort": 2,
-            "Cost": 2,
-        },
-        "CRM B": {
-            "Customer Management": 4,
-            "Appointment Management": 5,
-            "Automation & Reminders": 4,
-            "Reporting & Analytics": 4,
-            "Usability": 5,
-            "Integration": 3,
-            "Security & Privacy": 4,
-            "Implementation Effort": 5,
-            "Cost": 4,
-        },
-        "CRM C": {
-            "Customer Management": 5,
-            "Appointment Management": 3,
-            "Automation & Reminders": 5,
-            "Reporting & Analytics": 4,
-            "Usability": 3,
-            "Integration": 5,
-            "Security & Privacy": 5,
-            "Implementation Effort": 3,
-            "Cost": 3,
-        },
-    }
-
-    matrix_rows = []
-
-    for criterion in weights:
-        matrix_rows.append(
-            {
-                "Criterion": criterion,
-                "Weight %": weights[criterion],
-                "CRM A": crm_scores["CRM A"][criterion],
-                "CRM B": crm_scores["CRM B"][criterion],
-                "CRM C": crm_scores["CRM C"][criterion],
-            }
-        )
-
-    matrix_df = pd.DataFrame(matrix_rows)
-
-    st.dataframe(
-        matrix_df,
-        hide_index=True,
-        use_container_width=True,
-    )
-
-    results = {}
-
-    for crm in crm_scores:
-        weighted_total = 0
-
-        for criterion, weight in weights.items():
-            weighted_total += crm_scores[crm][criterion] * weight
-
-        if total_weight > 0:
-            results[crm] = weighted_total / total_weight
-        else:
-            results[crm] = 0
-
-    result_df = pd.DataFrame(
-        {
-            "CRM": results.keys(),
-            "Weighted Score / 5": [
-                round(x, 2)
-                for x in results.values()
-            ],
-        }
-    ).sort_values(
-        "Weighted Score / 5",
-        ascending=False,
-    )
-
-    st.subheader("Evaluation Result")
-
-    st.dataframe(
-        result_df,
-        hide_index=True,
-        use_container_width=True,
-    )
-
-    winner = result_df.iloc[0]["CRM"]
-    score = result_df.iloc[0]["Weighted Score / 5"]
-
-    st.success(
-        f"Current recommended solution: {winner} — {score}/5"
-    )
-
-    st.caption(
-        """
-        Scores are illustrative for the portfolio project.
-        In a real selection exercise, each score would be supported by
-        vendor research, demonstrations and stakeholder validation.
-        """
-    )
-
-    footer()
-
 # =========================================================
 # 06 CRM SELECTION
 # =========================================================
