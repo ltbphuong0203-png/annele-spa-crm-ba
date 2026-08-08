@@ -296,17 +296,18 @@ requirements = pd.DataFrame(
 
 traceability = pd.DataFrame(
     [
-        ["P01", "BR-01", "FR-01 / FR-02 / FR-03", "US-01", "UAT-01"],
-        ["P02", "BR-02", "FR-04", "US-02", "UAT-02"],
-        ["P03", "BR-03 / BR-04", "FR-13 / FR-15", "US-03", "UAT-03"],
-        ["P04", "BR-04", "FR-15 / FR-18", "US-04", "UAT-04"],
-        ["P05", "BR-05", "FR-17 / FR-18 / FR-19 / FR-20", "US-05", "UAT-05"],
+        ["P01", "Fragmented customer data", "BR-01", "FR-01 / FR-02 / FR-03 / FR-05", "KiotViet customer profile", "UAT-01"],
+        ["P02", "No complete customer view", "BR-02", "FR-03 / FR-04", "Customer & service history", "UAT-02"],
+        ["P03", "Manual booking management", "BR-03", "FR-07 / FR-08 / FR-09 / FR-10 / FR-11 / FR-12", "Appointment scheduling", "UAT-03"],
+        ["P04", "Inconsistent reminders", "BR-04", "FR-13 / FR-15 / FR-16", "Automated confirmations & reminders", "UAT-04"],
+        ["P05", "Limited reporting", "BR-05", "FR-17 / FR-18 / FR-19 / FR-20", "Retention & service reporting", "UAT-05"],
     ],
     columns=[
+        "Pain Point",
         "Business Problem",
         "Business Requirement",
         "Functional Requirement",
-        "User Story",
+        "Selected Solution Capability",
         "UAT",
     ],
 )
@@ -378,7 +379,7 @@ spa services business.
 
 <p>
 Wellness Perth Spa is a medium-sized wellness business with
-<strong>three locations across WA</strong>.
+<strong>three locations</strong>.
 Customer information, appointments, and interactions are currently managed through
 <strong>Excel and disconnected communication channels</strong>,
 making it difficult for staff to access complete customer histories
@@ -3531,12 +3532,8 @@ elif page == "07 · Future-State Design":
     page_header(
         "07",
         "Future-State Design",
-        "Redesigning the customer and booking process around the selected CRM solution.",
+        "Redesigning the customer and booking process around the selected KiotViet Salon solution.",
     )
-
-    # =====================================================
-    # TO-BE PROCESS
-    # =====================================================
 
     st.markdown(
         """
@@ -3545,11 +3542,10 @@ elif page == "07 · Future-State Design":
 <h2>To-Be Process</h2>
 
 <p>
-The future-state process was designed to address the key weaknesses identified
-in the current-state analysis. The proposed process introduces a
-<strong>centralised customer record, integrated appointment management,
-automated communication and improved information visibility</strong>
-across all spa locations.
+The future-state process applies the selected <strong>KiotViet Salon</strong>
+capabilities to the problems identified in the As-Is analysis. The design introduces
+a <strong>central customer profile, shared appointment history, integrated scheduling,
+automated confirmations and reminders, and central reporting</strong> across all three locations.
 </p>
 
 </div>
@@ -3563,67 +3559,33 @@ across all spa locations.
     to_be_path = BASE_DIR / "TO-BE Process.png"
 
     if to_be_path.exists():
-
         st.image(
             str(to_be_path),
             use_container_width=True,
         )
-
     else:
-
         st.error(
             "To-Be process image could not be found. "
             "Make sure 'TO-BE Process.png' is in the same GitHub folder as testt.py."
         )
 
-    # =====================================================
-    # AS-IS VS TO-BE
-    # =====================================================
-
     st.subheader("As-Is vs To-Be")
 
     comparison = pd.DataFrame(
         [
-            [
-                "Customer Search",
-                "Search multiple sources",
-                "Search central CRM profile",
-            ],
-            [
-                "Customer History",
-                "Fragmented across files/channels",
-                "Single customer view",
-            ],
-            [
-                "Appointment Availability",
-                "Manual checking",
-                "CRM availability view",
-            ],
-            [
-                "Booking",
-                "Manual record",
-                "CRM-linked appointment",
-            ],
-            [
-                "Confirmation",
-                "Dependent on staff",
-                "Automatically generated",
-            ],
-            [
-                "Reminders",
-                "Manual and inconsistent",
-                "Automated reminder workflow",
-            ],
-            [
-                "Reporting",
-                "Manual consolidation",
-                "Centralised reporting",
-            ],
+            ["Customer Data", "Multiple Excel files", "Central KiotViet customer profile", "P01 / BR-01"],
+            ["Customer History", "Fragmented across locations", "Shared service & appointment history", "P02 / BR-02"],
+            ["Appointment Booking", "Manual checking and recording", "Integrated service, therapist and time-slot scheduling", "P03 / BR-03"],
+            ["Booking Conflicts", "Dependent on manual checks", "Availability validation before booking", "P03 / FR-11"],
+            ["Confirmation", "Dependent on staff action", "Automatic confirmation after booking", "P04 / FR-13"],
+            ["Reminders", "Manual and inconsistent", "Configured automated reminder workflow", "P04 / FR-15"],
+            ["Reporting", "Manual consolidation", "Central retention, no-show and service reporting", "P05 / BR-05"],
         ],
         columns=[
             "Area",
             "As-Is",
-            "To-Be",
+            "To-Be with KiotViet Salon",
+            "Traceability",
         ],
     )
 
@@ -3635,13 +3597,14 @@ across all spa locations.
 
     st.info(
         """
-        The future-state process reduces manual hand-offs, creates a single source
-        of customer information and introduces automation for critical appointment
-        communications.
+        **Future-state design principle:** The To-Be process directly addresses the
+        five operational pain points identified in the Business Problem phase.
+        Configuration decisions that remain unresolved are carried into implementation and UAT.
         """
     )
 
     footer()
+
 
 # =========================================================
 # 08 IMPLEMENTATION
@@ -3651,60 +3614,24 @@ elif page == "08 · Implementation":
 
     page_header(
         "08",
-        "Implementation Planning",
-        "Translating the selected solution into deliverable work, migration activities and change actions.",
+        "Implementation",
+        "Planning the configuration, data migration, testing and change activities required to implement KiotViet Salon.",
     )
 
     st.subheader("Implementation Phases")
 
     phases = pd.DataFrame(
         [
-            [
-                "1",
-                "Preparation",
-                "Confirm scope, roles, risks and implementation schedule",
-            ],
-            [
-                "2",
-                "Configuration",
-                "Configure customer fields, booking rules, reminders and permissions",
-            ],
-            [
-                "3",
-                "Data Migration",
-                "Clean, map, import and validate customer data",
-            ],
-            [
-                "4",
-                "Testing",
-                "System testing and defect resolution",
-            ],
-            [
-                "5",
-                "UAT",
-                "Business-user validation of critical workflows",
-            ],
-            [
-                "6",
-                "Training",
-                "Train reception, therapists, manager and marketing users",
-            ],
-            [
-                "7",
-                "Go-Live",
-                "Deploy CRM and provide hypercare",
-            ],
-            [
-                "8",
-                "Review",
-                "Measure adoption, KPIs and improvement opportunities",
-            ],
+            ["1", "Preparation", "Confirm scope, project roles, locations, risks and implementation schedule"],
+            ["2", "KiotViet Configuration", "Configure customer fields, services, therapists, rooms, permissions and booking rules"],
+            ["3", "Data Cleansing & Migration", "Clean Excel data, remove duplicates, map fields, import and reconcile records"],
+            ["4", "Automation & Reporting", "Configure confirmations, reminders, retention KPIs and service reports"],
+            ["5", "System Testing", "Validate configured workflows, permissions, migrated data and integrations"],
+            ["6", "UAT", "Business users validate the five critical end-to-end scenarios"],
+            ["7", "Training & Go-Live", "Train users across three locations and cut over to the new process"],
+            ["8", "Hypercare & Review", "Resolve early issues, monitor adoption and track benefits"],
         ],
-        columns=[
-            "Phase",
-            "Activity",
-            "Outcome",
-        ],
+        columns=["Phase", "Activity", "Outcome"],
     )
 
     st.dataframe(
@@ -3713,21 +3640,18 @@ elif page == "08 · Implementation":
         use_container_width=True,
     )
 
-    st.subheader("Epics")
+    st.subheader("Delivery Scope")
 
     epics = pd.DataFrame(
         [
-            ["EP-01", "Customer Management"],
-            ["EP-02", "Appointment Management"],
-            ["EP-03", "Communication Automation"],
-            ["EP-04", "Reporting & Analytics"],
-            ["EP-05", "Data Migration"],
-            ["EP-06", "Security & Access"],
+            ["EP-01", "Customer Management", "BR-01 / BR-02", "Central customer profile and shared history"],
+            ["EP-02", "Appointment Management", "BR-03", "Service, therapist and time-slot scheduling"],
+            ["EP-03", "Communication Automation", "BR-04", "Automatic confirmations and reminders"],
+            ["EP-04", "Reporting & Analytics", "BR-05", "Retention, no-show and service-performance reporting"],
+            ["EP-05", "Data Migration", "P01", "Clean and migrate existing Excel records"],
+            ["EP-06", "Security & Access", "NFR-02 / NFR-03 / NFR-07", "Authenticated role-based access and privacy controls"],
         ],
-        columns=[
-            "Epic",
-            "Name",
-        ],
+        columns=["Epic", "Name", "Source", "Implementation Outcome"],
     )
 
     st.dataframe(
@@ -3740,73 +3664,60 @@ elif page == "08 · Implementation":
 
     st.markdown(
         """
-### US-01 — Customer Search
+### US-01 — Central Customer Profile
+**As a receptionist**, I want to search for a customer by name, phone or email so that I can access one reliable customer record.
 
-**As a receptionist**,  
-I want to search for customers by name, phone number or email,  
-so that I can quickly access the correct customer profile.
-
-**Acceptance Criteria**
-
-- Given a customer exists in the CRM
-- When the receptionist enters a matching name, phone number or email
-- Then the CRM displays the relevant customer record
+**Acceptance criteria:** a matching customer can be found quickly and the central profile displays current customer information.
 
 ---
 
 ### US-02 — Customer History
-
-**As a therapist**,  
-I want to view relevant customer treatment and appointment history,  
-so that I can provide a more personalised service.
+**As a therapist**, I want to view a customer's appointment and service history so that I can provide consistent and personalised service across locations.
 
 ---
 
-### US-03 — Appointment Confirmation
-
-**As a customer**,  
-I want to receive confirmation after making an appointment,  
-so that I know the booking has been successfully recorded.
+### US-03 — Appointment Booking
+**As a receptionist**, I want to view available therapists and time slots and create an appointment so that bookings are recorded consistently without conflicts.
 
 ---
 
-### US-04 — Appointment Reminder
-
-**As a receptionist**,  
-I want appointment reminders to be sent automatically,  
-so that the spa does not rely solely on manual follow-up.
+### US-04 — Automated Reminder
+**As a receptionist**, I want confirmations and reminders to be sent automatically so that customer communication does not depend on manual follow-up.
 
 ---
 
-### US-05 — Management Reporting
-
-**As a spa manager**,  
-I want to view customer-retention and service-performance information,  
-so that I can identify trends and support business decisions.
+### US-05 — Retention Reporting
+**As a spa manager**, I want to view repeat-visit, no-show and service-performance reports so that I can identify trends and act earlier.
         """
     )
 
     st.subheader("Data Migration")
 
+    st.markdown(
+        """
+        The current-state analysis identified that approximately **18% of customer records
+        are duplicate or incomplete** in the simulated baseline. Data migration therefore
+        includes cleansing before any production import.
+        """
+    )
+
     st.code(
         """
-Existing Customer Data
+Excel Customer Files
         ↓
-Data Profiling
+Profile & Assess Data Quality
         ↓
-Remove Duplicates
+Remove Duplicates / Correct Incomplete Records
         ↓
-Clean Missing / Invalid Data
-        ↓
-Map Existing Fields → CRM Fields
+Map Excel Fields → KiotViet Fields
         ↓
 Test Migration
         ↓
-Validate Records
+Business Validation
         ↓
 Production Migration
         ↓
-Post-Migration Reconciliation
+Record Reconciliation
         """,
         language=None,
     )
@@ -3815,43 +3726,14 @@ Post-Migration Reconciliation
 
     risks = pd.DataFrame(
         [
-            [
-                "R01",
-                "Poor data quality",
-                "High",
-                "Clean and validate data before migration",
-            ],
-            [
-                "R02",
-                "Staff resistance to new process",
-                "Medium",
-                "Early engagement, training and feedback",
-            ],
-            [
-                "R03",
-                "Incorrect configuration",
-                "Medium",
-                "Configuration review and UAT",
-            ],
-            [
-                "R04",
-                "Migration data loss",
-                "High",
-                "Backup, test migration and reconciliation",
-            ],
-            [
-                "R05",
-                "Low user adoption",
-                "High",
-                "Usage monitoring and post-go-live support",
-            ],
+            ["R01", "Duplicate or incomplete legacy data", "High", "Clean, deduplicate and validate before migration"],
+            ["R02", "Different practices across three locations", "High", "Agree one standard To-Be process before go-live"],
+            ["R03", "Incorrect reminder configuration", "High", "Test confirmation/reminder timing and templates in UAT"],
+            ["R04", "Low staff adoption", "High", "Role-based training, quick guides and hypercare"],
+            ["R05", "Reporting does not meet BR-05", "Medium", "Define KPI logic before configuration and validate reports in UAT"],
+            ["R06", "Migration reconciliation issues", "High", "Backup source files, test migration and reconcile record counts"],
         ],
-        columns=[
-            "Risk",
-            "Description",
-            "Impact",
-            "Mitigation",
-        ],
+        columns=["Risk", "Description", "Impact", "Mitigation"],
     )
 
     st.dataframe(
@@ -3862,6 +3744,7 @@ Post-Migration Reconciliation
 
     footer()
 
+
 # =========================================================
 # 09 TESTING & UAT
 # =========================================================
@@ -3871,63 +3754,28 @@ elif page == "09 · Testing & UAT":
     page_header(
         "09",
         "Testing & UAT",
-        "Validating that the selected and configured CRM supports critical business requirements.",
+        "Validating that the configured KiotViet Salon solution satisfies the agreed requirements and future-state process.",
     )
 
     st.subheader("UAT Objectives")
 
     st.write(
         """
-        UAT confirms that the configured CRM supports the agreed business processes
-        and is suitable for operational use before go-live.
+        UAT focuses on the five critical business outcomes established in Pages 02–06:
+        a central customer record, complete customer history, consistent appointment booking,
+        automated communication and usable management reporting.
         """
     )
 
     uat = pd.DataFrame(
         [
-            [
-                "UAT-01",
-                "Create & Find Customer",
-                "FR-01 / FR-02 / FR-03",
-                "Create a customer and search by phone",
-                "Correct customer profile is displayed",
-            ],
-            [
-                "UAT-02",
-                "View Customer History",
-                "FR-04",
-                "Open an existing customer profile",
-                "Previous appointments are visible",
-            ],
-            [
-                "UAT-03",
-                "Appointment Confirmation",
-                "FR-13",
-                "Create a new appointment",
-                "Confirmation is automatically generated",
-            ],
-            [
-                "UAT-04",
-                "Appointment Reminder",
-                "FR-15",
-                "Trigger configured reminder rule",
-                "Reminder is sent according to configuration",
-            ],
-            [
-                "UAT-05",
-                "Retention Reporting",
-                "FR-19",
-                "Open retention report",
-                "Repeat-customer data is displayed",
-            ],
+            ["UAT-01", "Find Central Customer Profile", "BR-01 / FR-02 / FR-03", "Search by phone or email", "One correct customer profile is displayed"],
+            ["UAT-02", "View Customer History", "BR-02 / FR-04", "Open an existing customer", "Appointment and service history is visible"],
+            ["UAT-03", "Create Appointment", "BR-03 / FR-07–FR-12", "Select service, therapist and available time", "Booking is created, linked to customer and no conflict occurs"],
+            ["UAT-04", "Confirmation & Reminder", "BR-04 / FR-13 / FR-15", "Create an eligible appointment and trigger configured reminder", "Confirmation and reminder follow the agreed rule"],
+            ["UAT-05", "Retention & Service Reporting", "BR-05 / FR-18–FR-20", "Open management reports", "Repeat visits, no-shows and service performance can be reviewed"],
         ],
-        columns=[
-            "UAT ID",
-            "Scenario",
-            "Requirement",
-            "Test",
-            "Expected Result",
-        ],
+        columns=["UAT ID", "Scenario", "Requirement", "Test", "Expected Result"],
     )
 
     st.dataframe(
@@ -3940,28 +3788,26 @@ elif page == "09 · Testing & UAT":
 
     st.markdown(
         """
-### UAT-03 — Automated Appointment Confirmation
+### UAT-04 — Automated Appointment Communication
 
-**Precondition**
-
-Receptionist is logged into the CRM and a valid customer profile exists.
+**Preconditions**
+- Receptionist is logged into KiotViet Salon.
+- Customer profile exists.
+- Reminder rule and communication template are configured.
 
 **Steps**
-
 1. Search for the customer.
-2. Open the customer profile.
-3. Select **Create Appointment**.
-4. Select a service.
-5. Select an available therapist.
-6. Select an available date and time.
-7. Save the appointment.
+2. Create a new appointment.
+3. Confirm the booking.
+4. Verify that the confirmation is generated.
+5. Allow the configured reminder rule to trigger.
+6. Review the communication status.
 
-**Expected Result**
-
-- Appointment is successfully created.
-- Appointment is linked to the customer's profile.
-- Selected therapist/time is reserved.
-- Customer receives the configured confirmation.
+**Expected result**
+- The appointment is linked to the correct customer.
+- Confirmation is generated using the configured channel/template.
+- Reminder is triggered at the agreed time.
+- Communication status is visible to staff.
         """
     )
 
@@ -3973,11 +3819,11 @@ Receptionist is logged into the CRM and a valid customer profile exists.
         st.markdown("### UAT Entry")
         st.write(
             """
-            - Configuration completed
-            - Critical defects resolved
-            - Test data prepared
-            - UAT users identified
-            - Requirements baseline approved
+            - KiotViet configuration completed
+            - Test migration completed
+            - Critical system defects resolved
+            - Reminder/report configuration available
+            - UAT users from relevant roles identified
             """
         )
 
@@ -3985,14 +3831,16 @@ Receptionist is logged into the CRM and a valid customer profile exists.
         st.markdown("### UAT Exit")
         st.write(
             """
-            - All critical scenarios executed
+            - UAT-01 to UAT-05 executed
             - No unresolved critical defects
-            - Business acceptance obtained
-            - Go-live recommendation completed
+            - Business owners accept critical workflows
+            - Migration and reporting results validated
+            - Go-live recommendation approved
             """
         )
 
     footer()
+
 
 # =========================================================
 # 10 GO-LIVE & ADOPTION
@@ -4002,40 +3850,20 @@ elif page == "10 · Go-Live & Adoption":
 
     page_header(
         "10",
-        "Go-Live, Training & Adoption",
-        "Supporting users through the transition from current processes to the new CRM.",
+        "Go-Live & Adoption",
+        "Preparing users and data for a controlled KiotViet Salon launch across all three locations.",
     )
 
     st.subheader("Training Plan")
 
     training = pd.DataFrame(
         [
-            [
-                "Receptionist",
-                "Customer search, booking, cancellation, reminders",
-                "Workshop + Quick Guide",
-            ],
-            [
-                "Therapist",
-                "Customer history, treatment notes",
-                "Short Workshop + SOP",
-            ],
-            [
-                "Manager",
-                "Dashboard, reporting, user oversight",
-                "Manager Training",
-            ],
-            [
-                "Marketing",
-                "Segments, customer lists and campaign workflows",
-                "Workshop",
-            ],
+            ["Receptionist", "Customer search, profile updates, booking, reschedule/cancel, communication status", "Workshop + Quick Guide"],
+            ["Therapist", "Customer/service history, notes and daily schedule", "Short Workshop + SOP"],
+            ["Spa Manager", "Retention, no-show and service reports; user oversight", "Manager Training"],
+            ["Marketing", "Customer segments and approved customer data use", "Workshop"],
         ],
-        columns=[
-            "Audience",
-            "Training Content",
-            "Method",
-        ],
+        columns=["Audience", "Training Content", "Method"],
     )
 
     st.dataframe(
@@ -4044,454 +3872,60 @@ elif page == "10 · Go-Live & Adoption":
         use_container_width=True,
     )
 
-    st.subheader("Go-Live Plan")
-
-        # =====================================================
-    # IMPLEMENTATION / GO-LIVE TIMELINE
-    # =====================================================
-
-    st.markdown(
-        """
-<style>
-
-.timeline-section {
-    margin-top: 2.5rem;
-    margin-bottom: 3rem;
-}
-
-.timeline-section h2 {
-    color: #194339 !important;
-    font-size: 1.8rem;
-    font-weight: 750;
-    margin-bottom: 0.4rem;
-}
-
-.timeline-subtitle {
-    color: #6b7280;
-    font-size: 1rem;
-    margin-bottom: 1.8rem;
-}
-
-.timeline-card {
-    background: #ffffff;
-    border: 1px solid #dfe7e4;
-    border-radius: 18px;
-    padding: 2rem;
-    box-shadow: 0 4px 14px rgba(25, 67, 57, 0.06);
-    overflow-x: auto;
-}
-
-.timeline-grid {
-    display: grid;
-    grid-template-columns: 230px repeat(12, minmax(55px, 1fr));
-    min-width: 1050px;
-    align-items: center;
-}
-
-
-/* WEEK HEADERS */
-
-.week-header {
-    text-align: center;
-    color: #7b8b86;
-    font-size: 0.8rem;
-    font-weight: 600;
-    padding-bottom: 1rem;
-}
-
-
-/* TASK LABEL */
-
-.task-label {
-    color: #374151;
-    font-size: 0.95rem;
-    padding: 0.8rem 1rem 0.8rem 0;
-    text-align: right;
-}
-
-
-/* CELLS */
-
-.timeline-cell {
-    min-height: 46px;
-    border-left: 1px solid #edf1ef;
-    position: relative;
-}
-
-
-/* BARS */
-
-.timeline-bar {
-    height: 34px;
-    border-radius: 7px;
-    margin-top: 6px;
-    margin-bottom: 6px;
-}
-
-.bar-primary {
-    background: #194339;
-}
-
-.bar-secondary {
-    background: #37695d;
-}
-
-.bar-light {
-    background: #78a399;
-}
-
-.bar-soft {
-    background: #b7cec8;
-}
-
-
-/* MILESTONES */
-
-.milestone-row {
-    border-top: 1px solid #dfe7e4;
-    margin-top: 0.8rem;
-}
-
-.milestone-label {
-    color: #194339;
-    font-weight: 700;
-    text-align: right;
-    padding-right: 1rem;
-}
-
-.milestone-cell {
-    position: relative;
-    height: 50px;
-}
-
-.milestone {
-    width: 14px;
-    height: 14px;
-    background: #194339;
-    transform: rotate(45deg);
-    position: absolute;
-    left: 50%;
-    top: 15px;
-    margin-left: -7px;
-}
-
-
-/* MOBILE */
-
-@media (max-width: 900px) {
-
-    .timeline-card {
-        padding: 1.2rem;
-    }
-
-}
-
-</style>
-
-<div class="timeline-section">
-
-<h2>Implementation & Go-Live Timeline</h2>
-
-<div class="timeline-subtitle">
-12-week CRM implementation with parallel workstreams and key milestone gates.
-</div>
-
-<div class="timeline-card">
-
-<div class="timeline-grid">
-
-<!-- HEADER -->
-<div></div>
-
-<div class="week-header">W1</div>
-<div class="week-header">W2</div>
-<div class="week-header">W3</div>
-<div class="week-header">W4</div>
-<div class="week-header">W5</div>
-<div class="week-header">W6</div>
-<div class="week-header">W7</div>
-<div class="week-header">W8</div>
-<div class="week-header">W9</div>
-<div class="week-header">W10</div>
-<div class="week-header">W11</div>
-<div class="week-header">W12</div>
-
-
-<!-- =========================================
-     REQUIREMENTS & PLANNING
-========================================= -->
-
-<div class="task-label">Requirements & Planning</div>
-
-<div class="timeline-cell"><div class="timeline-bar bar-primary"></div></div>
-<div class="timeline-cell"><div class="timeline-bar bar-primary"></div></div>
-<div class="timeline-cell"><div class="timeline-bar bar-primary"></div></div>
-
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-
-
-<!-- =========================================
-     CRM CONFIGURATION
-========================================= -->
-
-<div class="task-label">CRM Configuration</div>
-
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-
-<div class="timeline-cell"><div class="timeline-bar bar-secondary"></div></div>
-<div class="timeline-cell"><div class="timeline-bar bar-secondary"></div></div>
-<div class="timeline-cell"><div class="timeline-bar bar-secondary"></div></div>
-<div class="timeline-cell"><div class="timeline-bar bar-secondary"></div></div>
-
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-
-
-<!-- =========================================
-     DATA CLEANSING & MIGRATION
-========================================= -->
-
-<div class="task-label">Data Cleansing & Migration</div>
-
-<div class="timeline-cell"></div>
-
-<div class="timeline-cell"><div class="timeline-bar bar-light"></div></div>
-<div class="timeline-cell"><div class="timeline-bar bar-light"></div></div>
-<div class="timeline-cell"><div class="timeline-bar bar-light"></div></div>
-<div class="timeline-cell"><div class="timeline-bar bar-light"></div></div>
-<div class="timeline-cell"><div class="timeline-bar bar-light"></div></div>
-
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-
-
-<!-- =========================================
-     AUTOMATION & REPORTING
-========================================= -->
-
-<div class="task-label">Automation & Reporting</div>
-
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-
-<div class="timeline-cell"><div class="timeline-bar bar-secondary"></div></div>
-<div class="timeline-cell"><div class="timeline-bar bar-secondary"></div></div>
-<div class="timeline-cell"><div class="timeline-bar bar-secondary"></div></div>
-<div class="timeline-cell"><div class="timeline-bar bar-secondary"></div></div>
-
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-
-
-<!-- =========================================
-     SYSTEM TESTING
-========================================= -->
-
-<div class="task-label">System Testing</div>
-
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-
-<div class="timeline-cell"><div class="timeline-bar bar-light"></div></div>
-<div class="timeline-cell"><div class="timeline-bar bar-light"></div></div>
-
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-
-
-<!-- =========================================
-     UAT
-========================================= -->
-
-<div class="task-label">User Acceptance Testing</div>
-
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-
-<div class="timeline-cell"><div class="timeline-bar bar-primary"></div></div>
-<div class="timeline-cell"><div class="timeline-bar bar-primary"></div></div>
-
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-
-
-<!-- =========================================
-     TRAINING
-========================================= -->
-
-<div class="task-label">Staff Training</div>
-
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-
-<div class="timeline-cell"><div class="timeline-bar bar-secondary"></div></div>
-<div class="timeline-cell"><div class="timeline-bar bar-secondary"></div></div>
-
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-
-
-<!-- =========================================
-     GO LIVE
-========================================= -->
-
-<div class="task-label">Go-Live</div>
-
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-
-<div class="timeline-cell"><div class="timeline-bar bar-primary"></div></div>
-
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-
-
-<!-- =========================================
-     HYPERCARE
-========================================= -->
-
-<div class="task-label">Hypercare & Adoption Support</div>
-
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-<div class="timeline-cell"></div>
-
-<div class="timeline-cell"></div>
-
-<div class="timeline-cell"><div class="timeline-bar bar-soft"></div></div>
-<div class="timeline-cell"><div class="timeline-bar bar-soft"></div></div>
-
-
-<!-- =========================================
-     MILESTONES
-========================================= -->
-
-<div class="milestone-label">Milestones</div>
-
-<div class="milestone-cell"></div>
-
-<div class="milestone-cell"></div>
-
-<div class="milestone-cell">
-<div class="milestone"></div>
-</div>
-
-<div class="milestone-cell"></div>
-
-<div class="milestone-cell"></div>
-
-<div class="milestone-cell">
-<div class="milestone"></div>
-</div>
-
-<div class="milestone-cell"></div>
-
-<div class="milestone-cell"></div>
-
-<div class="milestone-cell">
-<div class="milestone"></div>
-</div>
-
-<div class="milestone-cell">
-<div class="milestone"></div>
-</div>
-
-<div class="milestone-cell"></div>
-
-<div class="milestone-cell">
-<div class="milestone"></div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-""",
-        unsafe_allow_html=True,
+    st.subheader("Go-Live Readiness Plan")
+
+    readiness = pd.DataFrame(
+        [
+            ["T-4 weeks", "UAT & configuration", "Complete UAT-01 to UAT-05 and resolve critical defects", "BA + Key Users"],
+            ["T-3 weeks", "Migration rehearsal", "Run test migration and reconcile customer records", "BA + System Admin"],
+            ["T-2 weeks", "Training", "Train users across all three locations and issue quick guides", "BA + Managers"],
+            ["T-1 week", "Cutover readiness", "Confirm users, permissions, reminder rules, reports and final migration plan", "Project Team"],
+            ["Go-Live", "Production cutover", "Final migration, activate KiotViet Salon and switch to To-Be process", "Project Team"],
+            ["Week 1", "Hypercare", "Daily issue review, user support and critical defect triage", "BA + Vendor/Admin"],
+            ["Weeks 2–4", "Adoption review", "Monitor usage, data quality, reminders and staff feedback", "BA + Managers"],
+        ],
+        columns=["Timing", "Workstream", "Key Activity", "Owner"],
+    )
+
+    st.dataframe(
+        readiness,
+        hide_index=True,
+        use_container_width=True,
+    )
+
+    st.subheader("Go-Live Checklist")
+
+    go_live_checklist = pd.DataFrame(
+        [
+            ["Customer data migrated and reconciled", "Required"],
+            ["User accounts and role permissions confirmed", "Required"],
+            ["Services, therapists and schedules configured", "Required"],
+            ["Confirmation and reminder rules tested", "Required"],
+            ["Retention/no-show/service reports validated", "Required"],
+            ["UAT sign-off completed", "Required"],
+            ["Training completed across all locations", "Required"],
+            ["Hypercare support process communicated", "Required"],
+        ],
+        columns=["Readiness Item", "Status at Gate"],
+    )
+
+    st.dataframe(
+        go_live_checklist,
+        hide_index=True,
+        use_container_width=True,
     )
 
     st.subheader("Adoption Measures")
 
     adoption = pd.DataFrame(
         [
-            [
-                "Active User Rate",
-                "% of expected staff regularly accessing CRM",
-            ],
-            [
-                "CRM Booking Rate",
-                "% of appointments recorded through new process",
-            ],
-            [
-                "Customer Profile Completeness",
-                "% of required customer fields completed",
-            ],
-            [
-                "Reminder Automation Rate",
-                "% of eligible appointments receiving reminders",
-            ],
-            [
-                "User Feedback",
-                "Staff satisfaction and reported usability issues",
-            ],
+            ["Active User Rate", "% of expected staff using KiotViet Salon", "> 90% after 4 weeks"],
+            ["CRM Booking Rate", "% of appointments created in KiotViet", "> 95% after 2 weeks"],
+            ["Customer Data Quality", "% of records complete and non-duplicate", "> 95%"],
+            ["Reminder Execution", "% of eligible appointments receiving configured reminders", "> 97%"],
+            ["User Feedback", "Usability issues and training gaps", "Weekly review during first month"],
         ],
-        columns=[
-            "Measure",
-            "Purpose",
-        ],
+        columns=["Measure", "Purpose", "Initial Target"],
     )
 
     st.dataframe(
@@ -4502,6 +3936,7 @@ elif page == "10 · Go-Live & Adoption":
 
     footer()
 
+
 # =========================================================
 # 11 BENEFITS & REVIEW
 # =========================================================
@@ -4510,45 +3945,22 @@ elif page == "11 · Benefits & Review":
 
     page_header(
         "11",
-        "Benefits & Post-Implementation Review",
-        "Measuring whether the CRM implementation addresses the original business problems.",
+        "Benefits & Review",
+        "Measuring whether the KiotViet Salon implementation resolves the original business problems and improves customer-management capability.",
     )
 
-    st.subheader("Problem → Solution → Benefit")
+    st.subheader("Pain Point → Solution → Benefit")
 
     benefit_map = pd.DataFrame(
         [
-            [
-                "Fragmented customer information",
-                "Central customer profile",
-                "Faster access to reliable customer information",
-            ],
-            [
-                "Limited customer history",
-                "Integrated booking and service history",
-                "Improved visibility and personalisation",
-            ],
-            [
-                "Inconsistent follow-ups",
-                "Automated confirmations and reminders",
-                "More consistent customer communication",
-            ],
-            [
-                "Appointment no-shows",
-                "Reminder workflow + no-show reporting",
-                "Potential reduction in avoidable missed appointments",
-            ],
-            [
-                "Limited reporting",
-                "CRM dashboards and reports",
-                "Improved management visibility",
-            ],
+            ["P01 · Fragmented customer data", "Central KiotViet customer profile", "Single source of truth and less duplicate/incomplete data"],
+            ["P02 · No complete customer view", "Shared customer and service history", "Faster access to customer context across locations"],
+            ["P03 · Manual booking management", "Integrated appointment scheduling", "More consistent booking and fewer manual checks"],
+            ["P04 · Inconsistent reminders", "Automated confirmations and reminders", "More reliable appointment communication"],
+            ["P05 · Limited reporting", "Retention, no-show and service reports", "Earlier visibility of performance trends"],
+            ["Business outcome · Declining customer experience", "Combined process + system improvements", "Improved consistency, retention and service experience"],
         ],
-        columns=[
-            "Original Problem",
-            "CRM Response",
-            "Expected Benefit",
-        ],
+        columns=["Original Problem", "KiotViet / Process Response", "Expected Benefit"],
     )
 
     st.dataframe(
@@ -4561,37 +3973,13 @@ elif page == "11 · Benefits & Review":
 
     targets = pd.DataFrame(
         [
-            [
-                "Customer profile lookup time",
-                "3 minutes",
-                "< 30 seconds",
-            ],
-            [
-                "Follow-up completion",
-                "40%",
-                "> 90%",
-            ],
-            [
-                "Appointment no-show rate",
-                "12%",
-                "< 7%",
-            ],
-            [
-                "Repeat booking rate",
-                "45%",
-                "60%",
-            ],
-            [
-                "Manual report preparation",
-                "3 hours",
-                "< 30 minutes",
-            ],
+            ["Late / missed reminders", "14%", "< 3%", "Within 3 months"],
+            ["Duplicate / incomplete customer records", "18%", "< 5%", "Within 3 months"],
+            ["Return customer rate", "47% (previously 61%)", "≥ 55%", "Within 6 months"],
+            ["Appointments recorded in the central system", "Not centralised", "> 95%", "Within 1 month"],
+            ["Management retention reporting", "Manual / delayed", "Available in-system", "At go-live + validation"],
         ],
-        columns=[
-            "KPI",
-            "Illustrative Baseline",
-            "Target",
-        ],
+        columns=["KPI", "Simulated Baseline", "Target", "Review Point"],
     )
 
     st.dataframe(
@@ -4602,8 +3990,9 @@ elif page == "11 · Benefits & Review":
 
     st.caption(
         """
-        These figures are illustrative project targets for the simulated case study
-        and should not be presented as actual measured business results.
+        Baseline figures of 14% late/missed reminders, 18% duplicate/incomplete records,
+        and the return-rate decline from 61% to 47% are the simulated figures established
+        in the root-cause analysis. Targets are illustrative project goals.
         """
     )
 
@@ -4611,31 +4000,47 @@ elif page == "11 · Benefits & Review":
 
     st.write(
         """
-        The review would assess:
-
-        - whether critical business requirements were achieved;
-        - whether staff adopted the new processes;
-        - whether expected operational benefits were realised;
-        - outstanding defects or process issues;
-        - stakeholder feedback;
-        - opportunities for Phase 2 improvement.
+        The review will assess whether the selected solution and redesigned process
+        achieved the business outcomes defined earlier in the case study:
         """
+    )
+
+    review = pd.DataFrame(
+        [
+            ["Requirements", "Were BR-01 to BR-05 and critical functional requirements delivered?"],
+            ["Adoption", "Are staff consistently using KiotViet Salon across all three locations?"],
+            ["Data Quality", "Has duplicate/incomplete customer data reduced from the 18% baseline?"],
+            ["Communication", "Has the late/missed reminder rate reduced from the 14% baseline?"],
+            ["Retention", "Is the return customer rate recovering from the 47% baseline?"],
+            ["Reporting", "Can management identify retention, no-show and service trends without manual consolidation?"],
+        ],
+        columns=["Review Area", "Review Question"],
+    )
+
+    st.dataframe(
+        review,
+        hide_index=True,
+        use_container_width=True,
     )
 
     st.subheader("Phase 2 Opportunities")
 
     st.write(
         """
-        - Customer loyalty programme
-        - Advanced customer segmentation
-        - Birthday and re-engagement campaigns
-        - Customer self-service booking
-        - Advanced BI reporting
-        - Additional automation
+        Phase 2 should only proceed after the core customer, booking, reminder and
+        reporting capabilities are stable. Potential enhancements include:
+
+        - customer loyalty programme;
+        - advanced segmentation and re-engagement campaigns;
+        - birthday campaigns;
+        - customer self-service booking;
+        - additional management dashboards; and
+        - further automation based on post-go-live feedback.
         """
     )
 
     footer()
+
 
 # =========================================================
 # 12 TRACEABILITY
@@ -4645,27 +4050,80 @@ elif page == "12 · Traceability":
 
     page_header(
         "12",
-        "Requirements Traceability",
-        "Demonstrating how business problems connect to requirements, delivery and testing.",
+        "Traceability",
+        "Showing how the original pain points connect to requirements, the selected KiotViet Salon capability, UAT and measurable benefits.",
     )
 
     st.subheader("End-to-End Traceability")
 
     st.markdown(
         """
-        **Business Problem → Business Requirement → Functional Requirement → User Story → UAT**
+        **Pain Point → Business Requirement → Functional Requirement → KiotViet Capability → UAT → Benefit**
         """
     )
 
+    traceability_final = pd.DataFrame(
+        [
+            [
+                "P01 · Fragmented customer data",
+                "BR-01",
+                "FR-01 / FR-02 / FR-03 / FR-05",
+                "Central customer profile",
+                "UAT-01",
+                "Duplicate/incomplete records: 18% → <5%",
+            ],
+            [
+                "P02 · No complete customer view",
+                "BR-02",
+                "FR-03 / FR-04",
+                "Shared customer & service history",
+                "UAT-02",
+                "Consistent customer view across locations",
+            ],
+            [
+                "P03 · Manual booking management",
+                "BR-03",
+                "FR-07–FR-12",
+                "Appointment & therapist scheduling",
+                "UAT-03",
+                ">95% appointments recorded centrally",
+            ],
+            [
+                "P04 · Inconsistent reminders",
+                "BR-04",
+                "FR-13 / FR-15 / FR-16",
+                "Automated confirmation & reminders",
+                "UAT-04",
+                "Late/missed reminders: 14% → <3%",
+            ],
+            [
+                "P05 · Limited reporting",
+                "BR-05",
+                "FR-17–FR-20",
+                "Retention / no-show / service reports",
+                "UAT-05",
+                "Return customer rate: 47% → ≥55%",
+            ],
+        ],
+        columns=[
+            "Pain Point",
+            "Business Requirement",
+            "Functional Requirement",
+            "Selected Capability",
+            "UAT",
+            "Benefit Measure",
+        ],
+    )
+
     st.dataframe(
-        traceability,
+        traceability_final,
         hide_index=True,
         use_container_width=True,
     )
 
     st.download_button(
         "Download Traceability Matrix",
-        traceability.to_csv(index=False),
+        traceability_final.to_csv(index=False),
         file_name="spa_crm_traceability.csv",
         mime="text/csv",
     )
@@ -4674,33 +4132,28 @@ elif page == "12 · Traceability":
 
     st.code(
         """
-P03
-Inconsistent appointment follow-up
+P04 — Inconsistent reminders
         ↓
-BR-04
-Reduce manual appointment communication
+BR-04 — Reduce manual appointment communication
         ↓
-FR-15
-Automatically send appointment reminders
+FR-13 / FR-15 / FR-16
+Automatic confirmation + reminder + communication status
         ↓
-US-04
-As a receptionist, I want reminders
-to be automatically generated...
+KiotViet Salon reminder configuration
         ↓
-UAT-04
-Verify reminder workflow
+UAT-04 — Automated Appointment Communication
         ↓
-Expected Result
-Reminder sent according to configured rule
+Benefit KPI
+Late / missed reminders: 14% baseline → target <3%
         """,
         language=None,
     )
 
     st.success(
         """
-        Traceability demonstrates that the project does not contain disconnected
-        documents. Each proposed CRM capability can be traced back to a business
-        problem and forward to implementation and validation.
+        Traceability demonstrates that the recommended CRM is not disconnected from
+        the original business problem: each selected capability is linked back to a
+        prioritised requirement and forward to UAT and benefits measurement.
         """
     )
 
