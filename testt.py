@@ -1987,7 +1987,7 @@ elif page == "05 · CRM Evaluation":
     )
 
     # =====================================================
-    # EVALUATION APPROACH — HORIZONTAL
+    # EVALUATION APPROACH + CRM CARD STYLING
     # =====================================================
 
     st.markdown(
@@ -2166,6 +2166,27 @@ elif page == "05 · CRM Evaluation":
 
 
 /* =====================================================
+   CRM LOGOS — CONSISTENT SIZE
+===================================================== */
+
+.crm-logo-box {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 0.8rem;
+}
+
+.crm-logo-box img {
+    width: 150px;
+    height: 90px;
+    object-fit: contain;
+    object-position: left center;
+}
+
+
+/* =====================================================
    SCORING SCALE
 ===================================================== */
 
@@ -2286,6 +2307,7 @@ Three Vietnamese CRM platforms were shortlisted for detailed evaluation.
     )
 
     from pathlib import Path
+    import base64
 
     BASE_DIR = Path(__file__).resolve().parent
 
@@ -2293,96 +2315,191 @@ Three Vietnamese CRM platforms were shortlisted for detailed evaluation.
     getfly_logo = BASE_DIR / "getfly.png"
     misa_logo = BASE_DIR / "misa_amis.png"
 
+
+    def render_crm_logo(image_path):
+
+        if image_path.exists():
+
+            with open(image_path, "rb") as image_file:
+                encoded = base64.b64encode(
+                    image_file.read()
+                ).decode()
+
+            st.markdown(
+                f"""
+<div class="crm-logo-box">
+<img src="data:image/png;base64,{encoded}">
+</div>
+""",
+                unsafe_allow_html=True,
+            )
+
+        else:
+
+            st.caption(
+                f"Logo not found: {image_path.name}"
+            )
+
+
     crm1, crm2, crm3 = st.columns(3)
 
-    # -----------------------------------------------------
+
+    # =====================================================
     # KIOTVIET
-    # -----------------------------------------------------
+    # =====================================================
 
     with crm1:
 
-        if kiotviet_logo.exists():
-            st.image(
-                str(kiotviet_logo),
-                width=105,
-            )
+        render_crm_logo(
+            kiotviet_logo
+        )
 
         st.markdown(
             """
-<div class="crm-name">KiotViet Salon</div>
-<div class="crm-type">Spa-Specific Platform</div>
+<div class="crm-name">
+KiotViet Salon
+</div>
 
-<span class="crm-highlight">Customer Profiles</span>
-<span class="crm-highlight">Appointments</span>
-<span class="crm-highlight">Service History</span>
-<span class="crm-highlight">Staff Scheduling</span>
-<span class="crm-highlight">Reminders</span>
-<span class="crm-highlight">Reporting</span>
+<div class="crm-type">
+Spa-Specific Platform
+</div>
+
+<span class="crm-highlight">
+Customer Profiles
+</span>
+
+<span class="crm-highlight">
+Appointments
+</span>
+
+<span class="crm-highlight">
+Service History
+</span>
+
+<span class="crm-highlight">
+Staff Scheduling
+</span>
+
+<span class="crm-highlight">
+Reminders
+</span>
+
+<span class="crm-highlight">
+Reporting
+</span>
 """,
             unsafe_allow_html=True,
         )
 
-    # -----------------------------------------------------
+
+    # =====================================================
     # GETFLY
-    # -----------------------------------------------------
+    # =====================================================
 
     with crm2:
 
-        if getfly_logo.exists():
-            st.image(
-                str(getfly_logo),
-                width=105,
-            )
+        render_crm_logo(
+            getfly_logo
+        )
 
         st.markdown(
             """
-<div class="crm-name">Getfly CRM</div>
-<div class="crm-type">Customer Engagement CRM</div>
+<div class="crm-name">
+Getfly CRM
+</div>
 
-<span class="crm-highlight">Customer Database</span>
-<span class="crm-highlight">Interaction History</span>
-<span class="crm-highlight">Segmentation</span>
-<span class="crm-highlight">Automation</span>
-<span class="crm-highlight">SMS / ZNS</span>
-<span class="crm-highlight">KPI Reporting</span>
+<div class="crm-type">
+Customer Engagement CRM
+</div>
+
+<span class="crm-highlight">
+Customer Database
+</span>
+
+<span class="crm-highlight">
+Interaction History
+</span>
+
+<span class="crm-highlight">
+Segmentation
+</span>
+
+<span class="crm-highlight">
+Automation
+</span>
+
+<span class="crm-highlight">
+SMS / ZNS
+</span>
+
+<span class="crm-highlight">
+KPI Reporting
+</span>
 """,
             unsafe_allow_html=True,
         )
 
-    # -----------------------------------------------------
+
+    # =====================================================
     # MISA AMIS
-    # -----------------------------------------------------
+    # =====================================================
 
     with crm3:
 
-        if misa_logo.exists():
-            st.image(
-                str(misa_logo),
-                width=105,
-            )
+        render_crm_logo(
+            misa_logo
+        )
 
         st.markdown(
             """
-<div class="crm-name">MISA AMIS CRM</div>
-<div class="crm-type">Enterprise CRM Platform</div>
+<div class="crm-name">
+MISA AMIS CRM
+</div>
 
-<span class="crm-highlight">Customer Management</span>
-<span class="crm-highlight">Sales Workflow</span>
-<span class="crm-highlight">Reporting</span>
-<span class="crm-highlight">Automation</span>
-<span class="crm-highlight">Mobile CRM</span>
-<span class="crm-highlight">API Integration</span>
+<div class="crm-type">
+Enterprise CRM Platform
+</div>
+
+<span class="crm-highlight">
+Customer Management
+</span>
+
+<span class="crm-highlight">
+Sales Workflow
+</span>
+
+<span class="crm-highlight">
+Reporting
+</span>
+
+<span class="crm-highlight">
+Automation
+</span>
+
+<span class="crm-highlight">
+Mobile CRM
+</span>
+
+<span class="crm-highlight">
+API Integration
+</span>
 """,
             unsafe_allow_html=True,
         )
+
 
     st.markdown(
         """
 <div class="crm-note">
 
-<strong style="color:#194339;">Shortlist focus:</strong>
-KiotViet — spa operations &nbsp;•&nbsp;
-Getfly — customer engagement &nbsp;•&nbsp;
+<strong style="color:#194339;">
+Shortlist focus:
+</strong>
+
+KiotViet — spa operations
+&nbsp;•&nbsp;
+Getfly — customer engagement
+&nbsp;•&nbsp;
 MISA AMIS — enterprise CRM
 
 </div>
@@ -2390,11 +2507,14 @@ MISA AMIS — enterprise CRM
         unsafe_allow_html=True,
     )
 
+
     # =====================================================
     # REQUIREMENTS FIT SUMMARY
     # =====================================================
 
-    st.subheader("Requirements Fit Summary")
+    st.subheader(
+        "Requirements Fit Summary"
+    )
 
     fit_summary = pd.DataFrame(
         [
@@ -2469,23 +2589,26 @@ MISA AMIS — enterprise CRM
 
     st.caption(
         """
-        Fit ratings are case-study assessments based on publicly documented
-        capabilities. A real selection exercise would validate them through
-        vendor demonstrations, trials and stakeholder workshops.
-        """
+Fit ratings are case-study assessments based on publicly documented
+capabilities. A real selection exercise would validate them through
+vendor demonstrations, trials and stakeholder workshops.
+"""
     )
+
 
     # =====================================================
     # INTERACTIVE WEIGHTED DECISION MATRIX
     # =====================================================
 
-    st.subheader("Interactive Weighted Decision Matrix")
+    st.subheader(
+        "Interactive Weighted Decision Matrix"
+    )
 
     st.caption(
         """
-        Adjust the weighting to see how different business priorities
-        affect the recommended CRM solution.
-        """
+Adjust the weighting to see how different business priorities
+affect the recommended CRM solution.
+"""
     )
 
     st.markdown(
@@ -2493,10 +2616,15 @@ MISA AMIS — enterprise CRM
 <div class="score-scale">
 
 <strong>Score:</strong>
-1 = Poor &nbsp; | &nbsp;
-2 = Limited &nbsp; | &nbsp;
-3 = Moderate &nbsp; | &nbsp;
-4 = Good &nbsp; | &nbsp;
+
+1 = Poor
+&nbsp; | &nbsp;
+2 = Limited
+&nbsp; | &nbsp;
+3 = Moderate
+&nbsp; | &nbsp;
+4 = Good
+&nbsp; | &nbsp;
 5 = Strong
 
 </div>
@@ -2504,17 +2632,29 @@ MISA AMIS — enterprise CRM
         unsafe_allow_html=True,
     )
 
+
     criteria_defaults = {
+
         "Customer Management": 15,
+
         "Appointment Management": 25,
+
         "Automation & Reminders": 15,
+
         "Reporting & Analytics": 10,
+
         "Usability": 10,
+
         "Integration": 5,
+
         "Security & Privacy": 5,
+
         "Implementation Effort": 5,
+
         "Cost": 10,
+
     }
+
 
     weights = {}
 
@@ -2524,10 +2664,15 @@ MISA AMIS — enterprise CRM
         criteria_defaults.items()
     )
 
-    for i, (criterion, default) in enumerate(criteria_items):
+
+    for i, (criterion, default) in enumerate(
+        criteria_items
+    ):
 
         target_col = (
-            col_a if i % 2 == 0 else col_b
+            col_a
+            if i % 2 == 0
+            else col_b
         )
 
         with target_col:
@@ -2541,14 +2686,17 @@ MISA AMIS — enterprise CRM
                 key=f"crm_weight_{criterion}",
             )
 
+
     total_weight = sum(
         weights.values()
     )
 
+
     if total_weight != 100:
 
         st.warning(
-            f"Current weighting = {total_weight}%. "
+            f"Current weighting = "
+            f"{total_weight}%. "
             "Weights should total 100%."
         )
 
@@ -2557,6 +2705,7 @@ MISA AMIS — enterprise CRM
         st.success(
             "Weights total 100%."
         )
+
 
     # =====================================================
     # CRM SCORING
@@ -2567,13 +2716,21 @@ MISA AMIS — enterprise CRM
         "KiotViet Salon": {
 
             "Customer Management": 4,
+
             "Appointment Management": 5,
+
             "Automation & Reminders": 5,
+
             "Reporting & Analytics": 4,
+
             "Usability": 5,
+
             "Integration": 3,
+
             "Security & Privacy": 4,
+
             "Implementation Effort": 5,
+
             "Cost": 4,
 
         },
@@ -2581,13 +2738,21 @@ MISA AMIS — enterprise CRM
         "Getfly CRM": {
 
             "Customer Management": 5,
+
             "Appointment Management": 3,
+
             "Automation & Reminders": 5,
+
             "Reporting & Analytics": 4,
+
             "Usability": 4,
+
             "Integration": 5,
+
             "Security & Privacy": 4,
+
             "Implementation Effort": 3,
+
             "Cost": 3,
 
         },
@@ -2595,17 +2760,27 @@ MISA AMIS — enterprise CRM
         "MISA AMIS CRM": {
 
             "Customer Management": 5,
+
             "Appointment Management": 2,
+
             "Automation & Reminders": 3,
+
             "Reporting & Analytics": 5,
+
             "Usability": 4,
+
             "Integration": 5,
+
             "Security & Privacy": 5,
+
             "Implementation Effort": 3,
+
             "Cost": 3,
 
         },
+
     }
+
 
     # =====================================================
     # MATRIX TABLE
@@ -2613,11 +2788,14 @@ MISA AMIS — enterprise CRM
 
     matrix_rows = []
 
+
     for criterion in weights:
 
         matrix_rows.append(
             {
-                "Criterion": criterion,
+
+                "Criterion":
+                    criterion,
 
                 "Weight %":
                     weights[criterion],
@@ -2636,12 +2814,15 @@ MISA AMIS — enterprise CRM
                     crm_scores[
                         "MISA AMIS CRM"
                     ][criterion],
+
             }
         )
+
 
     matrix_df = pd.DataFrame(
         matrix_rows
     )
+
 
     st.dataframe(
         matrix_df,
@@ -2649,15 +2830,18 @@ MISA AMIS — enterprise CRM
         use_container_width=True,
     )
 
+
     # =====================================================
     # CALCULATE RESULTS
     # =====================================================
 
     results = {}
 
+
     for crm in crm_scores:
 
         weighted_total = 0
+
 
         for criterion, weight in weights.items():
 
@@ -2665,6 +2849,7 @@ MISA AMIS — enterprise CRM
                 crm_scores[crm][criterion]
                 * weight
             )
+
 
         if total_weight > 0:
 
@@ -2677,21 +2862,26 @@ MISA AMIS — enterprise CRM
 
             results[crm] = 0
 
+
     result_df = pd.DataFrame(
         {
+
             "CRM Solution":
                 results.keys(),
 
             "Weighted Score / 5":
                 [
                     round(score, 2)
-                    for score in results.values()
+                    for score
+                    in results.values()
                 ],
+
         }
     ).sort_values(
         "Weighted Score / 5",
         ascending=False,
     )
+
 
     # =====================================================
     # EVALUATION RESULT
@@ -2701,24 +2891,30 @@ MISA AMIS — enterprise CRM
         "Evaluation Result"
     )
 
+
     st.dataframe(
         result_df,
         hide_index=True,
         use_container_width=True,
     )
 
+
     winner = result_df.iloc[0][
         "CRM Solution"
     ]
+
 
     winning_score = result_df.iloc[0][
         "Weighted Score / 5"
     ]
 
+
     st.success(
         f"Recommended solution: "
-        f"{winner} — {winning_score}/5"
+        f"{winner} — "
+        f"{winning_score}/5"
     )
+
 
     # =====================================================
     # RECOMMENDATION RATIONALE
@@ -2739,9 +2935,10 @@ MISA AMIS — enterprise CRM
 - Automated reminders
 - Lower configuration effort
 
-**Trade-off:** less enterprise CRM flexibility compared with Getfly or MISA AMIS.
-            """
+**Trade-off:** Less enterprise CRM flexibility compared with Getfly or MISA AMIS.
+"""
         )
+
 
     elif winner == "Getfly CRM":
 
@@ -2758,9 +2955,10 @@ MISA AMIS — enterprise CRM
 - Integration capability
 - Customer follow-up workflows
 
-**Trade-off:** appointment management may require additional configuration.
-            """
+**Trade-off:** Appointment management may require additional configuration.
+"""
         )
+
 
     else:
 
@@ -2777,26 +2975,29 @@ MISA AMIS — enterprise CRM
 - API integration
 - Enterprise scalability
 
-**Trade-off:** spa appointment workflows may require additional configuration.
-            """
+**Trade-off:** Spa appointment workflows may require additional configuration.
+"""
         )
+
 
     st.info(
         """
-        **BA Decision Principle:** The best CRM is not necessarily the product
-        with the most features. The recommended solution is the platform that
-        provides the strongest fit against the organisation's prioritised
-        requirements, implementation effort and cost.
-        """
+**BA Decision Principle:** The best CRM is not necessarily the product
+with the most features. The recommended solution is the platform that
+provides the strongest fit against the organisation's prioritised
+requirements, implementation effort and cost.
+"""
     )
+
 
     st.caption(
         """
-        This is a simulated portfolio procurement exercise.
-        Product capabilities are based on publicly available vendor information.
-        Weightings and scores represent assumptions developed for this case study.
-        """
+This is a simulated portfolio procurement exercise.
+Product capabilities are based on publicly available vendor information.
+Weightings and scores represent assumptions developed for this case study.
+"""
     )
+
 
     footer()
 # =========================================================
