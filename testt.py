@@ -1983,11 +1983,11 @@ elif page == "05 · CRM Evaluation":
     page_header(
         "05",
         "CRM Evaluation",
-        "Comparing shortlisted solutions using requirements-driven evaluation criteria.",
+        "Comparing shortlisted Vietnamese CRM solutions using requirements-driven evaluation criteria.",
     )
 
     # =====================================================
-    # EVALUATION APPROACH
+    # EVALUATION APPROACH — HORIZONTAL
     # =====================================================
 
     st.markdown(
@@ -2034,23 +2034,27 @@ elif page == "05 · CRM Evaluation":
     background: #ffffff;
     border: 1px solid #dfe7e4;
     border-radius: 14px;
-    padding: 1.1rem 0.9rem;
-    min-height: 150px;
+    padding: 1.15rem 0.9rem;
+    min-height: 165px;
     box-shadow: 0 3px 10px rgba(25, 67, 57, 0.06);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
 }
 
 .evaluation-card:hover {
     transform: translateY(-3px);
+    border-color: #194339;
     box-shadow: 0 7px 18px rgba(25, 67, 57, 0.10);
 }
 
 .evaluation-step {
-    width: 30px;
-    height: 30px;
+    width: 31px;
+    height: 31px;
     border-radius: 50%;
     background: #194339;
-    color: white;
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2061,26 +2065,26 @@ elif page == "05 · CRM Evaluation":
 
 .evaluation-title {
     color: #194339;
-    font-size: 0.96rem;
+    font-size: 0.95rem;
     font-weight: 700;
     line-height: 1.35;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.55rem;
 }
 
 .evaluation-description {
     color: #6b7280;
-    font-size: 0.82rem;
-    line-height: 1.45;
+    font-size: 0.81rem;
+    line-height: 1.5;
 }
 
 .evaluation-arrow {
+    flex: 0 0 25px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #194339;
-    font-size: 1.35rem;
+    font-size: 1.45rem;
     font-weight: 700;
-    flex: 0 0 20px;
 }
 
 .evaluation-card.final {
@@ -2101,11 +2105,60 @@ elif page == "05 · CRM Evaluation":
     color: #dce9e5;
 }
 
-@media (max-width: 700px) {
 
-    .evaluation-flow {
-        min-width: 1000px;
-    }
+/* =====================================================
+   CRM SHORTLIST CARDS
+===================================================== */
+
+.crm-shortlist {
+    margin-top: 1.2rem;
+    margin-bottom: 3rem;
+}
+
+.crm-shortlist-title {
+    color: #194339;
+    font-size: 1.8rem;
+    font-weight: 750;
+    margin-bottom: 0.4rem;
+}
+
+.crm-shortlist-subtitle {
+    color: #6b7280;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.crm-note {
+    background: #f4f7f6;
+    border-left: 4px solid #194339;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    color: #374151;
+    line-height: 1.6;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+
+/* =====================================================
+   EVALUATION SCALE
+===================================================== */
+
+.score-scale {
+    background: #f4f7f6;
+    border: 1px solid #dfe7e4;
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    color: #4b5563;
+    font-size: 0.92rem;
+    line-height: 1.7;
+}
+
+.score-scale strong {
+    color: #194339;
 }
 
 </style>
@@ -2115,8 +2168,8 @@ elif page == "05 · CRM Evaluation":
 <h2>Evaluation Approach</h2>
 
 <div class="evaluation-subtitle">
-A structured evaluation process was used to move from defined business requirements
-to an evidence-based CRM recommendation.
+A structured evaluation process was used to move from defined business
+requirements to an evidence-based CRM recommendation.
 </div>
 
 <div class="evaluation-wrapper">
@@ -2137,7 +2190,7 @@ Define business, functional and non-functional requirements.
 <div class="evaluation-step">02</div>
 <div class="evaluation-title">Define Evaluation Criteria</div>
 <div class="evaluation-description">
-Translate requirements into measurable CRM selection criteria.
+Translate priority requirements into measurable CRM selection criteria.
 </div>
 </div>
 
@@ -2147,7 +2200,7 @@ Translate requirements into measurable CRM selection criteria.
 <div class="evaluation-step">03</div>
 <div class="evaluation-title">Shortlist Solutions</div>
 <div class="evaluation-description">
-Identify CRM options that could meet the spa's operational needs.
+Identify Vietnamese CRM solutions that could meet the spa's operational needs.
 </div>
 </div>
 
@@ -2157,7 +2210,7 @@ Identify CRM options that could meet the spa's operational needs.
 <div class="evaluation-step">04</div>
 <div class="evaluation-title">Requirements Fit Analysis</div>
 <div class="evaluation-description">
-Assess how well each solution satisfies priority requirements.
+Assess how well each shortlisted solution satisfies priority requirements.
 </div>
 </div>
 
@@ -2167,7 +2220,7 @@ Assess how well each solution satisfies priority requirements.
 <div class="evaluation-step">05</div>
 <div class="evaluation-title">Weighted Decision Matrix</div>
 <div class="evaluation-description">
-Score solutions using weighted business and technical criteria.
+Compare solutions using weighted business and technical criteria.
 </div>
 </div>
 
@@ -2177,12 +2230,33 @@ Score solutions using weighted business and technical criteria.
 <div class="evaluation-step">06</div>
 <div class="evaluation-title">Recommendation</div>
 <div class="evaluation-description">
-Recommend the best-fit CRM based on requirements coverage and overall value.
+Recommend the best-fit platform based on functional fit and overall value.
 </div>
 </div>
 
 </div>
+</div>
+</div>
+""",
+        unsafe_allow_html=True,
+    )
 
+    # =====================================================
+    # SHORTLISTED CRM SOLUTIONS
+    # =====================================================
+
+    st.markdown(
+        """
+<div class="crm-shortlist">
+
+<div class="crm-shortlist-title">
+Shortlisted CRM Solutions
+</div>
+
+<div class="crm-shortlist-subtitle">
+Three Vietnamese customer-management platforms were shortlisted based on
+functional relevance, local-market suitability and alignment with the
+requirements identified for Wellness Perth Spa.
 </div>
 
 </div>
@@ -2190,55 +2264,282 @@ Recommend the best-fit CRM based on requirements coverage and overall value.
         unsafe_allow_html=True,
     )
 
-    # =====================================================
-    # SHORTLISTED SOLUTIONS
-    # =====================================================
+    from pathlib import Path
 
-    st.subheader("Shortlisted Solution Types")
+    BASE_DIR = Path(__file__).resolve().parent
 
-    c1, c2, c3 = st.columns(3)
+    kiotviet_logo = BASE_DIR / "kiotviet.png"
+    getfly_logo = BASE_DIR / "getfly.png"
+    misa_logo = BASE_DIR / "misa_amis.png"
 
-    with c1:
-        st.markdown("### CRM A")
-        st.markdown("**General-Purpose CRM**")
-        st.write(
-            "Strong customer management, automation and reporting. May require appointment integration."
-        )
-
-    with c2:
-        st.markdown("### CRM B")
-        st.markdown("**Spa-Specific Platform**")
-        st.write(
-            "Strong appointment, therapist and service functionality with lower configuration effort."
-        )
-
-    with c3:
-        st.markdown("### CRM C")
-        st.markdown("**Configurable CRM**")
-        st.write(
-            "Flexible workflows and integration capability but requires more implementation effort."
-        )
+    crm1, crm2, crm3 = st.columns(3)
 
     # =====================================================
-    # WEIGHTED DECISION MATRIX
+    # KIOTVIET SALON
+    # =====================================================
+
+    with crm1:
+
+        if kiotviet_logo.exists():
+            st.image(
+                str(kiotviet_logo),
+                width=150,
+            )
+        else:
+            st.caption("Add kiotviet.png to display logo")
+
+        st.markdown("### KiotViet Salon")
+
+        st.markdown("**Spa-Specific Management Platform**")
+
+        st.write(
+            """
+            Industry-specific solution designed for salon and spa operations,
+            combining customer management with appointment and service workflows.
+            """
+        )
+
+        st.markdown(
+            """
+**Relevant capabilities**
+
+- Central customer information
+- Customer service history
+- Appointment scheduling
+- Staff / room allocation
+- Appointment reminders
+- Zalo ZNS communication
+- Operational reporting
+            """
+        )
+
+        st.markdown(
+            "[Official website](https://www.kiotviet.vn/kiotviet-salon/)"
+        )
+
+    # =====================================================
+    # GETFLY CRM
+    # =====================================================
+
+    with crm2:
+
+        if getfly_logo.exists():
+            st.image(
+                str(getfly_logo),
+                width=150,
+            )
+        else:
+            st.caption("Add getfly.png to display logo")
+
+        st.markdown("### Getfly CRM")
+
+        st.markdown("**Customer Engagement CRM**")
+
+        st.write(
+            """
+            Vietnamese CRM focused on centralised customer management,
+            customer engagement and configurable marketing and follow-up automation.
+            """
+        )
+
+        st.markdown(
+            """
+**Relevant capabilities**
+
+- Central customer database
+- Interaction history
+- Customer segmentation
+- Email / SMS / ZNS automation
+- Automated follow-up workflows
+- KPI reporting
+- REST API integration
+            """
+        )
+
+        st.markdown(
+            "[Official website](https://getfly.vn/en/)"
+        )
+
+    # =====================================================
+    # MISA AMIS CRM
+    # =====================================================
+
+    with crm3:
+
+        if misa_logo.exists():
+            st.image(
+                str(misa_logo),
+                width=150,
+            )
+        else:
+            st.caption("Add misa_amis.png to display logo")
+
+        st.markdown("### MISA AMIS CRM")
+
+        st.markdown("**Enterprise CRM Platform**")
+
+        st.write(
+            """
+            Broader CRM platform focused on customer management,
+            sales workflows, reporting, automation and integration
+            across business applications.
+            """
+        )
+
+        st.markdown(
+            """
+**Relevant capabilities**
+
+- Central customer information
+- Customer classification
+- Customer reporting
+- Workflow support
+- 50+ reports
+- Mobile access
+- API and system integrations
+            """
+        )
+
+        st.markdown(
+            "[Official website](https://amis.misa.vn/en/crm/)"
+        )
+
+    st.markdown(
+        """
+<div class="crm-note">
+
+<strong>Shortlisting rationale:</strong>
+KiotViet Salon provides the strongest spa-specific operational fit.
+Getfly CRM provides stronger general CRM and customer-engagement automation,
+while MISA AMIS CRM provides broader enterprise reporting and integration capability.
+
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+
+    # =====================================================
+    # REQUIREMENTS FIT SUMMARY
+    # =====================================================
+
+    st.subheader("Requirements Fit Summary")
+
+    fit_summary = pd.DataFrame(
+        [
+            [
+                "Central Customer Profile",
+                "Strong",
+                "Strong",
+                "Strong",
+            ],
+            [
+                "Customer / Service History",
+                "Strong",
+                "Strong",
+                "Strong",
+            ],
+            [
+                "Spa Appointment Scheduling",
+                "Strong",
+                "Partial",
+                "Partial",
+            ],
+            [
+                "Staff / Room Scheduling",
+                "Strong",
+                "Limited",
+                "Limited",
+            ],
+            [
+                "Automated Reminders",
+                "Strong",
+                "Strong",
+                "Partial",
+            ],
+            [
+                "Customer Segmentation",
+                "Moderate",
+                "Strong",
+                "Strong",
+            ],
+            [
+                "Reporting & Analytics",
+                "Strong",
+                "Strong",
+                "Strong",
+            ],
+            [
+                "Integration Capability",
+                "Moderate",
+                "Strong",
+                "Strong",
+            ],
+            [
+                "Spa-Specific Fit",
+                "Strong",
+                "Moderate",
+                "Moderate",
+            ],
+        ],
+        columns=[
+            "Requirement Area",
+            "KiotViet Salon",
+            "Getfly CRM",
+            "MISA AMIS CRM",
+        ],
+    )
+
+    st.dataframe(
+        fit_summary,
+        hide_index=True,
+        use_container_width=True,
+    )
+
+    st.caption(
+        """
+        Fit ratings are portfolio-case assessments based on publicly documented
+        capabilities. A real procurement exercise would validate them through
+        vendor demonstrations, trials and stakeholder workshops.
+        """
+    )
+
+    # =====================================================
+    # INTERACTIVE WEIGHTED DECISION MATRIX
     # =====================================================
 
     st.subheader("Interactive Weighted Decision Matrix")
 
     st.caption(
-        "Adjust the criterion weights to explore how different business priorities influence the recommendation."
+        """
+        Adjust the weighting to explore how different business priorities
+        affect the CRM recommendation.
+        """
+    )
+
+    st.markdown(
+        """
+<div class="score-scale">
+<strong>Scoring scale:</strong>
+1 = Poor fit &nbsp;&nbsp;|&nbsp;&nbsp;
+2 = Limited fit &nbsp;&nbsp;|&nbsp;&nbsp;
+3 = Moderate fit &nbsp;&nbsp;|&nbsp;&nbsp;
+4 = Good fit &nbsp;&nbsp;|&nbsp;&nbsp;
+5 = Strong fit
+</div>
+""",
+        unsafe_allow_html=True,
     )
 
     criteria_defaults = {
-        "Customer Management": 20,
-        "Appointment Management": 20,
+        "Customer Management": 15,
+        "Appointment Management": 25,
         "Automation & Reminders": 15,
-        "Reporting & Analytics": 15,
+        "Reporting & Analytics": 10,
         "Usability": 10,
         "Integration": 5,
         "Security & Privacy": 5,
         "Implementation Effort": 5,
-        "Cost": 5,
+        "Cost": 10,
     }
 
     weights = {}
@@ -2248,43 +2549,46 @@ Recommend the best-fit CRM based on requirements coverage and overall value.
     criteria_items = list(criteria_defaults.items())
 
     for i, (criterion, default) in enumerate(criteria_items):
+
         target_col = col_a if i % 2 == 0 else col_b
 
         with target_col:
+
             weights[criterion] = st.slider(
                 criterion,
                 min_value=0,
                 max_value=30,
                 value=default,
                 step=5,
+                key=f"crm_weight_{criterion}",
             )
 
     total_weight = sum(weights.values())
 
     if total_weight != 100:
+
         st.warning(
             f"Current total weighting is {total_weight}%. "
             "For formal evaluation, weights should total 100%."
         )
+
     else:
+
         st.success("Weights total 100%.")
 
+    # =====================================================
+    # CRM SCORES
+    #
+    # Illustrative BA portfolio scoring based on documented
+    # product capabilities and expected implementation fit.
+    # =====================================================
+
     crm_scores = {
-        "CRM A": {
-            "Customer Management": 5,
-            "Appointment Management": 2,
-            "Automation & Reminders": 5,
-            "Reporting & Analytics": 5,
-            "Usability": 3,
-            "Integration": 5,
-            "Security & Privacy": 5,
-            "Implementation Effort": 2,
-            "Cost": 2,
-        },
-        "CRM B": {
+
+        "KiotViet Salon": {
             "Customer Management": 4,
             "Appointment Management": 5,
-            "Automation & Reminders": 4,
+            "Automation & Reminders": 5,
             "Reporting & Analytics": 4,
             "Usability": 5,
             "Integration": 3,
@@ -2292,12 +2596,25 @@ Recommend the best-fit CRM based on requirements coverage and overall value.
             "Implementation Effort": 5,
             "Cost": 4,
         },
-        "CRM C": {
+
+        "Getfly CRM": {
             "Customer Management": 5,
             "Appointment Management": 3,
             "Automation & Reminders": 5,
             "Reporting & Analytics": 4,
-            "Usability": 3,
+            "Usability": 4,
+            "Integration": 5,
+            "Security & Privacy": 4,
+            "Implementation Effort": 3,
+            "Cost": 3,
+        },
+
+        "MISA AMIS CRM": {
+            "Customer Management": 5,
+            "Appointment Management": 2,
+            "Automation & Reminders": 3,
+            "Reporting & Analytics": 5,
+            "Usability": 4,
             "Integration": 5,
             "Security & Privacy": 5,
             "Implementation Effort": 3,
@@ -2305,16 +2622,21 @@ Recommend the best-fit CRM based on requirements coverage and overall value.
         },
     }
 
+    # =====================================================
+    # MATRIX TABLE
+    # =====================================================
+
     matrix_rows = []
 
     for criterion in weights:
+
         matrix_rows.append(
             {
                 "Criterion": criterion,
                 "Weight %": weights[criterion],
-                "CRM A": crm_scores["CRM A"][criterion],
-                "CRM B": crm_scores["CRM B"][criterion],
-                "CRM C": crm_scores["CRM C"][criterion],
+                "KiotViet Salon": crm_scores["KiotViet Salon"][criterion],
+                "Getfly CRM": crm_scores["Getfly CRM"][criterion],
+                "MISA AMIS CRM": crm_scores["MISA AMIS CRM"][criterion],
             }
         )
 
@@ -2326,31 +2648,48 @@ Recommend the best-fit CRM based on requirements coverage and overall value.
         use_container_width=True,
     )
 
+    # =====================================================
+    # CALCULATE WEIGHTED RESULTS
+    # =====================================================
+
     results = {}
 
     for crm in crm_scores:
+
         weighted_total = 0
 
         for criterion, weight in weights.items():
-            weighted_total += crm_scores[crm][criterion] * weight
+
+            weighted_total += (
+                crm_scores[crm][criterion] * weight
+            )
 
         if total_weight > 0:
-            results[crm] = weighted_total / total_weight
+
+            results[crm] = (
+                weighted_total / total_weight
+            )
+
         else:
+
             results[crm] = 0
 
     result_df = pd.DataFrame(
         {
-            "CRM": results.keys(),
+            "CRM Solution": results.keys(),
             "Weighted Score / 5": [
-                round(x, 2)
-                for x in results.values()
+                round(score, 2)
+                for score in results.values()
             ],
         }
     ).sort_values(
         "Weighted Score / 5",
         ascending=False,
     )
+
+    # =====================================================
+    # EVALUATION RESULT
+    # =====================================================
 
     st.subheader("Evaluation Result")
 
@@ -2360,18 +2699,99 @@ Recommend the best-fit CRM based on requirements coverage and overall value.
         use_container_width=True,
     )
 
-    winner = result_df.iloc[0]["CRM"]
-    score = result_df.iloc[0]["Weighted Score / 5"]
+    winner = result_df.iloc[0]["CRM Solution"]
+    winning_score = result_df.iloc[0]["Weighted Score / 5"]
 
     st.success(
-        f"Current recommended solution: {winner} — {score}/5"
+        f"Recommended solution: {winner} — "
+        f"Weighted score {winning_score}/5"
+    )
+
+    # =====================================================
+    # RECOMMENDATION
+    # =====================================================
+
+    if winner == "KiotViet Salon":
+
+        st.markdown(
+            """
+### Recommendation Rationale
+
+**KiotViet Salon** is the preferred solution because its native
+appointment-management capability aligns closely with the spa's
+highest-priority operational requirements.
+
+The platform provides an integrated environment for:
+
+- customer profiles and service history;
+- appointment scheduling;
+- staff and room allocation;
+- automated appointment reminders;
+- customer communication; and
+- operational reporting.
+
+This reduces the amount of additional configuration or integration
+required compared with a general-purpose CRM.
+
+**Trade-off:** KiotViet may provide less enterprise-level CRM flexibility
+and integration capability than Getfly CRM or MISA AMIS CRM. However,
+for the current business problem, operational fit and ease of
+implementation are given higher priority.
+            """
+        )
+
+    elif winner == "Getfly CRM":
+
+        st.markdown(
+            """
+### Recommendation Rationale
+
+**Getfly CRM** becomes the preferred solution under the selected
+weightings because of its strong customer-management, automation and
+integration capability.
+
+It would be particularly suitable if Wellness Perth Spa prioritised
+customer engagement and CRM automation over native spa appointment
+management.
+
+Additional appointment configuration or integration would likely be
+required.
+            """
+        )
+
+    else:
+
+        st.markdown(
+            """
+### Recommendation Rationale
+
+**MISA AMIS CRM** becomes the preferred solution under the selected
+weightings because of its strong reporting, customer-management and
+integration capabilities.
+
+It would be more appropriate if the business prioritised broader
+enterprise CRM capability and scalability.
+
+However, additional configuration or integration would likely be
+required to support detailed spa appointment operations.
+            """
+        )
+
+    st.info(
+        """
+        **BA decision principle:** The recommended solution is not simply the
+        CRM with the most features. The selection is based on which platform
+        provides the strongest fit against the business's prioritised
+        requirements with acceptable implementation effort and cost.
+        """
     )
 
     st.caption(
         """
-        Scores are illustrative for the portfolio project.
-        In a real selection exercise, each score would be supported by
-        vendor research, demonstrations and stakeholder validation.
+        This is a simulated portfolio procurement exercise. Product capabilities
+        are based on publicly available vendor information, while criterion
+        weightings and evaluation scores represent the assumptions used for
+        this case study.
         """
     )
 
