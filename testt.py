@@ -1986,23 +1986,209 @@ elif page == "05 · CRM Evaluation":
         "Comparing shortlisted solutions using requirements-driven evaluation criteria.",
     )
 
-    st.subheader("Evaluation Approach")
+    # =====================================================
+    # EVALUATION APPROACH
+    # =====================================================
 
     st.markdown(
         """
-        Requirements  
-        ↓  
-        Define Evaluation Criteria  
-        ↓  
-        Shortlist Solutions  
-        ↓  
-        Requirements Fit Analysis  
-        ↓  
-        Weighted Decision Matrix  
-        ↓  
-        Recommendation
-        """
+<style>
+
+.evaluation-section {
+    margin-top: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.evaluation-section h2 {
+    color: #194339 !important;
+    font-size: 1.8rem;
+    font-weight: 750;
+    margin-bottom: 0.5rem;
+}
+
+.evaluation-subtitle {
+    color: #6b7280;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.8rem;
+}
+
+.evaluation-flow {
+    display: flex;
+    align-items: stretch;
+    gap: 0.45rem;
+    width: 100%;
+}
+
+.evaluation-card {
+    flex: 1;
+    min-width: 0;
+    background: #ffffff;
+    border: 1px solid #dfe7e4;
+    border-radius: 14px;
+    padding: 1.1rem 0.9rem;
+    min-height: 150px;
+    box-shadow: 0 3px 10px rgba(25, 67, 57, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.evaluation-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 18px rgba(25, 67, 57, 0.10);
+}
+
+.evaluation-step {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #194339;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin-bottom: 0.9rem;
+}
+
+.evaluation-title {
+    color: #194339;
+    font-size: 0.96rem;
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 0.5rem;
+}
+
+.evaluation-description {
+    color: #6b7280;
+    font-size: 0.82rem;
+    line-height: 1.45;
+}
+
+.evaluation-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #194339;
+    font-size: 1.35rem;
+    font-weight: 700;
+    flex: 0 0 20px;
+}
+
+.evaluation-card.final {
+    background: #194339;
+    border-color: #194339;
+}
+
+.evaluation-card.final .evaluation-step {
+    background: #ffffff;
+    color: #194339;
+}
+
+.evaluation-card.final .evaluation-title {
+    color: #ffffff;
+}
+
+.evaluation-card.final .evaluation-description {
+    color: #dce9e5;
+}
+
+@media (max-width: 1000px) {
+
+    .evaluation-flow {
+        flex-direction: column;
+    }
+
+    .evaluation-card {
+        min-height: auto;
+    }
+
+    .evaluation-arrow {
+        transform: rotate(90deg);
+        height: 24px;
+    }
+}
+
+</style>
+
+<div class="evaluation-section">
+
+<h2>Evaluation Approach</h2>
+
+<div class="evaluation-subtitle">
+A structured evaluation process was used to move from defined business requirements
+to an evidence-based CRM recommendation.
+</div>
+
+<div class="evaluation-flow">
+
+<div class="evaluation-card">
+<div class="evaluation-step">01</div>
+<div class="evaluation-title">Requirements</div>
+<div class="evaluation-description">
+Define business, functional and non-functional requirements.
+</div>
+</div>
+
+<div class="evaluation-arrow">→</div>
+
+<div class="evaluation-card">
+<div class="evaluation-step">02</div>
+<div class="evaluation-title">Define Evaluation Criteria</div>
+<div class="evaluation-description">
+Translate requirements into measurable CRM selection criteria.
+</div>
+</div>
+
+<div class="evaluation-arrow">→</div>
+
+<div class="evaluation-card">
+<div class="evaluation-step">03</div>
+<div class="evaluation-title">Shortlist Solutions</div>
+<div class="evaluation-description">
+Identify CRM options that could meet the spa's operational needs.
+</div>
+</div>
+
+<div class="evaluation-arrow">→</div>
+
+<div class="evaluation-card">
+<div class="evaluation-step">04</div>
+<div class="evaluation-title">Requirements Fit Analysis</div>
+<div class="evaluation-description">
+Assess how well each solution satisfies priority requirements.
+</div>
+</div>
+
+<div class="evaluation-arrow">→</div>
+
+<div class="evaluation-card">
+<div class="evaluation-step">05</div>
+<div class="evaluation-title">Weighted Decision Matrix</div>
+<div class="evaluation-description">
+Score solutions using weighted business and technical criteria.
+</div>
+</div>
+
+<div class="evaluation-arrow">→</div>
+
+<div class="evaluation-card final">
+<div class="evaluation-step">06</div>
+<div class="evaluation-title">Recommendation</div>
+<div class="evaluation-description">
+Recommend the best-fit CRM based on requirements coverage and overall value.
+</div>
+</div>
+
+</div>
+</div>
+""",
+        unsafe_allow_html=True,
     )
+
+    # =====================================================
+    # SHORTLISTED SOLUTIONS
+    # =====================================================
 
     st.subheader("Shortlisted Solution Types")
 
@@ -2028,6 +2214,10 @@ elif page == "05 · CRM Evaluation":
         st.write(
             "Flexible workflows and integration capability but requires more implementation effort."
         )
+
+    # =====================================================
+    # WEIGHTED DECISION MATRIX
+    # =====================================================
 
     st.subheader("Interactive Weighted Decision Matrix")
 
